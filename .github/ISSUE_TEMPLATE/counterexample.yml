@@ -1,0 +1,121 @@
+name: Counterexample
+description: A documented case that cuts against an axis, a congruence claim, or a prediction
+title: "counterexample: "
+labels: ["counterexample"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This is the most valuable contribution type.** A counterexample that survives review and
+        forces a revision is a rung two contribution with a named credit line in the paper.
+
+        It is held to exactly the same evidentiary bar as supporting evidence. Not higher, which
+        would make the theory unfalsifiable in practice while advertising falsifiability in
+        principle. Not lower, which would let one anecdote overturn accumulated convergence.
+
+        The maintainer will write the paper's three tests out against your evidence, in public,
+        in this thread, and will say what would change the verdict. That procedure exists
+        specifically because the maintainer has an obvious interest in the theory surviving.
+
+        The sharpest available target, stated in the paper itself: an intentional, force justified
+        migration **toward** a larger cyclic core would count against the theory.
+
+  - type: input
+    id: claim
+    attributes:
+      label: Claim
+      description: One sentence. What the paper says, and what your case shows instead.
+      placeholder: >-
+        The paper classifies cyclic core growth as a one way potential, but team X deliberately
+        increased it, for reasons they stated, and defended the choice.
+    validations:
+      required: true
+
+  - type: input
+    id: axis
+    attributes:
+      label: What it cuts against
+      description: >-
+        The axis, congruence claim, or prediction number. If it cuts against the framework rather
+        than a specific claim, say which part.
+      placeholder: "Axis 16, entropic drift; the coordinate and potential distinction"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target
+    attributes:
+      label: Type of target
+      options:
+        - An axis is misclassified as a coordinate or a potential
+        - A generator the basis cannot express
+        - A prediction fails on data
+        - A congruence claim does not hold
+        - The four graphs do not separate
+        - A computability claim is wrong, meaning a variable is not estimable as tagged
+        - Something else, described below
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: >-
+        Primary, archived, with the load bearing passages quoted. The same standard supporting
+        evidence is held to.
+      value: |
+        - title:
+          author:
+          year:
+          url:
+          archive:
+          primary: true
+          relevant passage: >
+    validations:
+      required: true
+
+  - type: textarea
+    id: forces
+    attributes:
+      label: Was the choice deliberate, and how do you know
+      description: >-
+        For counterexamples about coordinates and potentials, this is the whole case. The paper's
+        claim is about intentional, force justified movement. A team that slid into something and
+        rationalized it afterward is not a counterexample. Evidence has to speak to whether the
+        forces were weighed before the move or assembled after it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: The argument
+      description: >-
+        Explain the case, apply the three tests in reverse, and say what the theory would have to
+        change to accommodate it. That last part is what separates a counterexample that forces a
+        revision from one that only says no.
+    validations:
+      required: true
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name exactly as it should appear in the acknowledgments of the next arXiv version.
+        You are credited whether or not the counterexample is accepted. The ladder rewards work
+        that was done, not conclusions that happened to be right.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Before you file
+      options:
+        - label: >-
+            I have read the bar in CONTRIBUTING.md, and I understand that contributions are
+            licensed CC BY 4.0.
+          required: true

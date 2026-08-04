@@ -1,0 +1,28 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question about the paper or the theory
+    url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture/discussions/categories/q-a
+    about: >-
+      Anything you want to understand rather than change. What a variable means, why a claim is
+      made the way it is, how the tests work.
+
+  - name: An idea that is not evidence yet
+    url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture/discussions/categories/ideas
+    about: >-
+      A hunch about a variable, a system worth surveying, a convergence you suspect but have not
+      chased down. Half formed is welcome here.
+
+  - name: Discuss evidence already filed
+    url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture/discussions/categories/evidence-discussion
+    about: >-
+      Argue about whether something is a coordinate or a potential, whether a convergence is
+      really independent, or whether a source says what it is cited for.
+
+  - name: Prediction testing
+    url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture/discussions/categories/prediction-testing
+    about: >-
+      Coordinate a run, sharpen a protocol, or find collaborators for one of the six predictions.
+
+  - name: Code of conduct concern
+    url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture/blob/main/CODE_OF_CONDUCT.md
+    about: Reported privately to edwin.o.onyango.jr@gmail.com rather than in an issue.

@@ -1,0 +1,117 @@
+name: Convergence
+description: Two or more bodies of work that independently derive the same variable
+title: "convergence: "
+labels: ["convergence"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the paper's strongest evidence type, because independent rediscovery is the whole
+        basis of its method.
+
+        The thing that makes a convergence count is **independence**, not similarity. Two authors
+        in the same lineage arriving at the same measure is inheritance. What carries the
+        evidence is the absence of a path between them. The questions below ask you to establish
+        that, because it is the part reviewers cannot check for you.
+
+        Convergences from outside software engineering are especially welcome and badly
+        undercollected.
+
+  - type: input
+    id: claim
+    attributes:
+      label: Claim
+      description: >-
+        One sentence, stated so someone could disagree with it. Name the shared object and both
+        starting points.
+      placeholder: >-
+        X and Y are the same quantity, derived independently from an argument about A and an
+        argument about B by authors who did not cite each other.
+    validations:
+      required: true
+
+  - type: input
+    id: axis
+    attributes:
+      label: Axis
+      description: >-
+        Which axis, tier, or congruence term this touches. If it is a variable the paper does not
+        have, say so here.
+      placeholder: "Axis 12, binding time"
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: >-
+        At least two, one per independent derivation. Primary wherever possible, archive links
+        for anything on the web, and quote the passage where each source states the quantity.
+      value: |
+        - title:
+          author:
+          year:
+          venue:
+          url:
+          archive:
+          primary: true
+          relevant passage: >
+
+        - title:
+          author:
+          year:
+          venue:
+          url:
+          archive:
+          primary: true
+          relevant passage: >
+    validations:
+      required: true
+
+  - type: textarea
+    id: independence
+    attributes:
+      label: Independence
+      description: >-
+        The load bearing section. Say what you checked, not just what you concluded.
+      value: |
+        - Neither cites the other:
+        - No common ancestor already containing the idea:
+        - Vocabularies differ:
+        - Motivating problems differ:
+        - Different literatures or communities:
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: The argument
+      description: >-
+        Explain the two derivations, say what this changes about the paper, and name what would
+        undercut it. The strongest submissions name their own weakest joint.
+    validations:
+      required: true
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name exactly as it should appear in the acknowledgments of the next arXiv version.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Before you file
+      options:
+        - label: >-
+            I have read the bar in CONTRIBUTING.md, and I understand that contributions are
+            licensed CC BY 4.0.
+          required: true
+        - label: I would like to draft the evidence file myself rather than have it written for me.
+          required: false
