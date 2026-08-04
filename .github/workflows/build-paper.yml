@@ -1,0 +1,151 @@
+name: Build paper
+
+# Compiles the paper on every pull request and every push to main that touches paper/, and
+# uploads the resulting PDF as an artifact so a reviewer can read the effect of a change without
+# installing LaTeX.
+#
+# The change detection lives in a job condition rather than in a `paths:` filter on the trigger.
+# A workflow skipped by a path filter never reports a status at all, which leaves a required
+# check pending forever on pull requests that do not touch the paper. A job skipped by an `if:`
+# condition does report, and counts as passing. Most pull requests here will be evidence files
+# rather than paper text, so this matters more than it usually would.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-paper-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    name: Detect paper changes
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check whether paper/ changed
+        id: check
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "Manual run, building unconditionally."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          base="$BASE_SHA"
+          if [ -z "$base" ]; then base="$BEFORE_SHA"; fi
+
+          # A new branch, a force push, or a first commit leaves no usable base. Build rather
+          # than guess.
+          if [ -z "$base" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            echo "No usable base commit, building unconditionally."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git diff --name-only "$base" "$HEAD_SHA" \
+              | grep -Eq '^(paper/|\.github/workflows/build-paper\.yml)'; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nothing under paper/ changed, skipping the build."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Compile with pdflatex
+    needs: detect
+    if: needs.detect.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile twice
+        working-directory: paper
+        run: |
+          set -euo pipefail
+          for pass in 1 2; do
+            echo "::group::pdflatex pass ${pass}"
+            pdflatex \
+              -interaction=nonstopmode \
+              -halt-on-error \
+              -file-line-error \
+              conceptual-space-arxiv.tex
+            echo "::endgroup::"
+          done
+
+      # pdflatex exits zero on undefined references and citations, since they are warnings
+      # rather than errors. For a paper this is exactly the failure worth catching: a dangling
+      # cross reference renders as a bare question mark in the PDF and nobody notices until it
+      # is on arXiv.
+      - name: Fail on undefined references or citations
+        working-directory: paper
+        run: |
+          set -uo pipefail
+          log=conceptual-space-arxiv.log
+          status=0
+
+          if grep -nE "LaTeX Warning: (Reference|Citation) .* undefined" "$log"; then
+            echo "::error::Undefined reference or citation. See the lines above."
+            status=1
+          fi
+
+          if grep -nE "There were undefined references" "$log"; then
+            echo "::error::LaTeX reported undefined references at the end of the run."
+            status=1
+          fi
+
+          if grep -nE "LaTeX Warning: Label\(s\) may have changed" "$log"; then
+            echo "::error::Labels were still moving after the second pass. A third pass is needed, which usually means a genuine cross reference problem."
+            status=1
+          fi
+
+          if [ "$status" -eq 0 ]; then
+            echo "No undefined references or citations."
+          fi
+          exit "$status"
+
+      - name: Report the page count
+        if: always()
+        working-directory: paper
+        run: |
+          pages=$(grep -oE "Output written on .* \(([0-9]+) pages" \
+            conceptual-space-arxiv.log | grep -oE "[0-9]+ pages" || true)
+          echo "Compiled: ${pages:-unknown page count}"
+
+      - name: Upload the PDF
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conceptual-space-pdf
+          path: paper/conceptual-space-arxiv.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload the LaTeX log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-log
+          path: paper/conceptual-space-arxiv.log
+          if-no-files-found: warn
+          retention-days: 14

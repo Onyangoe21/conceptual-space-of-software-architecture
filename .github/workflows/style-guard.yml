@@ -1,0 +1,92 @@
+name: Style guard
+
+# Enforces the mechanical parts of the paper's voice contract, described in CONTRIBUTING.md
+# section 4. No em dashes and no letter adjacent en dashes in the body, every cite key matched
+# to a bibitem and back, and a printed warning for sentences over sixty words.
+#
+# Contributors can run exactly the same check locally:
+#
+#   python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex
+#
+# Change detection is a step condition rather than a `paths:` filter, so that this check always
+# reports a status and is therefore safe to require in branch protection. See the comment in
+# build-paper.yml for why that matters here.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: style-guard-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  style-guard:
+    name: Check the voice contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check whether paper/ changed
+        id: check
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          base="$BASE_SHA"
+          if [ -z "$base" ]; then base="$BEFORE_SHA"; fi
+
+          if [ -z "$base" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git diff --name-only "$base" "$HEAD_SHA" \
+              | grep -Eq '^(paper/|\.github/(scripts/style_guard\.py|workflows/style-guard\.yml))'; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nothing under paper/ changed, skipping the style guard."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run the style guard
+        if: steps.check.outputs.changed == 'true'
+        run: python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex
+
+      - name: Self test the guard
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          set -uo pipefail
+          # A guard that cannot fail is not a guard. This proves the check is live on every run
+          # where it matters, so a silently broken script cannot pass the paper by accident.
+          tmp=$(mktemp -d)
+          cat > "$tmp/violation.tex" <<'TEX'
+          \begin{document}
+          This sentence contains an em dash --- which the voice contract forbids.
+          \end{document}
+          TEX
+          if python3 .github/scripts/style_guard.py "$tmp/violation.tex"; then
+            echo "::error::The style guard passed a file containing an em dash. The guard is broken."
+            exit 1
+          fi
+          echo "Self test passed: the guard rejects an em dash."
