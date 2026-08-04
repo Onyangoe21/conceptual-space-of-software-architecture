@@ -33,8 +33,14 @@ Complete before anything is shared with anyone:
 - [x] Pull request template with the three tests and the credit line
 - [x] Both CI workflows green on the committed paper
 - [x] All labels created
-- [ ] arXiv identifier filled in everywhere it is currently a placeholder
-- [ ] Five to ten issues pre filed by the maintainer as `good-first-contribution`
+- [x] Nine issues pre filed by the maintainer as `good-first-contribution`
+- [ ] arXiv identifier filled in everywhere it is currently a placeholder, meaning the arXiv
+      link in `README.md` and the two identifiers in `CITATION.cff`
+- [ ] Discussion categories set up. GitHub does not expose category management through its API,
+      so this is done by hand in Settings, Discussions: add **Evidence discussion** and
+      **Prediction testing**, keep Announcements, Ideas, and Q&A, and remove General, Polls, and
+      Show and tell. The links in `.github/ISSUE_TEMPLATE/config.yml` already point at the two
+      new categories and will not resolve until they exist.
 
 **On the pre filed issues.** This is the part that decides whether the launch works, and it is
 the part most easily skipped in the rush to announce.
