@@ -1,0 +1,131 @@
+name: Evidence, migration or system
+description: A documented migration, or a surveyed system for the variation table
+title: "evidence: "
+labels: ["evidence"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This extends the paper's empirical base, which currently rests on eighteen surveyed
+        systems and five industrial migrations. Both are small numbers for the weight they carry.
+
+        **Migrations** feed the two way traffic test, which is how the paper tells a real degree
+        of freedom apart from a slope nobody descends on purpose. A migration is only evidence if
+        the forces are stated by the engineers involved, in their own words. Movement without
+        stated forces is the most common reason a submission comes back marked `needs-sources`.
+
+        Migrations that ran against the fashion of their moment are worth several that ran with
+        it. So are abandoned and reversed ones, which almost nobody writes up.
+
+        **Systems** extend the variation table. The most useful systems to add are the ones you
+        expect to sit in an unusual combination of cells.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - migration
+        - system
+    validations:
+      required: true
+
+  - type: input
+    id: claim
+    attributes:
+      label: Claim
+      description: >-
+        One sentence, stated so someone could disagree with it. Not a topic label. For a
+        migration, name the axis, the direction, and the force. For a system, name what its
+        position demonstrates.
+      placeholder: >-
+        System X moved from fine to coarse on the granularity axis, justified by measured
+        operational cost, supplying the return direction that makes granularity a coordinate.
+    validations:
+      required: true
+
+  - type: input
+    id: axis
+    attributes:
+      label: Axis
+      description: Which axis, congruence term, or prediction this touches.
+      placeholder: "Axis 2, granularity, on the runtime graph"
+    validations:
+      required: true
+
+  - type: input
+    id: direction
+    attributes:
+      label: Direction
+      description: >-
+        Migrations only. Which way along the axis, in the paper's terms. Write "not applicable"
+        for a system survey.
+      placeholder: fine to coarse
+    validations:
+      required: true
+
+  - type: textarea
+    id: forces
+    attributes:
+      label: The forces, in the engineers' own words
+      description: >-
+        Quote them. This is the field the two way traffic test actually turns on. An analyst's
+        reconstruction of why a team did something is not evidence of why they did it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: >-
+        Primary wherever possible: the post mortem, the engineering write up, the mailing list
+        thread, the design document, the commit. Not a blog summarizing one of those. Archive
+        every web link, since engineering blogs disappear.
+      value: |
+        - title:
+          author:
+          year:
+          url:
+          archive:
+          primary: true
+          relevant passage: >
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: The evidence
+      description: >-
+        For a system, place it on the variation table columns: process model, concurrency model,
+        extension mechanism, topology, state management, isolation boundary, binding time,
+        synchrony. For a migration, describe what moved and what did not. In both cases, say what
+        this changes about the paper and what would undercut it.
+    validations:
+      required: true
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name exactly as it should appear in the acknowledgments of the next arXiv version.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Before you file
+      options:
+        - label: >-
+            I have read the bar in CONTRIBUTING.md, and I understand that contributions are
+            licensed CC BY 4.0.
+          required: true
+        - label: >-
+            I have firsthand knowledge of this system or migration beyond the sources cited. If
+            checked, say what in the body, since firsthand accounts are valuable and are weighed
+            differently.
+          required: false

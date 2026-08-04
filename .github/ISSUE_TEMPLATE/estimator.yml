@@ -1,0 +1,124 @@
+name: Estimator
+description: Code that computes a basis variable from a repository, its history, or traces
+title: "estimator: "
+labels: ["estimator"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The paper claims that roughly three quarters of the basis is machine estimable today.
+        Right now that is an argument. Every estimator that runs converts a piece of it into a
+        demonstration.
+
+        **File this before you build**, so two people do not implement the same variable in the
+        same month. Read [estimators/README.md](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/blob/main/estimators/README.md)
+        first for the submission requirements and the list of what is most wanted.
+
+        Estimator code is licensed MIT, separately from the paper text.
+
+  - type: input
+    id: claim
+    attributes:
+      label: What it computes
+      description: One sentence. The variable, and from what input.
+      placeholder: >-
+        Modularity violations, meaning units that co change in history without a structural
+        dependency, from a bare repository plus its git history.
+    validations:
+      required: true
+
+  - type: input
+    id: axis
+    attributes:
+      label: Axis
+      description: Which basis variable this estimates, by name or axis number.
+      placeholder: "Axis 10, reachability density"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: rung
+    attributes:
+      label: Rung on the evidence ladder
+      description: >-
+        What your estimator needs. If it needs human intent, that is fine and in scope. The
+        reflexion pattern, machine drafts and human corrects, is the proven protocol.
+      options:
+        - bare-repo
+        - plus-history
+        - plus-traces
+        - plus-human
+    validations:
+      required: true
+
+  - type: input
+    id: inputs
+    attributes:
+      label: Inputs
+      description: Concretely. Languages, build systems, and repository shapes it can handle.
+      placeholder: Python and TypeScript repositories with a resolvable import graph, plus git log
+    validations:
+      required: true
+
+  - type: input
+    id: outputs
+    attributes:
+      label: Outputs
+      description: What it produces and in what format. JSON or CSV, with a metadata block.
+      placeholder: JSON, one record per unit pair, with commit hash and parameters in metadata
+    validations:
+      required: true
+
+  - type: textarea
+    id: definition
+    attributes:
+      label: Which definition it implements
+      description: >-
+        The source of the definition, and every choice you had to make that the source leaves
+        open. Those choices are where reimplementations diverge, and documenting them is most of
+        the value of the contribution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: >-
+        Agreement with published numbers on a known system is strongest. Agreement with a hand
+        computation on a small case is fine. None at all is acceptable if you say so plainly and
+        mark the estimator as a prototype.
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Anything else
+      description: >-
+        Limitations, scale at which it stops working, and anything you found that the paper gets
+        wrong. If you discovered that a variable the paper tags as bare repository estimable
+        actually needs history or intent, that is a counterexample to the computability test and
+        it is worth more than the estimator.
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name exactly as it should appear in the acknowledgments of the next arXiv version.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Before you file
+      options:
+        - label: >-
+            I have read estimators/README.md, and I understand that estimator code is licensed
+            MIT.
+          required: true
+        - label: I intend to build this. This is not only a suggestion for someone else.
+          required: false

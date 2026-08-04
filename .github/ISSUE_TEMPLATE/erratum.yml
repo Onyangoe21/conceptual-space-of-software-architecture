@@ -1,0 +1,89 @@
+name: Erratum
+description: A factual or citation error in the paper
+title: "erratum: "
+labels: ["erratum"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for catching this. Errata are merged quickly and credited at rung one of the
+        [credit ladder](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/blob/main/CONTRIBUTING.md#5-the-credit-ladder),
+        no matter how small.
+
+        The most valuable errata are the ones where a claim is attributed to a source that does
+        not quite make it. In a synthesis of sixty years of literature, that is the error most
+        likely to be there and least likely to be noticed.
+
+  - type: input
+    id: claim
+    attributes:
+      label: What is wrong
+      description: One sentence. State the error, not the topic.
+      placeholder: The Lakos 1996 citation gives the wrong page range for the ACD definition.
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Where it is
+      description: >-
+        Section number, axis number, or bibliography key. A line number in
+        paper/conceptual-space-arxiv.tex is ideal if you have one.
+      placeholder: "Axis 10, reachability density; bibitem lakos1996"
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: The correction
+      description: What it should say instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: >-
+        What establishes the correction. Primary sources wherever they exist. Include an archive
+        link for anything on the web. Quote the load bearing passage rather than citing the
+        document as a whole.
+      value: |
+        - title:
+          author:
+          year:
+          url:
+          archive:
+          primary: true
+          relevant passage: >
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Anything else
+      description: Optional. Context, related errors you noticed, or uncertainty about the fix.
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name exactly as it should appear in the acknowledgments of the next arXiv version,
+        including any diacritics. Say "no credit" if you would rather not be named.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Before you file
+      options:
+        - label: >-
+            I have checked the open issues for this error, and I understand that contributions
+            are licensed CC BY 4.0.
+          required: true
