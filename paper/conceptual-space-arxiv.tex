@@ -1,0 +1,1504 @@
+\documentclass[11pt,oneside]{article}
+\pdfoutput=1
+
+% ============================================================
+%  The Conceptual Space of Software Architecture
+%  The Latent Variables That Generate Architectural Decisions
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\usepackage{parskip}
+
+\definecolor{accent}{RGB}{40,72,120}
+\hypersetup{colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent}
+
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{\thesubsubsection}{0.6em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape The Conceptual Space of Software Architecture}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newtheorem{claim}{Claim}
+\newtheorem{prop}{Proposition}
+\newtheorem{defn}{Definition}
+\theoremstyle{definition}
+\newtheorem{axis}{Axis}
+\newtheorem{pred}{Prediction}
+
+\setstretch{1.06}
+
+\title{\vspace{-1.0cm}\textbf{\color{accent}The Conceptual Space of Software Architecture}\\[0.35cm]
+\large The Latent Variables That Generate Architectural Decisions}
+\author{Edwin O Onyango\\[-1pt]
+\small Dartmouth College\\
+\small \texttt{edwin.o.onyango.jr@gmail.com}
+\and
+Walter Wagunde\\[-1pt]
+\small Tufts University}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent What is software architecture, such that a machine could hold it? Every coding agent
+today navigates a codebase through its observables: the file tree, a symbol graph, text
+similarity, and a frozen prose file in which humans write down what actually matters. This paper
+asks whether the thing being written down has a small generating basis. By that we mean a short
+list of latent variables such that every architectural decision, in any system, is a move along
+one of them, the way physics replaced a bestiary of phenomena with a few forces.
+
+We answer in three ways. The first is theoretical. We start from one premise: software is kept
+alive by a bounded population of agents, human or machine, while the world changes around it.
+From that premise we derive what an architecture must be. It is not a structure. It is a set of
+decisions laid over four graphs. The problem has a graph of constraints. The code has a graph
+of dependencies. The runtime has a graph of interactions. The organization has a graph of
+communication. We then read sixty years of theory, from Parnas, Dijkstra, Simon, and Conway
+through design structure matrices, architectural styles, and architecture as decisions, and we
+find the same small set of variables appearing again and again under different names. Where do
+the cuts fall on each graph? Do the four cuts line up with one another? What kind of
+interaction crosses each boundary? Which orders of visibility and abstraction sit over the
+cuts? And for each decision: how volatile is it, when does it take force, what would reversing
+it cost, and how far does it reach? One such agreement between two theories could be a
+coincidence. What we find is a pattern of them. The measure now called propagation cost was
+derived twice, once from a change-cost argument and once from a build-cost argument, by authors
+who did not cite each other. Binding time appears independently in five separate frameworks.
+The dominance order was discovered four times. When many lines of work that start from
+different premises and share no vocabulary keep arriving at the same variables, the most
+reasonable explanation is that the variables are really there. That logic of convergent
+evidence is the backbone of the paper.
+
+The second way is empirical. We survey eighteen major systems and five industrial migrations,
+and of every architectural difference we find, we ask one simple question: is this a choice,
+or is it decay? Some differences are choices. Excellent teams pick opposite answers to the
+same question, each side for good reasons, and over the years real systems move in both
+directions. Other differences are not choices at all. Nobody chooses a tangle of circular
+dependencies; systems slide into it, and climbing out costs effort. The paper keeps these two
+kinds strictly apart, calling the choices coordinates and the decay directions potentials.
+The clearest single lesson from the migrations is also simple. How you divide your code and
+how you deploy it are two separate decisions, and the teams that treated them as one are the
+ones that later wrote post mortems about it; three of five name exactly this as the root
+error. The third way is computational. Roughly three quarters of the variables can be
+estimated today from a bare repository or its git history. Only the intent-carrying ones
+require a human, and for those the reflexion model loop is a proven protocol: the machine
+drafts, the human corrects, the machine enforces.
+
+Finally, we assemble the basis into a conceptual space in G\"ardenfors' sense, the picture
+cognitive science uses for how minds hold concepts: qualities become dimensions, concepts
+become regions, similarity becomes nearness. Styles are its prototype regions. Tactics and the
+six modular operators are its move set. Quality attributes form a value field, held separate
+from the coordinates. The metric is asymmetric and built on reachability. That choice turns
+Tversky's classical objection, that human judgments of similarity refuse to behave like
+distances, from a problem into a prediction.
+We are equally explicit about what the space is not. It is not fixed, since framing re-weights it. It is not Euclidean, since edge
+costs are nonlocal. It is not one partition, since recovery algorithms disagree precisely because
+each optimizes a different real dimension. We close with falsifiable predictions and with a
+construction recipe: what an agent must compute so that, on seeing files, functions, and classes,
+it is aware of every variable in play.
+\end{abstract}
+
+\tableofcontents
+\vspace{0.4cm}
+\hrule
+
+% ===========================================================================
+\section{The question, sharpened}
+% ===========================================================================
+
+We want to begin somewhere that almost feels too obvious to mention, because it is usually in
+those places that the most important assumptions sit unnoticed.
+
+Ask two engineers to draw the architecture of the system they share and you will get two
+different diagrams, drawn at different granularities, organized around different concerns. Now
+ask those same two engineers which proposed change is dangerous, which module is load-bearing,
+and which shortcut will be regretted, and they will largely agree. Whatever the architecture is,
+it is not the diagrams. It is the thing that lets two people who have never compared diagrams
+make the same predictions. This paper is an attempt to pin that thing down, precisely enough
+that a machine could estimate it.
+
+There is a weak version of this research and a strong one, and only the strong one is worth
+doing.
+
+The weak version says that architectures differ in many ways, and that we should catalog the
+ways: styles, patterns, tactics, smells. This has been done, repeatedly and well
+\cite{shawgarlan1996,gamma1994,bass2012}, and it is nearly useless for our purpose, because a
+catalog has no generative power. It tells you what has been seen, not what must be. A catalog
+cannot tell an agent, facing a system it has never seen, which questions to ask of it.
+
+The strong version is a claim about generating variables. By latent we mean nothing exotic, only
+the statistician's plain sense of the word: quantities never observed directly, whose existence
+is earned by how much of the observable record they explain. The claim is that there exists a
+small basis $B$ of such quantities, and that every architectural decision, from ``should this be
+two services or one'' down to ``should this function know about that type,'' is a move along the
+elements of $B$. Every architecture is then a point positioned by them, or more precisely, as we
+will see, a trajectory. If $B$ exists and is small, then understanding a codebase is not
+memorizing its shape. It is estimating its coordinates. ``Know one system, understand many''
+stops being an aspiration and becomes a structural consequence, because an observation about one
+boundary updates a shared latent and moves expectations about every other boundary.
+
+This is the same move made twice before in adjacent territory. Physics replaced phenomena with
+forces. Machine learning replaced hand-written rules with latent representations that earn their
+existence by making prediction easier. The object here is different, and choosing it correctly
+is most of the work. We are not asking what architecture documentation contains; that question
+produces templates. We are not asking what architecture recovery outputs; that question produces
+partitions. We are asking: \textbf{what are the degrees of freedom of the design, such that
+fixing their values determines every structural fact about a system that an engineer would call
+architectural, and such that every architectural disagreement is a disagreement about their
+values?}
+
+The question has an unusual property. It has been answered many times, partially, by people who
+mostly did not read each other. Parnas answered it with the distribution of anticipated change
+\cite{parnas1972}. Dijkstra answered it with ordered abstraction \cite{dijkstra1968}. Simon
+answered it with interaction density \cite{simon1962}. Conway answered it with the shape of the
+designing organization \cite{conway1968}. Baldwin and Clark answered it with option value over a
+dominance hierarchy \cite{baldwinclark2000}. Shaw and Clements answered it with an explicit
+dimension table \cite{boxology1997}. Fielding answered it by deriving an architecture as a walk
+through constraint space \cite{fielding2000}. Jansen and Bosch answered it by declaring the
+decisions themselves to be the architecture \cite{jansenbosch2005}. The scandal of the field is
+not that no theory exists. It is that eight partial theories exist, and nobody has computed
+their union, checked it against the decision points of real systems, and asked what is
+irreducible.
+
+That is this paper's job. Its thesis, stated now and defended throughout:
+
+\begin{claim}\label{claim:main}
+Software architecture is a decision structure laid over four graphs. Its latent variables fall
+into four tiers: (i) \textbf{boundary geometry}, which says where the cuts fall on each graph,
+how the four cuts align, and what kind of interaction crosses each boundary; (ii) \textbf{order
+structure}, the partial orders of use, abstraction, and dominance laid over the cuts; (iii)
+\textbf{a commitment calculus}, which attaches to each decision its volatility, binding time,
+reversal cost, blast radius, and commitment state; and (iv) \textbf{a value field and a
+dynamics}, quality-attribute gradients held separate from the coordinates, and an entropic drift
+that makes architecture a trajectory rather than a point. These tiers are mutually irreducible,
+jointly generative, and largely machine-estimable.
+\end{claim}
+
+The rest of the paper earns each clause of that sentence.
+
+% ===========================================================================
+\section{Method: three triangulating tests}
+% ===========================================================================
+
+A proposed latent variable is cheap. The literature contains hundreds of candidate ``dimensions
+of architecture,'' and admitting them by assertion would only add one more catalog to the pile.
+We admit a variable into the basis only when it passes tests of a different kind. Three tests do
+the work throughout this paper.
+
+\subsection{The convergence test}
+
+If a quantity is a real dimension of the space rather than an artifact of one author's
+formalism, it should be discovered independently, from different premises, by people solving
+different problems. The flagship example is the density of the transitive closure of the
+dependency graph. MacCormack, Rusnak and Baldwin derived it as propagation cost, the expected
+fraction of a system affected by a random change \cite{maccormack2006}. A decade earlier, Lakos
+had derived it as average cumulative component dependency, the expected cost of an incremental
+build and test \cite{lakos1996}. Same mathematical object, reached once from a change-cost
+argument and once from a build-cost argument. When two theories that share no citations and no
+vocabulary force the same coordinate, the coordinate is probably in the territory, not the map.
+And one such convergence could still be a coincidence, which is why the method is cumulative.
+We collect convergences until coincidence stops being a plausible explanation. Binding time,
+for example, appears independently in five separate frameworks (Axis~\ref{ax:binding}), and
+the dominance order was discovered four times (Axis~\ref{ax:dominance}). We will flag every
+such convergence as it arrives. There are more of them than the field seems to know.
+
+\subsection{The two-way traffic test}
+
+Faced with any difference between two systems, we ask one simple question. Is this a choice, or
+is it decay? A choice is a genuine degree of freedom. Competent designers may sit at either
+pole, depending on the forces they face, and we will call such an axis a dimension, or a
+coordinate. Decay is different. It is a direction no competent designer takes on purpose, a
+slope that systems slide down and must spend effort to climb back up, and we will call it a
+potential. A catalog cannot tell these two apart. The empirical record can. If respected
+systems occupy opposite poles of an axis with explicit, opposite justifications, and stronger
+still, if documented migrations exist in both directions, then the axis is a coordinate. Chromium moved its isolation boundary finer after Spectre
+\cite{chromium2009,reis2019}. Istio merged its control plane coarser after measuring operational
+cost \cite{istio2020}. Segment went from monolith to microservices and back to monolith
+\cite{segment2018}. Apache and nginx converged on each other's concurrency mechanisms from
+opposite ends \cite{aosanginx}. Isolation granularity, centralization, binding time, and
+concurrency model all carry two-way traffic. By contrast, nobody migrates toward a larger cyclic
+core of mutually dependent files on purpose. Dependency-graph health carries one-way intentional
+traffic only, and it therefore enters the theory not as a coordinate but as a potential, a
+gradient that the dynamics descend or resist (\S\ref{sec:dynamics}). This distinction between
+coordinates and potentials, which the two-way test operationalizes, is one of the paper's
+load-bearing contributions.
+
+\subsection{The computability test}
+
+The end state of this research program is an agent that, on opening a repository, estimates the
+variables. A latent variable that is well defined but unestimable in principle, whether from
+code, history, traces, or a bounded human interaction, can still constrain theory, but it cannot
+enter the working basis. We therefore tag every variable with its evidence requirement:
+\emph{bare repo}, \emph{plus git history}, \emph{plus runtime traces}, or \emph{plus human
+intent}. And we take seriously the reflexion-model result that the human-intent inputs are
+bounded and cheap. One engineer reflexion-modeled the 1.2 MLOC Excel codebase in about a month,
+iterating a hypothesized module map against computed divergences \cite{murphy1995}. The machine
+drafts, the human corrects, the machine enforces. Intent is an input, not an excuse.
+
+\subsection{What we deliberately keep separate}
+
+Three separations are enforced everywhere, because their conflation is the commonest failure of
+prior syntheses. The first is coordinates versus value field. Where a system \emph{is}, its
+structural position, is one thing. How \emph{good} that position is for given goals is another.
+Lane's design spaces \cite{lane1990}, ATAM's sensitivity points \cite{atam2000}, and Fielding's
+property table \cite{fielding2000} are all maps between these two objects, and they lose their
+content if the objects are merged. The second is coordinates versus dynamics. The drift of
+structure under change, Lehman's laws \cite{lehman1980}, is a vector field over the space, not
+an axis of it. The third is the four graphs themselves. Requirements, code, runtime, and
+organization each carry their own cut, and much of what the field argues about is secretly a
+claim about the congruence of two of them (\S\ref{sec:fourgraphs}).
+
+% ===========================================================================
+\section{The object: what an architecture is}\label{sec:object}
+% ===========================================================================
+
+We now derive the object whose space we are charting, from premises weak enough to be
+undeniable.
+
+\textbf{Premise.} A software system is an artifact maintained by a bounded population of agents,
+human or machine, under sustained and partially unanticipated change, for purposes located
+outside the artifact.
+
+Everything follows from the three pressures in that sentence: \emph{boundedness}, since no agent
+holds the whole; \emph{change}, since the artifact is never done, which is Lehman's E-type
+condition \cite{lehman1980}; and \emph{external purpose}, since validity is judged in a moving
+world rather than against a frozen specification.
+
+\subsection{Boundedness forces cuts; change decides where they go}
+
+Because no agent holds the whole, the system must be cut into parts small enough to hold. This
+is Simon's argument that complex systems built by bounded processes are hierarchies of nearly
+decomposable parts, with interaction density high within parts and low between them
+\cite{simon1962,simonando1961}. Throughout this paper a \emph{cut} is nothing exotic. It is a
+partition of a graph's vertices into blocks, a decision about where the lines get drawn.
+
+But density of \emph{which} interactions? Here sits the first deep fork in the classical
+literature, and it is worth slowing down for, because it is not a disagreement to be resolved.
+It is a pair of coordinates to be kept distinct. Structured design cuts the graph of data-flow
+connections \cite{stevens1974}. Alexander cuts the graph of requirement interactions
+\cite{alexander1964}. Simon cuts the graph of runtime interactions. Parnas rejected all
+flowchart-shaped criteria and cut by anticipated change: begin ``with a list of difficult design
+decisions or design decisions which are likely to change,'' and make each one the hidden secret
+of one module \cite{parnas1972}. Interaction minimization and change localization coincide only
+under an assumption that nobody in the classical corpus states or tests: that change propagates
+along interaction edges with uniform probability. The KWIC construction is precisely a system
+where they disagree. Parnas's Decomposition 1 scores tolerably on coupling and fails
+catastrophically on change containment. \emph{The volatility field over decisions is therefore
+an independent input, not derivable from any interaction graph} (\S\ref{sec:commitment}).
+
+\subsection{The four graphs}\label{sec:fourgraphs}
+
+Collecting the graphs that the classical theories partition, we get exactly four, and the list
+appears to be complete:
+
+\begin{enumerate}[leftmargin=1.6em]
+\item $G_P$, the \textbf{problem graph}: requirement and misfit variables and their interactions
+(Alexander's constraint graph \cite{alexander1964}; feature models; the domain's own conceptual
+joints, which domain-driven design later named bounded contexts \cite{evans2003}).
+\item $G_C$, the \textbf{code graph}: source units and their syntactic dependencies (the DSM
+substrate \cite{steward1981,maccormack2006}; the uses relation \cite{parnas1979}).
+\item $G_R$, the \textbf{runtime graph}: executing elements and their interactions (Fielding's
+components, connectors, and data \cite{fielding2000}; process and deployment topology).
+\item $G_O$, the \textbf{organization graph}: the agents and their communication structure
+(Conway \cite{conway1968}).
+\end{enumerate}
+
+Each classical theory is, at bottom, the same mathematical move applied to a different member of
+this family: partition a weighted graph so that heavy edges fall inside blocks. The moment the
+family is seen whole, a new class of variables appears that no single-graph theory can express.
+These are the \textbf{congruence terms}, the degree of alignment between cuts on different
+graphs. At least three are independently load-bearing:
+
+\begin{itemize}[leftmargin=1.6em]
+\item $\kappa_{OC}$, the congruence of organization and code, which is Conway alignment. This is
+the best-evidenced variable in the entire literature. Organizational metrics predicted
+failure-prone Vista binaries better than any code metric \cite{nagappan2008}. In five matched
+pairs of functionally equivalent products, the more distributed organization produced the more
+modular codebase in every pair \cite{maccormack2012}. The concentration of ownership at a
+boundary predicts its failure rate \cite{bird2011}. And loosely coupled architecture,
+operationalized as teams able to test and deploy without coordination, is among the strongest
+population-scale predictors of delivery performance \cite{accelerate2018}. The mirroring is a
+prevalent pattern, not a law. It weakens in open source \cite{colferbaldwin2016}, which is
+exactly what makes it a \emph{variable}.
+\item $\kappa_{PC}$, the congruence of problem and code: whether module boundaries track the
+problem's own constraint clusters. This was Alexander's original program \cite{alexander1964},
+and DDD's bounded contexts are its modern operationalization \cite{evans2003}.
+\item $\kappa_{CR}$, the congruence of the logical and the physical: whether code-level module
+boundaries and runtime deployment boundaries coincide. The empirical record of
+\S\ref{sec:empirical} shows this is the single most expensive conflation in industrial practice.
+Modularity forces, meaning ownership, comprehension, and change isolation, act on the logical
+cut. Operational forces, meaning cost, latency, consistency, and blast radius, act on the
+physical cut. Three of five major migration post-mortems name their root error as having coupled
+the two \cite{primevideo2023,shopify2019,uberdoma2020}.
+\end{itemize}
+
+\subsection{Decisions, not structures, are the substance}
+
+A partition of four graphs is still a static description. Two further classical results force
+the final reconceptualization. Parnas's program-families paper models development as a tree
+whose nodes are incomplete designs and whose edges are design decisions. An architecture is a
+node, a prefix-closed set of commitments, and a family is a subtree \cite{parnas1976}. Thirty
+years later, and apparently without genealogical connection, Jansen and Bosch re-derived the
+same identification from maintenance economics. Structure is the residue. The decisions, with
+their rules and constraints, are the architecture, and their loss, which they called knowledge
+vaporization, is the causal mechanism of design erosion \cite{jansenbosch2005,vangurp2002}.
+Taylor, Medvidovic and Dashofy made it the textbook definition: architecture is the set of
+principal design decisions \cite{taylor2010}. The convergence test passes. \emph{The point of
+the space is a decision set, and the structural facts, the cuts and the orders, are its shadow
+on the four graphs.}
+
+This identification does real work. It explains why architecture cannot be fully recovered from
+code: bans and rejected alternatives leave no residue, which is why Kruchten's ontology gives
+ban decisions, crucial and invisible, a first-class place \cite{kruchten2004}. It explains why
+erosion is path dependence plus amnesia rather than bad decisions \cite{vangurp2002}. And it
+explains why the space's metric must be asymmetric (\S\ref{sec:metric}): moving between two
+architectures is not a distance between shapes but a re-decision cost, and re-deciding is
+directional.
+
+\begin{defn}[Architecture]\label{def:arch}
+An architecture is a pair $(D, \sigma)$ where $D$ is a set of design decisions carrying the
+commitment calculus of \S\ref{sec:commitment} and partially ordered by their restriction
+relationships, and $\sigma$ is the induced structure: the cuts $\Pi_P, \Pi_C, \Pi_R, \Pi_O$ on
+the four graphs, the congruences $\kappa$ among them, the partial orders of \S\ref{sec:orders}
+over the cuts, and the interaction type at each boundary (Axis~\ref{sec:boundarytype}). A
+codebase realizes an architecture with a conformance residual (reflexion's convergences,
+divergences, and absences \cite{murphy1995}; erosion and drift are the residual's named
+pathologies \cite{perrywolf1992}).
+\end{defn}
+
+% ===========================================================================
+\section{The basis, tier by tier}\label{sec:basis}
+% ===========================================================================
+
+We now assemble the basis. Each variable is stated as an axis: what varies, its formal
+structure, the independent discoveries that force it, which is the convergence test at work, and
+its evidence requirement, which is the computability test at work. The four tiers of
+Claim~\ref{claim:main} organize the presentation.
+
+\subsection{Tier I: boundary geometry}
+
+The first tier answers the plainest questions about a system. Where are the lines drawn, on
+which graph, and at what scale? Do the lines on different graphs agree? And what actually
+crosses them?
+
+\begin{axis}[Cut placement, per graph]\label{ax:cut}
+For each graph $G_i \in \{G_P, G_C, G_R, G_O\}$: the partition $\Pi_i$ of its vertices, with
+Simon's near-decomposability ratio $\varepsilon_i$, the ratio of inter-block to intra-block
+interaction density, as its principal scalar projection. \emph{Formal structure:} the lattice of
+partitions; nearly block-diagonal matrices, with a proved timescale-separation theorem for the
+linear case \cite{simonando1961}. \emph{Convergences:} Simon on runtime interactions; Alexander
+on requirement interactions, with an explicit min-cut algorithm \cite{alexander1964}; structured
+design on data-flow connections \cite{stevens1974}; community detection and every
+software-clustering objective since \cite{mancoridis1999}. \emph{Evidence:} bare repo for
+$G_C$; traces for $G_R$; authorship and communication records for $G_O$; requirements analysis
+or domain modeling for $G_P$.
+\end{axis}
+
+\begin{axis}[Granularity, per graph]\label{ax:granularity}
+The characteristic scale of the cut: statement to function to class to module to service to
+system on $G_C$; thread to process to sandboxed process to container to node on $G_R$;
+individual to team to department on $G_O$. Categorization research predicts, and practitioner
+discourse is consistent with, a paradigm-relative \emph{basic level} at which practitioners
+reason by default: the module in monolith cultures, the service in distributed ones. Granularity
+is therefore not only a structural choice. It sets the resolution of the community's default
+vocabulary \cite{rosch1978,gardenfors2000}. \emph{Two-way traffic:} Chromium moved isolation
+finer, first process-per-site-instance \cite{chromium2009}, then strict site isolation after
+Spectre changed the threat model \cite{reis2019}; Istio consolidated four control-plane
+deployables into one \cite{istio2020}. Both were competent; the forces differed.
+\emph{Evidence:} bare repo and deployment manifests.
+\end{axis}
+
+\begin{axis}[Congruence terms]\label{ax:congruence}
+$\kappa_{OC}, \kappa_{PC}, \kappa_{CR}$ as introduced in \S\ref{sec:fourgraphs}: matrix
+congruence statistics between cuts on different graphs. These are second-order variables,
+properties of \emph{pairs} of cuts, and they are where several of the field's most robust
+empirical results actually live \cite{nagappan2008,maccormack2012,cataldo2008,accelerate2018}.
+\emph{Evidence:} $\kappa_{OC}$ from git authorship crossed with dependency structure;
+$\kappa_{CR}$ from build and deploy manifests crossed with module structure.
+\end{axis}
+
+\begin{axis}[Boundary interaction type]\label{sec:boundarytype}
+At every cut edge, the interaction is not a scalar ``coupling strength.'' It is a structured
+product of six factors, enumerated independently by the boxology program \cite{boxology1997}
+and the connector taxonomy \cite{mehta2000}. The first factor is \emph{control topology}
+crossed with \emph{data topology}: each may be linear, acyclic, hierarchical, star, or
+arbitrary, they are stated separately, and a relation records whether they coincide and which
+way they point. The second is \emph{synchronicity}: lockstep, synchronous, asynchronous, or
+opportunistic. The third is \emph{data mode}: passed, shared, copy-out-copy-in, or broadcast.
+The remaining three are \emph{delivery guarantees}, \emph{cardinality}, and \emph{state locus},
+meaning where conversation state lives: in a server session, held by the client, distributed,
+or nowhere \cite{fielding2000}.\footnote{A sourcing caveat applies to the enumerated value sets of the
+boxology, Lane, connector-taxonomy, and tactics tables throughout this paper: the primary
+technical reports sit behind access restrictions, and the value sets are reconstructed from the
+published texts and secondary quotations. The dimensional \emph{structure} is not in doubt;
+individual value lists remain to be verified against the primary tables.} The classical coupling
+ladder (content, common, external, control, stamp, data, in increasing order of virtue,
+assembled from ingredients in \cite{stevens1974} and codified by the structured-design school
+\cite{yourdon1979}) is an ordinal compression of this product: historically first, dimensionally
+coarse. \emph{Evidence:} bare repo for interface signatures and connector idioms; traces for the
+realized subset.
+\end{axis}
+
+\begin{axis}[Interface thinness and uniformity]\label{ax:interface}
+Per boundary: how much of the hidden side is deducible through it. This is Parnas's ``reveal as
+little as possible'' \cite{parnas1972}, with three independently derived formalizations. Simon
+argued that only slow, aggregate quantities should cross a near-decomposable boundary
+\cite{simon1962}. Baldwin's thin crossing points locate transactions where transfers are few and
+standardizable \cite{baldwin2008}. The information-theoretic reading counts the bits of the
+secret leaked by the interface \cite{allen1999}. To thinness add \emph{uniformity}: bespoke
+versus domain-standard versus universal, as in Unix pipes and HTTP verbs, which Fielding shows
+trades efficiency for evolvability and visibility \cite{fielding2000}. And add \emph{stability
+asymmetry}: a system may expose stable narrow seams over volatile interiors, as in Git's
+plumbing and porcelain, or Linux's stable ABI outward and unstable API inward, making interface
+granularity independent of component granularity \cite{aosagit}. \emph{Evidence:} bare repo.
+\end{axis}
+
+\subsection{Tier II: order structure}\label{sec:orders}
+
+Cuts say where the lines are. The second tier says which way is up: who may know about whom, who
+sits above whom in interpretation, and whose decisions bind whose.
+
+The classical corpus contains a standing warning here, first issued in Parnas's 1972 paper
+itself: at least three distinct partial orders masquerade as ``hierarchy,'' and collapsing them
+is a category error \cite{parnas1972}.
+
+\begin{axis}[The uses order]\label{ax:uses}
+The designed relation ``$A$ uses $B$,'' meaning the correctness of $A$ requires a correct $B$,
+which is not the same as invokes. Its shape ranges from unconstrained digraph to strict layers.
+Its value is exact by construction: the downward-closed sets of the uses order are precisely the
+buildable, deliverable subsets of the system, so extension and contraction capability is the
+lattice of order ideals \cite{parnas1979}. Simon's stable intermediate forms, the watchmaker
+argument \cite{simon1962}, are the same object seen dynamically. \emph{Evidence:} bare repo.
+\end{axis}
+
+\begin{axis}[The abstraction order]\label{ax:abstraction}
+Dijkstra's levels: each level implements an abstract machine above which certain resources
+``lose their identity.'' Formally, an ordered chain of state-space quotients, whose payoff is
+combinatorial, since verification cost falls from the product of level state-spaces to their sum
+\cite{dijkstra1968}. This is distinct from the uses order. A uses-hierarchy need not be a
+hierarchy of interpretation, and the two orders can disagree on the same system.
+\emph{Evidence:} bare repo, partially; abstraction boundaries are inferable from type structure
+and naming, confirmable by a human.
+\end{axis}
+
+\begin{axis}[The dominance order and design rules]\label{ax:dominance}
+Baldwin and Clark's deepest structural claim: a modularization is not a partition alone but a
+partition \emph{plus a visibility hierarchy}. Design rules are decisions fixed early and visible
+to all, and hidden parameters may not constrain them \cite{baldwinclark2000}. Cai and Sullivan
+showed the DSM is not primitive but the shadow of a constraint network plus this dominance order
+\cite{cai2006}. Its measurable projections are the design rule hierarchy and the decoupling
+level metric, evaluated on 129 projects with maintainability validation on a 41-project subset
+\cite{mo2016}, though the validations to date come largely from one research group, a
+replication gap the theory should not paper over. Martin's stability direction, with instability
+decreasing along dependency edges, and the refinement orders of interface and contract theories
+(alternating simulation \cite{dealfaro2001}; assume-guarantee contracts \cite{benveniste2018})
+are the same order structure in other clothing. Four convergent discoveries. \emph{Evidence:}
+bare repo.
+\end{axis}
+
+\begin{axis}[Dependency orientation relative to the abstraction gradient]\label{ax:orientation}
+Whether dependencies flow toward abstraction and stability or against it. This is the
+main-sequence discipline, SDP and SAP \cite{martin2002}, with hexagonal, onion, and clean
+architecture as its packaging \cite{cockburn2005}. On Martin's $(I,A)$ unit square, instability
+against abstractness, the discipline is literally a vector-field constraint with a named
+prototype region, the main sequence $A + I = 1$, and named pathological corners. It is the most
+literal small conceptual space in the existing literature, and a template for this paper's
+construction. \emph{Evidence:} bare repo, for typed languages.
+\end{axis}
+
+\begin{axis}[Reachability density]\label{ax:reach}
+The scalar that summarizes what the orders jointly control: the density of the transitive
+closure of $G_C$. This is propagation cost \cite{maccormack2006}, and it is Lakos's ACD/N
+\cite{lakos1996}, the paper's flagship convergence. Its refinement, decoupling level, discounts
+legitimate dependence on design rules and can rank systems oppositely to raw propagation cost.
+The two are different projections, and the space needs both \cite{mo2016}. Derived
+classifications give the space some of its best-attested prototype regions: core size,
+core-periphery versus hierarchical versus multi-core types, element roles on the (VFI, VFO)
+plane. Most large real systems are core-periphery \cite{baldwin2014}. One caveat matters for the
+geometry: the cost of an edge is nonlocal, since a single added edge can double the transitive
+closure, so the space is non-Euclidean in the edge basis \cite{lakos1996}. \emph{Evidence:}
+bare repo.
+\end{axis}
+
+\subsection{Tier III: the commitment calculus}\label{sec:commitment}
+
+Tiers I and II describe the shadow. Tier III is the substance: the variables attached to the
+decisions themselves. The decision-centric literature supplies them, from Parnas 1976 through
+Jansen and Bosch, Kruchten, the rationale tradition, and the options tradition, and they compose
+into what we call the commitment calculus.
+
+\begin{axis}[The volatility field]\label{ax:volatility}
+An assignment of anticipated-change weight to every design decision. This is Parnas's generative
+criterion \cite{parnas1972}, factored at scale into change-source classes of hardware, behavior,
+and internal \cite{parnas1985}, and re-derived economically as per-module technical potential
+$\sigma_i$ in the options theory, where volatility is where option value lives
+\cite{baldwinclark2000,sullivan2001}. The two sign conventions, volatility as hazard in the
+stability principles and volatility as resource in the options tradition, agree on the
+structural prescription that nothing should depend on the volatile, and disagree on valuation.
+The space needs the position and the sign kept separate. \emph{Evidence:} git history, churn and
+co-change, as proxy; requirements volatility needs human input.
+\end{axis}
+
+\begin{axis}[Binding time]\label{ax:binding}
+When each decision takes force: design, compile, link, startup, or run time. This appears
+independently in boxology, stated separately for control and data partners \cite{boxology1997};
+in the connector taxonomy, as linkage binding \cite{mehta2000}; in the modifiability tactics, as
+defer binding \cite{bass2012}; in program families, where family-common decisions bind early and
+member-variable decisions bind late \cite{parnas1976}; and across the empirical corpus, where
+nginx's compile-time modules and Eclipse's runtime OSGi bundles were chosen oppositely under
+explicit forces \cite{aosanginx,aosaeclipse}. Five independent appearances. This is the
+strongest convergence in the paper after reachability density. \emph{Evidence:} bare repo.
+\end{axis}
+
+\begin{axis}[Reversal cost, blast radius, and accrued dependents]\label{ax:reversal}
+Fowler defined architecture, with a deliberate wink, as the things people perceive as hard to
+change, while insisting the architect's job is to shrink that set \cite{fowler2003}. The
+definition decomposes into a product of terms. The first is reversal cost: what a rewrite, a
+migration, or data gravity would demand. The second is blast radius: Kruchten's scope of
+system, temporal, and organizational extent \cite{kruchten2004}. The third is dependents
+accrued, the in-degree in the decision graph, because irreversibility often arrives after the
+decision, by accretion. Binding time modulates all three. The options literature
+prices deferral against exactly these \cite{baldwinclark2000}. The one-way and two-way door
+rule keys process selection on the first term alone \cite{bezos2015}. ``Architectural'' is not
+a category of topics. It is the high-product region of this calculus, which is why teams
+adopting decision records report that their hardest problem is deciding what counts as
+architectural \cite{weiss2024}, and why adoption in the wild is shallow, with half of adopting
+repositories abandoning after fewer than five records \cite{buchgeher2023}. \emph{Evidence:}
+decision graph plus git history; partially inferable, confirmable by a human.
+\end{axis}
+
+\begin{axis}[Commitment state and restriction force]\label{ax:state}
+Kruchten's ordered promotion scale, from idea to tentative to decided to approved, with
+challenged, rejected, and obsolesced as demotions, with consistency propagation along the
+decision graph's typed edges: constrains, forbids, enables, subsumes, comprises, conflicts-with,
+overrides, is-alternative-to \cite{kruchten2004}. And, per decision, its restriction force: how
+strongly its rules and constraints prune the future option space. A ban prunes maximally and
+leaves zero code residue \cite{kruchten2004}. A convention prunes weakly. Jansen and Bosch's
+deltas make the composition explicit: an architecture at time $t$ is a fold over the decision
+sequence \cite{jansenbosch2005}. QOC said it first and plainest: a design is a point in a space
+constructed by questions, which are dimensions, options, which are values, and criteria, which
+are the value field \cite{maclean1991}. \emph{Evidence:} requires the decision store,
+historically vaporized; see \S\ref{sec:agent} for why an agent dissolves the four documented
+causes of that vaporization.
+\end{axis}
+
+One honest note closes the tier. The calculus describes the decision, not the decider. The
+empirical decision literature adds decider variables: the thin spread of domain knowledge across
+a team \cite{curtis1988}; problem structuredness selecting between rational comparison and
+recognition-primed deciding \cite{zannier2007}; bounded rationality and its documented biases
+\cite{vanvliettang2016}. These govern \emph{how} moves get made, and they mark where an agent's
+estimates must substitute for records that were never going to be written.
+
+\subsection{Tier IV: the value field and the dynamics}\label{sec:dynamics}
+
+The last tier separates two things the field habitually merges with the coordinates. The first
+is how good a position is for a given purpose, which is a field over the space and changes when
+goals change. The second is which way the terrain slopes when nobody is pushing, which is a
+dynamics and does not care about goals at all.
+
+\begin{axis}[The value field]\label{ax:value}
+Quality attributes form a field \emph{over} the space, not axes \emph{of} it: Fielding's
+thirteen properties, ISO 25010's eight characteristics, and the quality-attribute-scenario
+formulation that makes each one measurable \cite{fielding2000,iso25010,bass2012}. Fielding's
+Table 3--6 is a sampled gradient, each constraint's signed property increments with
+non-additivity explicitly flagged. ATAM's sensitivity points are parameters with large
+$\partial q / \partial x$, and its tradeoff points are parameters where two attributes'
+derivatives have opposite sign \cite{atam2000}. A project's criteria weights, whether the
+utility tree, QOC's criteria, or MADR's decision drivers \cite{madr2018}, are its direction of
+ascent. Keeping the field separate from the coordinates is what lets goals change without
+remapping the terrain. And it is Lane's structure exactly: functional dimensions from
+requirements, correlated by learned rules to structural dimensions of choice, the rules being
+the empirical map between the two spaces \cite{lane1990}.
+\end{axis}
+
+\begin{axis}[Entropic drift and the maintenance ratio]\label{ax:drift}
+Lehman's laws supply the vector field: under E-type change, structure degrades unless
+anti-regressive work is spent, and the controllable variable is the allocation between
+progressive and anti-regressive effort \cite{lehman1980}. The empirical decay literature
+confirms drift as the default trajectory across hundreds of open-source versions
+\cite{behnamghader2017}, and the smell and hotspot catalogs \cite{azadi2019,mo2016} name the
+attractor's neighborhoods. This is where the one-way axes live. Cyclic cores, hub overloads,
+and modularity violations, meaning co-change without structural dependency, the misalignment of
+latent and manifest coupling that is measurable only from history \cite{mo2016}, are potentials
+rather than coordinates. They are descended into by accident and climbed out of only by
+spending energy.
+\end{axis}
+
+\begin{axis}[Framing: the attention vector]\label{ax:framing}
+The design-cognition literature offers a hard datum. Problem and solution spaces co-evolve
+\cite{dorstcross2001}. The frame determines which dimensions are salient \cite{schon1983}.
+Design is constraint-dominated, with hard and soft constraints, leaky decompositions, and
+personalized stopping rules \cite{goelpirolli1992}. The space is not experienced as fixed. The
+defensible reconciliation, argued at length in \S\ref{sec:limits}, is a fixed superset of
+generators plus a time-varying salience weighting. Framing rotates the active subspace; it does
+not create axes. G\"ardenfors' machinery contains exactly this knob, context-dependent dimension
+weights \cite{gardenfors2000}, and Gero's FBS ontology gives the tier structure that localizes
+reframing as explicit operators, reformulation types 1 through 3, between function, behaviour,
+and structure spaces \cite{gero2004}.
+\end{axis}
+
+\subsection{The basis at a glance}
+
+\begin{center}
+\small
+\begin{longtable}{@{}p{0.26\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.16\textwidth}@{}}
+\toprule
+\textbf{Variable} & \textbf{Formal structure} & \textbf{Key convergences} & \textbf{Evidence} \\
+\midrule
+\endhead
+Cut placement $\Pi_i$, $\varepsilon_i$ (4 graphs) & partition lattice; near-block-diagonal matrices & Simon; Alexander; SMC; clustering objectives & repo / traces / org / domain \\
+Granularity (per graph) & scale ladder; basic level & Rosch; Chromium and Istio two-way traffic & repo, manifests \\
+Congruences $\kappa_{OC},\kappa_{PC},\kappa_{CR}$ & matrix congruence & Conway; mirroring studies; DDD; migration post-mortems & repo + git + org \\
+Boundary interaction type & product: topology $\times$ sync $\times$ mode $\times$ guarantees $\times$ state locus & boxology; connector taxonomy; coupling ladder & repo \\
+Interface thinness, uniformity & bits leaked; cut bandwidth & Parnas; Simon; Baldwin; Allen and Khoshgoftaar & repo \\
+Uses order & partial order; ideals = subsets & Parnas 1979; Simon's stable forms & repo \\
+Abstraction order & chain of state-space quotients & Dijkstra; refinement calculus & repo + human \\
+Dominance order / design rules & ACN; DRH; refinement orders & Baldwin and Clark; Cai and Sullivan; Martin; contracts & repo \\
+Dependency orientation & vector-field constraint on $(I,A)$ & Martin; hexagonal/onion/clean & repo \\
+Reachability density & transitive-closure density; DL & MacCormack $\equiv$ Lakos; Mo et al. & repo \\
+Volatility field & weighted decision set; $\sigma_i$ & Parnas 1972; options theory & git + human \\
+Binding time & ordered scale per decision & 5 independent frameworks & repo \\
+Reversal cost / blast radius / dependents & product over decision graph & Fowler; Kruchten; options; Bezos & decisions + git \\
+Commitment state, restriction force & ordered states; typed decision edges; deltas & Kruchten; Jansen and Bosch; QOC & decision store \\
+Value field, criteria weights & gradient field; utility tree & Fielding; ATAM; Lane; ISO 25010 & human + measurement \\
+Entropic drift, maintenance ratio & vector field; potentials & Lehman; decay studies; smells & git \\
+Framing / attention vector & salience weighting over fixed generators & Schön; Dorst and Cross; Gärdenfors; FBS & interaction \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+Seventeen entries. But the count overstates the independence, because the deep structure is the
+four-tier claim: cuts and their congruences; orders over the cuts; a commitment calculus over
+decisions; a field and a flow over the whole. Everything in the literature we surveyed, every
+metric, style, tactic, smell, and principle, reduces to a position, region, move, gradient, or
+potential expressed in these terms. \S\ref{sec:reduction} performs the reductions explicitly.
+
+% ===========================================================================
+\section{The space: geometry, prototypes, moves, metric}\label{sec:space}
+% ===========================================================================
+
+A list of variables is not yet a space. For what more is needed, we borrow from cognitive
+science. G\"ardenfors' conceptual spaces are a simple, well-studied picture of how minds hold
+concepts: qualities become dimensions, concepts become regions, and similarity becomes nearness
+\cite{gardenfors2000}. A reader meeting the idea for the first time needs only that much. The
+theory then specifies what must be checked rather than assumed: that the dimensions have
+intrinsic structure; that similarity decreases lawfully with distance \cite{shepard1987}; that
+betweenness makes sense; that natural regions are convex and organized around prototypes,
+which is Voronoi structure; and that dimensions divide in a principled way into integral and
+separable bundles. We take these requirements in turn, honestly.
+
+\subsection{Coordinates and locality}
+
+The dimensions of \S\ref{sec:basis} are of mixed type by construction. There are ordinal scales:
+binding time, coupling ladders, commitment states. There are continuous scalars: $\varepsilon$,
+reachability density, the congruences. There are categorical dimensions with structure: the
+interaction type as a product of small enumerations. And there are full partial orders: uses,
+abstraction, dominance. The space is therefore a hybrid, a discrete relational skeleton of
+graphs and orders woven with continuous coordinates of density, congruence, and semantic
+similarity. Betweenness holds on the continuous sub-spaces. Between synchronous and asynchronous
+sits deferred-synchronous, and the connector taxonomy enumerates exactly such intermediates
+\cite{mehta2000}. Betweenness fails, as expected, on the discrete skeleton, where paths replace
+interpolation. This is not a defect. It is the same hybrid structure that navigation research
+already handles by treating betweenness as optional on graph-like domains \cite{behrens2018}.
+
+Integral versus separable bundles can be read off the empirical record. The performance bundle
+of latency, throughput, and resource cost, and the trade surface of consistency and
+availability, behave as integral: one cannot be valued without valuing the others, and they
+combine in a Euclidean-like way in engineers' trade-off talk. The tier-one structural axes are
+largely separable. The paper's central empirical finding (\S\ref{sec:empirical}) is precisely
+that the logical cut and the physical cut, which the field habitually fuses, vary independently.
+
+\subsection{Styles and patterns are the prototype system}\label{sec:prototypes}
+
+The G\"ardenfors reading of the styles literature is exact, not analogical. A style, in
+Fielding's definition, is a coordinated set of constraints \cite{fielding2000}. That makes it a
+\emph{region}: the set of configurations satisfying the constraints, with the null style, the
+empty constraint set, as the whole space, and constraint addition as region refinement.
+Boxology's tables assign each named style its coordinates on the explicit dimension set
+\cite{boxology1997}. Our third research lane performs the assignment for pipes-and-filters in
+full: passed-stream data mode entails no shared state, which permits asynchronous incremental
+processing, which yields the functional-composition proof rule and the reuse properties. The
+region is coherent, a natural concept rather than an arbitrary conjunction, because its
+coordinate values are \emph{mutually entailing}. That is what makes a style learnable from few
+examples and nameable in one word. It is exactly the learnability-and-communication pressure
+that G\"ardenfors' convexity criterion encodes \cite{gardenfors2000,jager2007}.
+
+Patterns are prototypes at finer grain. Alexander's own arc ran from coordinates, the 1964
+misfit-graph program he later repudiated, to prototypes with forces in 1977, and the software
+patterns movement imported the prototype form with the forces sections intact
+\cite{alexander1977,gamma1994}. Patterns are the community's informally collected basis vectors,
+each one a named equilibrium of forces with a region of variation around it, ``without ever
+doing it the same way twice.'' The recognition literature confirms that this is how experts
+actually operate. Recognition-primed decisions land in a prototype cell and read off the
+associated action \cite{klein1998}. Programming plans and beacons are the code-level instance
+\cite{soloway1984}. And the recovered structure of real systems clusters. Most large codebases
+sit in the core-periphery region \cite{baldwin2014}. Martin's main sequence is a prototype line
+with named pathological corners \cite{martin2002}. Prototype structure is not imposed by the
+theory. It keeps being found.
+
+Two honest qualifications. Styles show family resemblance: no necessary-and-sufficient
+conditions, graded membership, ``sort of microservices.'' So convexity must be read as a
+pressure rather than a law, and genuinely disjunctive styles violate it \cite{hernandez2017}.
+And expert categorization is part exemplar, the war stories, ``like the system at Corp X,'' and
+part causal theory, classification by \emph{why}. Rationale is the scarcest, most-sought
+information in comprehension studies \cite{latoza2010}. A pure geometric prototype store is
+necessary but not sufficient. The space needs its instances and its reasons attached.
+
+\subsection{The move set}\label{sec:moves}
+
+The space's operations are already cataloged, at three grains, by literatures that do not cite
+each other:
+
+\begin{itemize}[leftmargin=1.6em]
+\item \textbf{Generators.} Baldwin and Clark's six modular operators: split, substitute,
+augment, exclude, invert, port \cite{baldwinclark2000}. Every entry in the refactoring catalogs
+is an instance. \emph{Invert}, which extracts a repeated function and raises it into shared
+infrastructure, is the origin of every platform layer.
+\item \textbf{Unit moves along single axes.} The tactics catalogs, several of which name their
+axis outright: defer binding (Axis~\ref{ax:binding}); use an intermediary, which is
+intermediation depth; introduce concurrency, which is synchronicity; maintain multiple copies,
+which is replication \cite{bass2012}.
+\item \textbf{Region jumps.} Style adoption as a correlated multi-dimensional displacement, with
+Fielding's REST derivation as the audited exemplar: six constraint-moves from the null style,
+each logged with its induced property increments and costs \cite{fielding2000}.
+\end{itemize}
+
+A decision, in the commitment calculus, is a move plus a restriction. It displaces the point and
+prunes the reachable region through design rules and constraints \cite{jansenbosch2005}. The
+typed edges of the decision graph \cite{kruchten2004} are the algebra by which moves compose,
+conflict, enable, and override.
+
+\subsection{The metric: asymmetric, use-shaped, and answerable to Tversky}\label{sec:metric}
+
+The most consequential design choice in the whole construction is the metric, and this is a
+point where it becomes important to slow down, because the cognitive literature issues a warning
+here that the architecture literature has never processed. Tversky's classical result is that
+human similarity violates every metric axiom. It is asymmetric, since the variant is compared to
+the prototype and not conversely. It fails the triangle inequality. It is context-dependent
+\cite{tversky1977}. Any theory that installs a fixed symmetric Euclidean metric over
+architectural descriptions is empirically false about the judgments it must model.
+
+The escape is already present in the material. Distance in a decision space is re-decision
+cost: how expensive it is to move this system from here to there, under the commitment
+calculus. And that quantity is inherently asymmetric. Splitting a monolith and merging
+microservices are not inverse operations at equal price. Adding an edge is cheap and removing
+it is dear; the one-way axes of \S\ref{sec:dynamics} are the extreme cases. It is also
+inherently context-dependent, since the cost depends on binding times, accrued dependents, and
+the current frame. The neurally grounded form of exactly this metric exists. It is the
+successor representation, under which nearness is expected future co-occupancy under the
+agent's policy: predictive, directional, graph-friendly, and empirically supported as the
+hippocampal map's actual code \cite{dayan1993,stachenfeld2017}. Seed the metric with surface
+structure, then let realized navigation reshape it, watching which decisions actually follow
+which and which units actually co-change. The co-change matrix is precisely an empirical
+co-navigation record. Tversky's asymmetry then stops being an objection and becomes a
+prediction. Architectural similarity judgments \emph{should} be asymmetric, in the direction of
+re-decision cost, because the space's true metric is reachability under work.
+
+This yields the paper's second structural claim:
+
+\begin{claim}\label{claim:metric}
+The conceptual space of architecture is a hybrid manifold with an asymmetric, use-shaped metric.
+Its distances are re-decision costs under the commitment calculus, seeded by structural
+similarity and reshaped by realized co-change. Its value field, held separate, orients
+navigation without deforming the terrain.
+\end{claim}
+
+% ===========================================================================
+\section{Reduction tests: the familiar vocabulary is composite}\label{sec:reduction}
+% ===========================================================================
+
+A basis earns its title by rewriting the field's vocabulary as compositions. We perform the six
+most load-bearing reductions. Each one dissolves a standing confusion.
+
+\subsection{``Microservices'' is four coordinates, not one}
+
+The monolith-versus-microservices axis, as debated, conflates four different choices
+\cite{fowler2014,newman2015}. One is deployment granularity: how many independently deployable
+units there are. Another is failure isolation: whether a call stays in one process or crosses a
+network. A third is data ownership: one transactional store, or a store per service with
+eventual consistency between them. The fourth is organizational alignment: whether services are
+sized to teams, which is the $\kappa_{OC}$ term. The empirical record separates them cleanly. Prime Video kept its
+component decomposition and deleted only the network boundary \cite{primevideo2023}. Shopify
+added enforced module boundaries while keeping one deployable \cite{shopify2019}. Uber added
+coarse logical domains over fine physical services \cite{uberdoma2020}. ``Modular monolith'' is
+not a compromise. It is a coordinate assignment: logical cut fine, physical cut coarse. The
+debate dissolves into force-weighting on four separable axes.
+
+\subsection{``Layering'' is three partial orders}
+
+Containment, which is Simon's boxes-in-boxes and the module guide's is-submodule-of
+\cite{parnas1985}; use, from Parnas 1979; and abstraction, from Dijkstra 1968, are independent
+orders that the word ``layer'' merges. The classical corpus itself insists on the distinction
+\cite{parnas1972}. Systems exist with clean containment and cyclic use, and with layered use
+that abstracts nothing. Conformance rules in practice, such as ``controllers may not access
+repositories directly,'' are constraints on the use order. C4's levels are resolutions of the
+containment order \cite{c4model}. Ports-and-adapters is a constraint tying the use order to the
+abstraction gradient (Axis~\ref{ax:orientation}).
+
+\subsection{``Coupling'' is a product, plus a residual, plus a ghost}
+
+Structural coupling is the boundary interaction type (Axis~\ref{sec:boundarytype}), itself a
+product rather than a scalar. Logical coupling is a different measurement entirely: co-change in
+history. And the \emph{misalignment} of the two, co-change without structural dependency,
+correlates with error-proneness and change-proneness across many projects. It is a violated
+information-hiding boundary leaving a historical ghost \cite{mo2016}. Cohesion, the traditional
+partner concept, may not be a dimension at all. Its metrics fail measurement-theoretic axioms
+and disagree with each other \cite{briand1998}, while the information-theoretic view renders it
+as the residual of the cut, what remains uncompressed when the partition is chosen
+\cite{allen1999,andritsos2005}. We therefore admit coupling-type, logical coupling, and their
+misalignment into the basis, and demote cohesion to a derived quantity. That is a specific,
+falsifiable ontological claim.
+
+\subsection{``Hard to change'' is a computable product}
+
+Fowler's definition-with-a-wink \cite{fowler2003} decomposes as Axis~\ref{ax:reversal}:
+reversal cost times blast radius times dependents accrued, modulated by binding time. Each term
+is separately estimable, and each is separately manipulable. The point of the decomposition is
+practical. An agent cannot act on ``perceived as hard to change.'' It can compute accruing
+dependents, measure blast radius through the visibility matrix, and flag binding times that
+arrived earlier than necessary.
+
+\subsection{``The architecture'' recovered from code is a projection, and the recovery
+literature proves it}
+
+Recovery algorithms each optimize a formalized theory of what a module is: dependency density in
+Bunch's MQ \cite{mancoridis1999}, recurring structural idiom in ACDC \cite{tzerpos2000}, concern
+coherence in ARC's topic models \cite{garcia2011}, information equivalence in LIMBO
+\cite{andritsos2005}. Measured against engineer-certified ground truths, all score poorly, and
+they disagree with each other roughly as much as with the truth \cite{garcia2013,lutellier2015}.
+On the single-partition theory of architecture this is an embarrassment. On the present theory
+it is a \emph{measurement}. The objectives capture different real dimensions. The engineer's
+decomposition integrates variables the dependency graph does not carry: ownership, deployment,
+domain semantics, history. Any one partition is a lossy projection of a multi-dimensional latent
+state, and the disagreement pattern across objectives is itself a fingerprint of where a system
+sits in the space.
+
+\subsection{``Separation of concerns'' and the tyranny of one cut}
+
+A concern is a projection of the design space onto a subspace, which is Dijkstra's own
+formulation \cite{dijkstra1974}. The multi-view doctrine, 4+1 and the viewpoint standards,
+institutionalizes a small atlas of such projections keyed to stakeholder concerns
+\cite{kruchten1995}. The file tree realizes exactly one cut, and whatever does not align with
+the chosen dominant dimension becomes scattered and tangled. This is the tyranny of the dominant
+decomposition \cite{tarr1999}. Scattering is measurable, and scattered concerns carry
+significantly more defects \cite{eaddy2008}. The latent state therefore includes \emph{which}
+dimension was chosen dominant, the concern-to-code distribution, a multi-label field over units,
+and the misalignment between them. None of these can be expressed by any file tree. All of them
+are estimable (\S\ref{sec:agent}).
+
+% ===========================================================================
+\section{The empirical shape of the space}\label{sec:empirical}
+% ===========================================================================
+
+Theory proposes; the deployed world disposes. Our sixth research lane surveyed eighteen major
+systems through their own architects' accounts, the AOSA corpus and primary engineering sources,
+along with seven canonical public debates, five industrial macro-migrations, and the
+mining-software-repositories literature. Three findings shape the theory.
+
+\subsection{The decision points localize the dimensions}
+
+When both sides of a real dispute articulate their forces, the disagreement names an axis.
+Tanenbaum and Torvalds argued isolation-boundary placement and its costs, IPC overhead against
+address-space protection \cite{tanenbaum1992}. The same axis resurfaced, thirty years later and
+in the participants' own terms, in Postgres's process-versus-threads deliberations
+\cite{postgres2023} and in every browser's multi-process migration \cite{chromium2009}. Hipp's
+``SQLite competes with fopen()'' collapses a dozen surface differences into one coordinate:
+where the process, trust, and administration boundary sits between application and engine
+\cite{sqlitearch}. React Fiber's ``a fiber is a reimplementation of the stack'' names scheduling
+ownership: implicit in the language runtime, or reified as data \cite{fiber2016}. The systemd
+wars conflated two axes, declarative versus imperative configuration and integrated platform
+versus orthogonal components, and the temperature of that debate fell where the axes were
+distinguished \cite{poettering2010}. In every case the engineers' own vocabulary, not the
+analyst's, supplies the dimension. The folk coordinates and the theoretical ones agree.
+
+\subsection{Two-way traffic identifies the free coordinates}
+
+Documented bidirectional migration under articulated forces is the strongest available evidence
+that an axis is a genuine degree of freedom. It exists for isolation granularity: Chromium
+finer, Istio coarser. For logical-physical congruence: Prime Video decoupled them one way, Uber
+the other. For concurrency model: Apache and nginx converging from opposite poles. For
+centralization: ZeroMQ removed the broker RabbitMQ kept; Git decentralized what SVN
+centralized; ZooKeeper deliberately re-centralized coordination \cite{hunt2010}. For binding
+time: nginx compile-time against Eclipse hot-install. And for state representation: snapshots
+versus deltas versus log-as-truth, with Git famously choosing snapshots at the logical level
+and deltas at the physical level, splitting the axis across an abstraction boundary
+\cite{aosagit,aosazeromq,segment2018}. By contrast, the one-way axes, cyclic-core growth, hub
+overload, and scattering, attract only unintentional traffic inward and deliberate traffic
+outward. They are potentials, per \S\ref{sec:dynamics}.
+
+\subsection{What varies together, and what refuses to}
+
+Read the eighteen-system variation table columnwise. The columns are process model, concurrency
+model, extension mechanism, topology, state management, isolation boundary, binding, and
+synchrony. Every one of them shows multiple values across respected systems, and the columns
+vary with substantial independence. That is the empirical signature of separable dimensions. The strongest single
+regularity is negative. Attempts to force one column to determine another, deployment
+granularity dictating module granularity, or org structure ignored while cutting code, are the
+named root causes in the migration post-mortems \cite{primevideo2023,shopify2019,uberdoma2020}.
+Where the population does concentrate, the concentrations are the prototype regions and role
+structures the geometry predicts (\S\ref{sec:prototypes}). Most large systems are
+core-periphery \cite{baldwin2014}. Production call graphs are heavy-tailed, with a few hub
+services carrying enormous fan-in \cite{luo2021}. Fan-in is power-law distributed across every
+code ecosystem measured \cite{louridas2008}. This includes the hub role that pure
+cohesion-and-coupling theories systematically misjudge. Utilities are coupled to everyone.
+Quarantining them is an idiom every practitioner knows, and only the pattern-based recovery
+objective encodes it \cite{tzerpos2000}.
+
+% ===========================================================================
+\section{What a machine can measure}\label{sec:agent}
+% ===========================================================================
+
+The computability test now pays out. We assess, variable by variable, what suffices to estimate
+the basis, and we measure the gap between that and what coding agents actually represent today.
+
+\subsection{The evidence ladder}
+
+Start with a \textbf{bare repository} and unglamorous tooling: a dependency extractor,
+Tarjan's algorithm, matrix powers, tree-sitter, an embedding model. From that alone an agent
+can already estimate a great deal. It can compute the code cut and its candidate alternatives
+under all four recovery objectives, whose disagreement profile is itself a fingerprint. It can
+compute reachability density, decoupling level, core size, element roles, cycles, levelization,
+and Martin's $(I,A,D)$. It can read boundary interaction types out of interface signatures and
+connector idioms, along with binding times, declared visibility, and API surfaces. And it can
+infer technology bindings per module, naming-convention stereotypes, concern vectors from
+identifiers and comments, and the dominant-decomposition choice, meaning what the tree is
+organized by. One methodological caveat travels with all of it: extraction quality changes
+results as much as algorithm choice \cite{lutellier2015}.
+
+From \textbf{git history}: churn and hotspots; logical coupling; modularity violations, the
+highest-value single derived signal \cite{mo2016}; interface instability; ownership and
+$\kappa_{OC}$; and drift dating, meaning when a divergence appeared and in which commit, which
+often links to \emph{why}. From \textbf{runtime traces}: the realized interaction graph as
+against the potential one; hot paths; dynamic feature location. Requiring \textbf{human
+intent}, irreducibly but cheaply: the intended module map and allowed-dependency relation,
+which are the reflexion inputs \cite{murphy1995}, the fitness priorities, and rationale for
+tolerated divergences.
+
+Of the seventeen basis entries, roughly nine are estimable from the bare repo, four more fall
+out of history, and only the intent-carriers need a person, via the draft-correct-enforce loop
+that reflexion proved and that language models make cheap.
+
+\subsection{The gap, and the tell}
+
+Against this, the composite working representation of current agents, across the major coding
+assistants and open scaffolds of 2024 through 2026, is: the file tree, a symbol and reference
+graph, lexical and embedding retrieval, and an optional human-written prose file of guidance
+\cite{aider2023,repograph2024}. Hold that up against the basis. No intended-module map. No
+allowed-dependency relation. No concern vectors. No propagation structure. No history
+aggregation. No roles. No commitment calculus. No value weights. The agents hold the
+observables and none of the latents.
+
+The prose context file is the tell, and it deserves to be named as such. Teams hand-maintain
+\texttt{CLAUDE.md} and its cousins because they know the latents matter. The file is a
+human-powered cache of machine-computable quantities, lossy and stale by construction. It is
+the architecture-description pathology, dual maintenance, no incremental payoff, semantic
+distance from code, that killed the ADLs \cite{malavolta2013}, replayed in miniature. The
+survivors of that extinction event are instructive. Architecture description persisted only
+where it became \emph{derived from} or \emph{enforced upon} the code: build-system visibility
+rules, typed interface schemas, conformance tests, deployment manifests \cite{fitness2017}. The
+design implication for an agent is direct. Represent the basis as derived, continuously
+refreshed quantities plus a small store of confirmed intent, and let no fact live only in
+prose.
+
+\subsection{Why the decision store becomes viable now}
+
+The commitment calculus (\S\ref{sec:commitment}) requires the one thing history never had: a
+populated decision store. Rationale capture failed for four documented, mutually reinforcing
+human-economic reasons. The capturer is not the beneficiary \cite{grudin1996}. Formalization
+carries cognitive overhead and demands premature structure \cite{shipman1999}. Capture intrudes
+on design flow mid-flight. And practitioners perceive the value as deferred and diffuse
+\cite{tang2006}. Notice what these four have in common. Every one is an asymmetry of human
+cost, not a defect of the representations. And every one dissolves for an agent that makes
+decisions itself, records them as a zero-marginal-cost side effect at the moment of deciding,
+infers structure rather than demanding it, and is its own future consumer. The mined reality
+that most real decisions live in issues, pull requests, and chat rather than in decision
+records \cite{bhat2017} becomes, for such an agent, a recoverable backlog rather than a loss.
+And the one strong empirical result from the LLM-generation literature, that a recency window
+of three to five prior decisions from the same project is the best conditioning signal for the
+next one \cite{contextmatters2026}, is exactly what the trajectory theory predicts. The signal
+is in the path, and current representations carry it only by accident.
+
+% ===========================================================================
+\section{Honest limits and open problems}\label{sec:limits}
+% ===========================================================================
+
+Four tensions survive this synthesis undischarged. We state them as constraints on the theory's
+ambitions, and two of them convert into its sharpest research questions.
+
+\textbf{The fixed basis versus co-evolution.} The design-cognition record is unambiguous.
+Problem and solution spaces co-evolve \cite{dorstcross2001}. Framing chooses what counts as a
+dimension \cite{schon1983}. Shaw and Brooks insist the space evolves mid-design
+\cite{shaw2012,brooks2010}. Our reconciliation, a fixed superset of generators with a
+time-varying attention weighting, is defensible. The basis variables recur across sixty years
+and eighteen systems, and that stability is evidence. But it is a hypothesis, not a theorem.
+Its falsifiable content is this: protocol studies of architects should find reframings that
+re-weight the basis, and should not find recurring decision dimensions that resist expression
+in it. A reframing that genuinely manufactures a new generator would falsify the fixed-superset
+claim.
+
+\textbf{The identification problem.} Interaction minimization and change localization are
+different objectives that coincide only if change propagates uniformly along interaction edges
+(\S\ref{sec:object}). No one has measured the actual kernel, the conditional probability that a
+change at $u$ implicates $v$, as a function of the edge types and orders between them. The
+co-change record makes it measurable for the first time at scale. This is the paper's most
+concrete open empirical problem, and its answer calibrates every cut-quality metric in use.
+
+\textbf{The metric's empirical status.} Claim~\ref{claim:metric} is theory-consistent. The
+asymmetry matches Tversky, and the successor-representation structure matches the navigation
+literature. But it is unvalidated for architecture. No one has collected architects' similarity
+and substitutability judgments at scale and tested whether they embed with the predicted
+asymmetries, and whether generalization decays with the embedded distance \cite{shepard1987}.
+Until that experiment is run, the metric is the best-motivated candidate, not a measured fact.
+
+\textbf{Convexity at the edges.} Family-resemblance styles, disjunctive categories, and the
+hybrid discrete-continuous structure mean the Voronoi picture applies cleanly only region by
+region. We have treated convexity as a pressure shaping nameable vocabulary, which is the
+defensible reading \cite{jager2007,hernandez2017}. But it demotes one of the theory's prettiest
+formal properties to a tendency, and we would rather say so plainly than pretend otherwise.
+
+% ===========================================================================
+\section{Falsifiable predictions}
+% ===========================================================================
+
+\begin{pred}
+\emph{Asymmetric similarity.} Architects' pairwise judgments of system similarity and migration
+difficulty will be systematically asymmetric, with the asymmetry oriented by re-decision cost,
+meaning dependents accrued and binding time, not by surface feature counts.
+\end{pred}
+
+\begin{pred}
+\emph{The congruence terms dominate.} In matched samples, $\kappa_{OC}$ and the
+logical-physical congruence $\kappa_{CR}$ will predict maintenance outcomes better than any
+single-graph structural metric, including propagation cost, extending the Vista result
+\cite{nagappan2008} from defects to velocity.
+\end{pred}
+
+\begin{pred}
+\emph{The two-way/one-way partition is stable.} New industrial migrations will continue to move
+bidirectionally on the coordinate axes, granularity, centralization, binding, concurrency
+model, state representation, and unidirectionally on the potentials, cyclic core, scattering,
+hub overload. An intentional, force-justified migration \emph{toward} a larger cyclic core
+would count against the theory.
+\end{pred}
+
+\begin{pred}
+\emph{Recovery disagreement is lawful.} The disagreement profile among recovery objectives,
+density, idiom, concern, information, on a given system is reproducible and predicts which
+conformance rules its maintainers will accept, because both are functions of the same latent
+position.
+\end{pred}
+
+\begin{pred}
+\emph{An agent with the basis beats an agent with the observables.} On repository-level change
+tasks, an agent whose context is the estimated basis, meaning the intended map, the
+allowed-dependency relation, propagation structure, hotspots, roles, concern vectors, and the
+recent decision trajectory, will outperform an agent with the file tree, symbol graph, and
+embeddings at equal token budget. The margin will be largest on tasks whose blast radius
+crosses module boundaries.
+\end{pred}
+
+\begin{pred}
+\emph{Decision-trajectory signal.} Conditioning next-decision prediction on the typed decision
+graph, its states, edges, and restriction force, will beat the flat recency window of
+\cite{contextmatters2026}, because the window is a degenerate projection of the graph.
+\end{pred}
+
+% ===========================================================================
+\section{Coda: building the space}
+% ===========================================================================
+
+The construction recipe follows the theory. Coordinates: place every code unit by its
+structural address, graph position, role, concern vector, and binding profile, and place every
+decision by its commitment calculus. Locality: neighborhoods from dependency, call, co-change,
+and semantic distance, with betweenness only where the sub-space is continuous. Prototypes: the
+styles, patterns, and role archetypes as landmarks, and a repository's own core abstractions
+and canonical instances as its local landmarks. Operations: the six operators, the tactics, and
+the region jumps, exposed as the only mutation vocabulary. Metric: seeded by structure,
+reshaped by realized co-navigation, asymmetric by construction. Value field: the project's
+criteria weights, held separate, orienting navigation without deforming terrain.
+
+An agent so equipped does not read a codebase the way a search engine reads a corpus. It knows
+where it is, what is near, which moves are legal, what each move costs, and which way is up.
+That, and not a longer context window, and not a better prose file, is what it means for a
+machine to understand architecture.
+
+The deeper wager of this paper is methodological. The field's sixty-year literature, read as a
+single corpus, is not a pile of opinions. It is a set of independent measurements of one
+underlying object, taken with different instruments. When the measurements converge, and we
+have shown that they converge, from Parnas's decision trees to Baldwin's options to boxology's
+tables to the migration post-mortems, the object is real. The latent variables of software
+architecture are not a metaphor awaiting rigor. They are the oldest finding in the field,
+waiting to be assembled.
+
+\begin{thebibliography}{99}
+\small
+
+\bibitem{parnas1972} Parnas, D.L. (1972). On the criteria to be used in decomposing systems into
+modules. \emph{Communications of the ACM} 15(12):1053--1058.
+
+\bibitem{parnas1976} Parnas, D.L. (1976). On the design and development of program families.
+\emph{IEEE Transactions on Software Engineering} SE-2(1):1--9.
+
+\bibitem{parnas1979} Parnas, D.L. (1979). Designing software for ease of extension and
+contraction. \emph{IEEE TSE} SE-5(2):128--138.
+
+\bibitem{parnas1985} Parnas, D.L., Clements, P.C., Weiss, D.M. (1985). The modular structure of
+complex systems. \emph{IEEE TSE} SE-11(3):259--266.
+
+\bibitem{dijkstra1968} Dijkstra, E.W. (1968). The structure of the ``THE''-multiprogramming
+system. \emph{Communications of the ACM} 11(5):341--346.
+
+\bibitem{dijkstra1974} Dijkstra, E.W. (1974). On the role of scientific thought. EWD~447.
+
+\bibitem{simon1962} Simon, H.A. (1962). The architecture of complexity. \emph{Proceedings of the
+American Philosophical Society} 106(6):467--482.
+
+\bibitem{simonando1961} Simon, H.A., Ando, A. (1961). Aggregation of variables in dynamic
+systems. \emph{Econometrica} 29:111--138.
+
+\bibitem{conway1968} Conway, M.E. (1968). How do committees invent? \emph{Datamation}
+14(4):28--31.
+
+\bibitem{brooks2010} Brooks, F.P. (2010). \emph{The Design of Design}. Addison-Wesley.
+
+\bibitem{stevens1974} Stevens, W.P., Myers, G.J., Constantine, L.L. (1974). Structured design.
+\emph{IBM Systems Journal} 13(2):115--139.
+
+\bibitem{lehman1980} Lehman, M.M. (1980). Programs, life cycles, and laws of software evolution.
+\emph{Proceedings of the IEEE} 68(9):1060--1076.
+
+\bibitem{alexander1964} Alexander, C. (1964). \emph{Notes on the Synthesis of Form}. Harvard
+University Press.
+
+\bibitem{alexander1977} Alexander, C., et al. (1977). \emph{A Pattern Language}. Oxford
+University Press.
+
+\bibitem{baldwinclark2000} Baldwin, C.Y., Clark, K.B. (2000). \emph{Design Rules, Vol.~1: The
+Power of Modularity}. MIT Press.
+
+\bibitem{baldwin2008} Baldwin, C.Y. (2008). Where do transactions come from? Modularity,
+transactions, and the boundaries of firms. \emph{Industrial and Corporate Change} 17(1):155--195.
+
+\bibitem{colferbaldwin2016} Colfer, L.J., Baldwin, C.Y. (2016). The mirroring hypothesis: theory,
+evidence, and exceptions. \emph{Industrial and Corporate Change} 25(5):709--738.
+
+\bibitem{steward1981} Steward, D.V. (1981). The design structure system. \emph{IEEE Transactions
+on Engineering Management} EM-28(3):71--74.
+
+\bibitem{maccormack2006} MacCormack, A., Rusnak, J., Baldwin, C.Y. (2006). Exploring the
+structure of complex software designs: an empirical study of open source and proprietary code.
+\emph{Management Science} 52(7):1015--1030.
+
+\bibitem{maccormack2012} MacCormack, A., Baldwin, C.Y., Rusnak, J. (2012). Exploring the duality
+between product and organizational architectures: a test of the ``mirroring'' hypothesis.
+\emph{Research Policy} 41(8):1309--1324.
+
+\bibitem{baldwin2014} Baldwin, C.Y., MacCormack, A., Rusnak, J. (2014). Hidden structure: using
+network methods to map system architecture. \emph{Research Policy} 43(8):1381--1397.
+
+\bibitem{nagappan2008} Nagappan, N., Murphy, B., Basili, V. (2008). The influence of
+organizational structure on software quality. \emph{Proc.\ ICSE 2008}.
+
+\bibitem{cataldo2008} Cataldo, M., Herbsleb, J.D., Carley, K.M. (2008). Socio-technical
+congruence. \emph{Proc.\ ESEM 2008}.
+
+\bibitem{bird2011} Bird, C., Nagappan, N., Murphy, B., Gall, H., Devanbu, P. (2011). Don't touch
+my code! Examining the effects of ownership on software quality. \emph{Proc.\ ESEC/FSE 2011}.
+
+\bibitem{accelerate2018} Forsgren, N., Humble, J., Kim, G. (2018). \emph{Accelerate}. IT
+Revolution Press.
+
+\bibitem{sullivan2001} Sullivan, K.J., Griswold, W.G., Cai, Y., Hallen, B. (2001). The structure
+and value of modularity in software design. \emph{Proc.\ ESEC/FSE 2001}.
+
+\bibitem{cai2006} Cai, Y., Sullivan, K.J. (2006). Modularity analysis of logical design models.
+\emph{Proc.\ ASE 2006}.
+
+\bibitem{mo2016} Mo, R., Cai, Y., Kazman, R., Xiao, L., Feng, Q. (2016). Decoupling level: a new
+metric for architectural maintenance complexity. \emph{Proc.\ ICSE 2016}.
+
+\bibitem{lakos1996} Lakos, J. (1996). \emph{Large-Scale C++ Software Design}. Addison-Wesley.
+
+\bibitem{martin2002} Martin, R.C. (2002). \emph{Agile Software Development: Principles,
+Patterns, and Practices}. Prentice Hall.
+
+\bibitem{allen1999} Allen, E.B., Khoshgoftaar, T.M. (1999). Measuring coupling and cohesion: an
+information-theory approach. \emph{Proc.\ IEEE METRICS 1999}.
+
+\bibitem{briand1998} Briand, L.C., Daly, J.W., Wüst, J. (1998--99). A unified framework for
+coupling/cohesion measurement in object-oriented systems. \emph{IEEE TSE} 25(1) / \emph{ESE} 3(1).
+
+\bibitem{mancoridis1999} Mancoridis, S., Mitchell, B.S., et al. (1999). Bunch: a clustering tool
+for the recovery and maintenance of software system structures. \emph{Proc.\ ICSM 1999}.
+
+\bibitem{andritsos2005} Andritsos, P., Tzerpos, V. (2005). Information-theoretic software
+clustering. \emph{IEEE TSE} 31(2):150--165.
+
+\bibitem{dealfaro2001} de Alfaro, L., Henzinger, T.A. (2001). Interface automata. \emph{Proc.\
+ESEC/FSE 2001}.
+
+\bibitem{benveniste2018} Benveniste, A., Caillaud, B., et al. (2018). Contracts for system
+design. \emph{Foundations and Trends in EDA} 12(2--3).
+
+\bibitem{perrywolf1992} Perry, D.E., Wolf, A.L. (1992). Foundations for the study of software
+architecture. \emph{ACM SIGSOFT SEN} 17(4):40--52.
+
+\bibitem{shawgarlan1996} Shaw, M., Garlan, D. (1996). \emph{Software Architecture: Perspectives
+on an Emerging Discipline}. Prentice Hall.
+
+\bibitem{boxology1997} Shaw, M., Clements, P. (1997). A field guide to boxology: preliminary
+classification of architectural styles for software systems. \emph{Proc.\ COMPSAC 1997}.
+
+\bibitem{lane1990} Lane, T.G. (1990). Studying software architecture through design spaces and
+rules. CMU/SEI-90-TR-18; and CMU/SEI-90-TR-22.
+
+\bibitem{shaw2012} Shaw, M. (2012). The role of design spaces. \emph{IEEE Software} 29(1):46--50.
+
+\bibitem{fielding2000} Fielding, R.T. (2000). \emph{Architectural Styles and the Design of
+Network-based Software Architectures}. PhD dissertation, UC Irvine.
+
+\bibitem{bass2012} Bass, L., Clements, P., Kazman, R. (2012). \emph{Software Architecture in
+Practice}, 3rd ed. Addison-Wesley.
+
+\bibitem{atam2000} Kazman, R., Klein, M., Clements, P. (2000). ATAM: method for architecture
+evaluation. CMU/SEI-2000-TR-004.
+
+\bibitem{iso25010} ISO/IEC 25010:2011. Systems and software quality models.
+
+\bibitem{taylor2010} Taylor, R.N., Medvidovic, N., Dashofy, E. (2010). \emph{Software
+Architecture: Foundations, Theory, and Practice}. Wiley.
+
+\bibitem{mehta2000} Mehta, N.R., Medvidovic, N., Phadke, S. (2000). Towards a taxonomy of
+software connectors. \emph{Proc.\ ICSE 2000}.
+
+\bibitem{kruchten1995} Kruchten, P. (1995). The 4+1 view model of architecture. \emph{IEEE
+Software} 12(6):42--50.
+
+\bibitem{evans2003} Evans, E. (2003). \emph{Domain-Driven Design}. Addison-Wesley.
+
+\bibitem{cockburn2005} Cockburn, A. (2005). Hexagonal architecture (ports and adapters).
+
+\bibitem{fowler2014} Fowler, M., Lewis, J. (2014). Microservices. martinfowler.com.
+
+\bibitem{newman2015} Newman, S. (2015). \emph{Building Microservices}. O'Reilly.
+
+\bibitem{jansenbosch2005} Jansen, A., Bosch, J. (2005). Software architecture as a set of
+architectural design decisions. \emph{Proc.\ WICSA 2005}.
+
+\bibitem{vangurp2002} van Gurp, J., Bosch, J. (2002). Design erosion: problems and causes.
+\emph{Journal of Systems and Software} 61(2):105--119.
+
+\bibitem{kruchten2004} Kruchten, P. (2004). An ontology of architectural design decisions in
+software-intensive systems. \emph{Proc.\ 2nd Groningen Workshop on Software Variability}.
+
+\bibitem{maclean1991} MacLean, A., Young, R.M., Bellotti, V., Moran, T.P. (1991). Questions,
+options, and criteria: elements of design space analysis. \emph{Human--Computer Interaction}
+6(3--4):201--250.
+
+\bibitem{grudin1996} Grudin, J. (1996). Evaluating opportunities for design capture. In Moran \&
+Carroll (eds.), \emph{Design Rationale}. Lawrence Erlbaum.
+
+\bibitem{shipman1999} Shipman, F.M., Marshall, C.C. (1999). Formality considered harmful.
+\emph{Computer Supported Cooperative Work} 8:333--352.
+
+\bibitem{tang2006} Tang, A., Babar, M.A., Gorton, I., Han, J. (2006). A survey of architecture
+design rationale. \emph{Journal of Systems and Software} 79(12):1792--1804.
+
+\bibitem{buchgeher2023} Buchgeher, G., et al. (2023). Using architecture decision records in
+open source projects --- an MSR study on GitHub. \emph{IEEE Software}.
+
+\bibitem{bhat2017} Bhat, M., Shumaiev, K., et al. (2017). Automatic extraction of design
+decisions from issue management systems. arXiv:1704.04798.
+
+\bibitem{curtis1988} Curtis, B., Krasner, H., Iscoe, N. (1988). A field study of the software
+design process for large systems. \emph{Communications of the ACM} 31(11):1268--1287.
+
+\bibitem{zannier2007} Zannier, C., Chiasson, M., Maurer, F. (2007). A model of design decision
+making based on empirical results of interviews with software designers. \emph{Information and
+Software Technology} 49(6):637--653.
+
+\bibitem{vanvliettang2016} van Vliet, H., Tang, A. (2016). Decision making in software
+architecture. \emph{Journal of Systems and Software} 117:638--644.
+
+\bibitem{fowler2003} Fowler, M. (2003). Design --- who needs an architect? \emph{IEEE Software}
+20(5):11--13.
+
+\bibitem{bezos2015} Bezos, J. (2015). Amazon shareholder letter (Type 1 / Type 2 decisions).
+
+\bibitem{gardenfors2000} Gärdenfors, P. (2000). \emph{Conceptual Spaces: The Geometry of
+Thought}. MIT Press.
+
+\bibitem{shepard1987} Shepard, R.N. (1987). Toward a universal law of generalization for
+psychological science. \emph{Science} 237:1317--1323.
+
+\bibitem{tversky1977} Tversky, A. (1977). Features of similarity. \emph{Psychological Review}
+84(4):327--352.
+
+\bibitem{hernandez2017} Hernández-Conde, J.V. (2017). A case against convexity in conceptual
+spaces. \emph{Synthese} 194:4011--4037.
+
+\bibitem{jager2007} Jäger, G. (2007). The evolution of convex categories. \emph{Linguistics and
+Philosophy} 30:551--564.
+
+\bibitem{goelpirolli1992} Goel, V., Pirolli, P. (1992). The structure of design problem spaces.
+\emph{Cognitive Science} 16:395--429.
+
+\bibitem{schon1983} Schön, D.A. (1983). \emph{The Reflective Practitioner}. Basic Books.
+
+\bibitem{dorstcross2001} Dorst, K., Cross, N. (2001). Creativity in the design process:
+co-evolution of problem--solution. \emph{Design Studies} 22(5):425--437.
+
+\bibitem{gero2004} Gero, J.S., Kannengiesser, U. (2004). The situated
+function--behaviour--structure framework. \emph{Design Studies} 25(4):373--391.
+
+\bibitem{rosch1978} Rosch, E. (1978). Principles of categorization. In \emph{Cognition and
+Categorization}. Erlbaum.
+
+\bibitem{soloway1984} Soloway, E., Ehrlich, K. (1984). Empirical studies of programming
+knowledge. \emph{IEEE TSE} SE-10(5):595--609.
+
+\bibitem{latoza2010} LaToza, T.D., Myers, B.A. (2010). Hard-to-answer questions about code.
+\emph{Proc.\ PLATEAU 2010}; and Ko, A.J., DeLine, R., Venolia, G. (2007). Information needs in
+collocated software development teams. \emph{Proc.\ ICSE 2007}.
+
+\bibitem{klein1998} Klein, G. (1998). \emph{Sources of Power: How People Make Decisions}. MIT
+Press.
+
+\bibitem{dayan1993} Dayan, P. (1993). Improving generalization for temporal difference learning:
+the successor representation. \emph{Neural Computation} 5(4):613--624.
+
+\bibitem{stachenfeld2017} Stachenfeld, K.L., Botvinick, M.M., Gershman, S.J. (2017). The
+hippocampus as a predictive map. \emph{Nature Neuroscience} 20:1643--1653.
+
+\bibitem{behrens2018} Behrens, T.E.J., et al. (2018). What is a cognitive map? Organizing
+knowledge for flexible behavior. \emph{Neuron} 100(2):490--509.
+
+\bibitem{murphy1995} Murphy, G.C., Notkin, D., Sullivan, K. (1995). Software reflexion models:
+bridging the gap between source and high-level models. \emph{Proc.\ FSE 1995}.
+
+\bibitem{tzerpos2000} Tzerpos, V., Holt, R.C. (2000). ACDC: an algorithm for
+comprehension-driven clustering. \emph{Proc.\ WCRE 2000}.
+
+\bibitem{garcia2011} Garcia, J., Popescu, D., Mattmann, C., Medvidovic, N. (2011). Enhancing
+architectural recovery using concerns. \emph{Proc.\ ASE 2011}.
+
+\bibitem{garcia2013} Garcia, J., Ivkovic, I., Medvidovic, N. (2013). A comparative analysis of
+software architecture recovery techniques. \emph{Proc.\ ASE 2013}.
+
+\bibitem{lutellier2015} Lutellier, T., et al. (2015). Comparing software architecture recovery
+techniques using accurate dependencies. \emph{Proc.\ ICSE 2015}.
+
+\bibitem{louridas2008} Louridas, P., Spinellis, D., Vlachos, V. (2008). Power laws in software.
+\emph{ACM TOSEM} 18(1).
+
+\bibitem{tarr1999} Tarr, P., Ossher, H., Harrison, W., Sutton, S.M. (1999). N degrees of
+separation: multi-dimensional separation of concerns. \emph{Proc.\ ICSE 1999}.
+
+\bibitem{eaddy2008} Eaddy, M., et al. (2008). Do crosscutting concerns cause defects? \emph{IEEE
+TSE} 34(4):497--515.
+
+\bibitem{behnamghader2017} Behnamghader, P., et al. (2017). A large-scale study of architectural
+changes in open-source software systems. \emph{Empirical Software Engineering} 22:1146--1193.
+
+\bibitem{azadi2019} Azadi, U., Fontana, F.A., Taibi, D. (2019). Architectural smells detected by
+tools: a catalogue proposal. \emph{Proc.\ TechDebt 2019}.
+
+\bibitem{malavolta2013} Malavolta, I., Lago, P., Muccini, H., Pelliccione, P., Tang, A. (2013).
+What industry needs from architectural languages. \emph{IEEE TSE} 39(6):869--891.
+
+\bibitem{fitness2017} Ford, N., Parsons, R., Kua, P. (2017). \emph{Building Evolutionary
+Architectures}. O'Reilly.
+
+\bibitem{aider2023} Gauthier, P. (2023). Building a better repository map with tree-sitter.
+aider.chat.
+
+\bibitem{repograph2024} Ouyang, S., et al. (2024). RepoGraph: enhancing AI software engineering
+with repository-level code graphs. arXiv:2410.14684.
+
+\bibitem{contextmatters2026} Gupta, A., Dhar, R., Feitosa, D., Vaidhyanathan, K. (2026). Context
+matters: evaluating context strategies for automated ADR generation using LLMs. arXiv:2604.03826.
+
+\bibitem{gamma1994} Gamma, E., Helm, R., Johnson, R., Vlissides, J. (1994). \emph{Design
+Patterns}. Addison-Wesley.
+
+\bibitem{tanenbaum1992} Tanenbaum, A., Torvalds, L. (1992). LINUX is obsolete
+(comp.os.minix debate). In \emph{Open Sources} (O'Reilly, 1999), appendix.
+
+\bibitem{chromium2009} Reis, C., Gribble, S.D. (2009). Isolating web programs in modern browser
+architectures. \emph{Proc.\ EuroSys 2009}.
+
+\bibitem{reis2019} Reis, C., Moshchuk, A., Oskov, N. (2019). Site isolation: process separation
+for web sites within the browser. \emph{Proc.\ USENIX Security 2019}.
+
+\bibitem{weiss2024} Ahmeti, B., Linder, M., Groner, R., Wohlrab, R. (2024). Architecture decision
+records in practice: an action research study. \emph{Proc.\ ECSA 2024}, LNCS 14889:333--349.
+
+\bibitem{yourdon1979} Yourdon, E., Constantine, L.L. (1979). \emph{Structured Design}.
+Prentice Hall; and Myers, G.J. (1975). \emph{Reliable Software through Composite Design}.
+Petrocelli/Charter.
+
+\bibitem{sqlitearch} Hipp, D.R. Architecture of SQLite. sqlite.org/arch.html; and Gaffney, K.P.,
+Prammer, M., Brasfield, L., Hipp, D.R., Kennedy, D., Patel, J.M. (2022). SQLite: past, present,
+and future. \emph{Proceedings of the VLDB Endowment} 15(12):3535--3547.
+
+\bibitem{fiber2016} Clark, A. (acdlite) (2016). React fiber architecture.
+github.com/acdlite/react-fiber-architecture.
+
+\bibitem{poettering2010} Poettering, L. (2010). Rethinking PID 1. 0pointer.de.
+
+\bibitem{primevideo2023} Kolny, M. (2023). Scaling up the Prime Video audio/video monitoring
+service and reducing costs by 90\%. Prime Video Tech Blog.
+
+\bibitem{segment2018} Noonan, A. (2018). Goodbye microservices. Segment Engineering Blog.
+
+\bibitem{shopify2019} Westeinde, K. (2019). Deconstructing the monolith. Shopify Engineering.
+
+\bibitem{uberdoma2020} Gluck, A. (2020). Introducing domain-oriented microservice architecture.
+Uber Engineering.
+
+\bibitem{istio2020} Istio team (2020). Introducing istiod: simplifying the control plane.
+istio.io.
+
+\bibitem{luo2021} Luo, S., et al. (2021). Characterizing microservice dependency and
+performance: Alibaba trace analysis. \emph{Proc.\ SoCC 2021}.
+
+\bibitem{aosanginx} Alexeev, A. nginx. In \emph{The Architecture of Open Source Applications},
+vol.~II. aosabook.org.
+
+\bibitem{aosagit} Potter, S. Git. In \emph{AOSA}, vol.~II. aosabook.org.
+
+\bibitem{aosaeclipse} Moir, K. Eclipse. In \emph{AOSA}, vol.~I. aosabook.org.
+
+\bibitem{aosazeromq} Sústrik, M. ZeroMQ. In \emph{AOSA}, vol.~II. aosabook.org.
+
+\bibitem{hunt2010} Hunt, P., Konar, M., Junqueira, F.P., Reed, B. (2010). ZooKeeper: wait-free
+coordination for internet-scale systems. \emph{Proc.\ USENIX ATC 2010}.
+
+\bibitem{c4model} Brown, S. The C4 model for visualising software architecture. c4model.com.
+
+\bibitem{madr2018} Kopp, O., Armbruster, A., Zimmermann, O. (2018). Markdown architectural
+decision records: format and tool support. \emph{Proc.\ ZEUS 2018}, CEUR-WS vol.~2072.
+
+\bibitem{postgres2023} Linnakangas, H. (2023). Let's make PostgreSQL multi-threaded.
+pgsql-hackers mailing list, postgresql.org.
+
+\end{thebibliography}
+\end{document}
