@@ -1,0 +1,68 @@
+cff-version: 1.2.0
+title: The Conceptual Space of Software Architecture
+message: >-
+  If you use this work, please cite the arXiv version, which is the citable snapshot. Cite the
+  specific version that contains the claim you are relying on, since the paper is revised as
+  evidence accumulates. Contributors are listed in the acknowledgments of the version they
+  contributed to, and in the changelog entry for that version.
+abstract: >-
+  What is software architecture, such that a machine could hold it? This paper asks whether
+  architecture has a small generating basis, a short list of latent variables such that every
+  architectural decision is a move along one of them. It answers three ways. Theoretically, it
+  derives that an architecture is not a structure but a set of decisions laid over four graphs:
+  the problem's constraints, the code's dependencies, the runtime's interactions, and the
+  organization's communication. Sixty years of theory keeps rediscovering the same variables
+  under different names, and that convergent evidence is treated as the signature of real
+  dimensions. Empirically, across eighteen major systems and five industrial migrations, it asks
+  of every difference whether it is a choice or decay. Computationally, roughly three quarters of
+  the variables are estimable from a bare repository or its git history. The basis is assembled
+  into a conceptual space in Gardenfors' sense, with styles as prototype regions, operators and
+  tactics as moves, quality attributes as a separate value field, and an asymmetric metric built
+  on reachability. It closes with falsifiable predictions.
+authors:
+  - family-names: Onyango
+    given-names: Edwin O
+    affiliation: Dartmouth College
+    email: edwin.o.onyango.jr@gmail.com
+  - family-names: Wagunde
+    given-names: Walter
+    affiliation: Tufts University
+contact:
+  - family-names: Onyango
+    given-names: Edwin O
+    email: edwin.o.onyango.jr@gmail.com
+keywords:
+  - software architecture
+  - design decisions
+  - latent variables
+  - conceptual spaces
+  - modularity
+  - architecture recovery
+  - open research
+license: CC-BY-4.0
+repository-code: https://github.com/Onyangoe21/conceptual-space-of-software-architecture
+identifiers:
+  - type: other
+    value: arXiv:[ARXIV-ID]
+    description: >-
+      The arXiv identifier for the citable snapshot of this paper. Append the version suffix,
+      for example v1 or v2, when citing a specific revision.
+preferred-citation:
+  type: article
+  title: >-
+    The Conceptual Space of Software Architecture: The Latent Variables That Generate
+    Architectural Decisions
+  authors:
+    - family-names: Onyango
+      given-names: Edwin O
+      affiliation: Dartmouth College
+    - family-names: Wagunde
+      given-names: Walter
+      affiliation: Tufts University
+  year: 2026
+  month: 8
+  journal: arXiv preprint
+  identifiers:
+    - type: other
+      value: arXiv:[ARXIV-ID]
+      description: The arXiv identifier for this preprint.
