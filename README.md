@@ -2,6 +2,11 @@
 
 **The latent variables that generate architectural decisions.**
 
+[![Build paper](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/build-paper.yml/badge.svg)](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/build-paper.yml)
+[![Style guard](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/style-guard.yml/badge.svg)](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/style-guard.yml)
+[![Paper: CC BY 4.0](https://img.shields.io/badge/paper-CC%20BY%204.0-blue)](LICENSE)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE-CODE)
+
 Ask two engineers to draw the architecture of the system they share and you will get two
 different diagrams. Ask the same two engineers which proposed change is dangerous, which module
 is load bearing, and which shortcut will be regretted, and they will largely agree. Whatever
