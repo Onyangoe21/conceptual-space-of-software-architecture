@@ -79,11 +79,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile twice
+      # Two passes minimum, since cross references need a second one. Up to four, because this
+      # document carries a table of contents and a longtable, and a longtable settles its column
+      # widths over an additional pass. Stopping at two would fail on a document that is
+      # perfectly well formed.
+      - name: Compile until the cross references settle
         working-directory: paper
         run: |
-          set -euo pipefail
-          for pass in 1 2; do
+          set -eu
+          pass=0
+          while [ "$pass" -lt 4 ]; do
+            pass=$((pass + 1))
             echo "::group::pdflatex pass ${pass}"
             pdflatex \
               -interaction=nonstopmode \
@@ -91,6 +97,17 @@ jobs:
               -file-line-error \
               conceptual-space-arxiv.tex
             echo "::endgroup::"
+
+            if [ "$pass" -lt 2 ]; then
+              continue
+            fi
+
+            if grep -qE "Rerun to get|Label\(s\) may have changed" conceptual-space-arxiv.log; then
+              echo "Cross references still moving after pass ${pass}, running again."
+            else
+              echo "Cross references settled after pass ${pass}."
+              break
+            fi
           done
 
       # pdflatex exits zero on undefined references and citations, since they are warnings
@@ -100,7 +117,7 @@ jobs:
       - name: Fail on undefined references or citations
         working-directory: paper
         run: |
-          set -uo pipefail
+          set -u
           log=conceptual-space-arxiv.log
           status=0
 
@@ -114,8 +131,8 @@ jobs:
             status=1
           fi
 
-          if grep -nE "LaTeX Warning: Label\(s\) may have changed" "$log"; then
-            echo "::error::Labels were still moving after the second pass. A third pass is needed, which usually means a genuine cross reference problem."
+          if grep -nE "Rerun to get|Label\(s\) may have changed" "$log"; then
+            echo "::error::Cross references had still not settled after four passes, which points at a genuine problem rather than a slow convergence."
             status=1
           fi
 
