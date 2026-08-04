@@ -1,0 +1,31 @@
+# LaTeX build products. The compiled PDF is committed on release only, as
+# paper/conceptual-space.pdf, per GOVERNANCE.md. Between releases, read the CI artifact from any
+# pull request instead.
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
+paper/conceptual-space-arxiv.pdf
+
+# Python, for estimators and the style guard
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
