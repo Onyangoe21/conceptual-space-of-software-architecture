@@ -1,0 +1,68 @@
+name: Review gate
+
+# Counts approvals on proposals and pull requests and labels the thread, so that contributing does
+# not require anyone to remember a process. A reviewer clicks a thumbs up, approves a pull request,
+# or comments /approve, and the labels follow.
+#
+# Reactions do not raise workflow events, which is why this also runs on a schedule. The event
+# triggers make it feel immediate when someone reviews or comments, and the schedule catches
+# everything expressed as a reaction.
+
+on:
+  pull_request_review:
+    types: [submitted, dismissed]
+  issue_comment:
+    types: [created]
+  issues:
+    types: [opened, labeled, unlabeled, reopened]
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      number:
+        description: "Only this issue or pull request number. Leave blank for all."
+        required: false
+      dry_run:
+        description: "Report without writing anything"
+        type: boolean
+        default: false
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+concurrency:
+  group: review-gate
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    name: Count approvals
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # A gate that has silently broken will happily label everything ready.
+      - name: Check the counting rules
+        working-directory: .github/scripts
+        run: python3 test_review_gate.py
+
+      - name: Run the gate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -eu
+          args=""
+          if [ -n "${{ github.event.inputs.number }}" ]; then
+            args="$args --number ${{ github.event.inputs.number }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            args="$args --dry-run"
+          fi
+          python3 .github/scripts/review_gate.py $args
