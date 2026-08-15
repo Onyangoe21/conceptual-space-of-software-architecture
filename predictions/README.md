@@ -52,7 +52,7 @@ forbidden.
 - Deviations from the protocol, listed explicitly.
 
 **Negative results are published here.** A run that comes out against the prediction is a
-counterexample under [the credit ladder](../CONTRIBUTING.md#5-the-credit-ladder), and a
+counterexample under [the credit ladder](../docs/STANDARDS.md#the-credit-ladder-in-full), and a
 counterexample that forces a revision is rung two. There is no version of this project in which
 burying an inconvenient result is acceptable, and the fact that the maintainer would obviously
 prefer confirming results is exactly why the protocols and the reasoning are public.

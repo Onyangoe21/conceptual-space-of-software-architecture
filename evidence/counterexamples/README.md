@@ -7,7 +7,7 @@ A theory whose counterexample folder stays empty is either very good or not bein
 adversarially. Early on, the second explanation is much more likely than the first. So this
 directory is the one the maintainer most wants filled, and a counterexample that survives review
 and forces a revision is a rung two contribution under
-[the credit ladder](../../CONTRIBUTING.md#5-the-credit-ladder).
+[the credit ladder](../../docs/STANDARDS.md#the-credit-ladder-in-full).
 
 ## What a counterexample targets
 
@@ -46,8 +46,8 @@ That means primary sources, archived links, load bearing passages quoted, and fo
 engineers' own words. A counterexample that rests on an analyst's reconstruction of why a team
 did something is the same weak evidence as supporting evidence resting on the same thing.
 
-Read [the bar](../../CONTRIBUTING.md#2-the-bar) and
-[the file format](../../CONTRIBUTING.md#3-evidence-file-format) before you write. Use
+Read [the bar](../../docs/STANDARDS.md#the-bar) and
+[the file format](../../docs/STANDARDS.md#evidence-file-format) before you write. Use
 [the counterexample issue template](../../../../issues/new?template=counterexample.yml).
 
 ## How it will be handled

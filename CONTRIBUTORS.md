@@ -4,7 +4,8 @@ Everyone whose work has been merged into this repository, in the order their fir
 landed. Names appear exactly as the contributor asked for them in the credit line of their pull
 request.
 
-Rung one and rung two are defined in [CONTRIBUTING.md](CONTRIBUTING.md#5-the-credit-ladder).
+Rung one and rung two are defined in
+[docs/STANDARDS.md](docs/STANDARDS.md#the-credit-ladder-in-full).
 Rung one is acknowledgment in the next arXiv version and a line here. Rung two adds a named
 credit line in the paper's acknowledgments, in CRediT style role language, which is reproduced
 in the third column below.

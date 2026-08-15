@@ -45,8 +45,8 @@ submitted-by: Your Name (@your-handle)
 ```
 
 Full field reference, including what makes a good `claim` and who sets `status`, is in
-[CONTRIBUTING.md, section 3](../CONTRIBUTING.md#3-evidence-file-format). The bar every file is
-judged against is in [section 2](../CONTRIBUTING.md#2-the-bar).
+[docs/STANDARDS.md](../docs/STANDARDS.md#evidence-file-format). The bar every file is
+judged against is in [the same document](../docs/STANDARDS.md#the-bar).
 
 **File naming.** Lowercase, hyphens, descriptive, unnumbered.
 `propagation-cost-and-cumulative-component-dependency.md`.

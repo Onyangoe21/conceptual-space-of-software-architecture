@@ -59,10 +59,17 @@ piece of work, and each of them changes what the paper is entitled to claim.
 
 So the model is this. The arXiv version is a snapshot, frozen and citable. This repository is
 where the paper grows. Contributions that are merged here ship in the next arXiv version, with
-credit. See [CONTRIBUTING.md](CONTRIBUTING.md) for the bar, the format, and the credit ladder,
-and [GOVERNANCE.md](GOVERNANCE.md) for who decides what and how release timing works.
+credit. See [CONTRIBUTING.md](CONTRIBUTING.md) for the three ways in, [docs/STANDARDS.md](docs/STANDARDS.md)
+for the bar, the file format, and the credit ladder in full, and [GOVERNANCE.md](GOVERNANCE.md)
+for who decides what and how release timing works.
 
 ## How to contribute in ten minutes
+
+**The shortest path is to email me at
+[edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com)** and say what you want to
+change, add, or tear down. Any form. A paragraph is fine. I answer within a week and I will help
+shape it, or write it up and credit you. Everything below is for people who would rather work in
+public.
 
 You do not need to read all twenty six pages to add something useful. Pick whichever of these
 matches what you already know.
@@ -84,6 +91,14 @@ matches what you already know.
    repository. See [`estimators/README.md`](estimators/README.md).
 6. **You spotted an error.** Open an erratum issue. Wrong citation, wrong year, wrong
    attribution of an idea, a claim the cited source does not actually support.
+7. **You think a section should be restructured or taken apart.** Open a
+   [proposal issue](../../issues/new?template=proposal.yml). Put your suggested wording straight
+   into the issue. No fork and no LaTeX required.
+
+Approvals are counted automatically. A thumbs up, an approving review, or a comment with
+`/approve` on its own line each count as one approval from that person. Errata need none,
+evidence needs one, counterexamples and proposals need two. Details in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 Every one of these has an issue template with the fields already laid out. Start at
 [**Issues, new issue**](../../issues/new/choose), or browse the
@@ -96,7 +111,7 @@ ten minutes if you already know the material.
 
 ## How you get credit
 
-Three rungs, stated in full in [CONTRIBUTING.md](CONTRIBUTING.md).
+Three rungs, stated in full in [docs/STANDARDS.md](docs/STANDARDS.md#the-credit-ladder-in-full).
 
 | Rung | What earns it | What you get |
 | --- | --- | --- |
