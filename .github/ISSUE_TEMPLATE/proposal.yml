@@ -1,0 +1,69 @@
+name: Proposal, rewrite or teardown
+description: Something in the paper should be rewritten, restructured, narrowed, or removed
+title: "proposal: "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for anything larger than a citation fix. A section you think is wrong, an
+        argument you think is weak, a claim that should be narrowed, a structure you think should
+        change.
+
+        **You do not have to be polite about it.** Taking a section apart is the most useful thing
+        anyone can do here, and the paper is written so that its claims can be attacked one at a
+        time.
+
+        If you would rather just talk, email edwin.o.onyango.jr@gmail.com instead. That is a real
+        option and often faster.
+
+        Proposals need two approvals from other people to be labeled ready. A thumbs up, an
+        approving review, or a comment with `/approve` on its own line each count as one.
+
+  - type: input
+    id: target
+    attributes:
+      label: What should change
+      description: Section, axis, claim, or prediction. A section name is enough.
+      placeholder: "Section 3.2, the claim that the list of four graphs appears to be complete"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong with it
+      description: >-
+        The argument, in whatever form it is in. Rough is fine. If it reads as too weak, too
+        strong, unsupported, or as three claims pretending to be one, say which.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested replacement
+      description: >-
+        Optional but useful. Your wording, at any level of polish. Bullet points are fine. If you
+        are proposing removal rather than replacement, say so here.
+
+  - type: textarea
+    id: basis
+    attributes:
+      label: What you are relying on
+      description: >-
+        Sources, a system you have worked on, a measurement, or your own judgment. Judgment is an
+        acceptable answer, and saying so plainly is better than dressing it up as a citation.
+    validations:
+      required: true
+
+  - type: input
+    id: submitted-by
+    attributes:
+      label: Credit line
+      description: >-
+        Your name as it should appear in the acknowledgments if this lands. Write "no credit" if
+        you would rather not be named.
+      placeholder: Jane Q. Contributor (@janeqc)
+    validations:
+      required: true
