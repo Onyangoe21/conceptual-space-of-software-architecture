@@ -136,7 +136,7 @@ paper to be worth merging.
 An estimator that *does* ground a computability claim in the paper, by demonstrating that a
 variable tagged estimable really is, is a rung two contribution with a named credit line in
 CRediT software role language. See
-[the credit ladder](../CONTRIBUTING.md#5-the-credit-ladder).
+[the credit ladder](../docs/STANDARDS.md#the-credit-ladder-in-full).
 
 If your estimator finds that a variable the paper tags as bare repository estimable actually
 requires history, or intent, that is a **counterexample to the computability test** and it is
