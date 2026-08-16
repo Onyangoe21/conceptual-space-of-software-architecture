@@ -26,8 +26,8 @@ only those claims that are **necessarily infringed by that contributor's contrib
 by the combination of that contribution with the work it was submitted to**. So merging an
 estimator that computes propagation cost grants you what you need to run and build on that
 estimator. It does not sweep in unrelated claims that the same contributor happens to own, and
-it does not operate as a grant across anyone's whole portfolio. That is the license doing its
-job, not a reservation being smuggled in.
+it does not operate as a grant across anyone's whole portfolio. That scope is set by the license
+text itself and is the same in every Apache 2.0 project.
 
 The grant runs in every direction. You get it from the maintainer and from every other
 contributor. They get it from you for what you contribute. This is why the project has no
@@ -37,9 +37,9 @@ under the same terms unless you say otherwise in writing in the pull request.
 **Defensive termination.** Section 3 ends your patent license under Apache 2.0 if you begin
 patent litigation alleging that the work, or a contribution in it, infringes a patent. It ends
 only your patent license, only for you, and only from that date. Your copyright license is
-untouched, and so is everyone else's patent license. Nothing about this is unusual. It is the
-standard Apache term and it is one of the reasons the project uses Apache 2.0 rather than a
-permissive license that is silent on patents.
+untouched, and so is everyone else's patent license. This is the standard Apache term, and it is
+one of the reasons the project uses Apache 2.0 rather than a permissive license that says nothing
+about patents.
 
 ## What the paper does not grant
 
@@ -53,9 +53,9 @@ So you may copy, redistribute, adapt, and build on the paper text, with attribut
 work, is a matter between you and whatever patent rights exist independently of this repository.
 The paper describes ideas. It does not license them.
 
-This is not a trap laid for readers. It is the ordinary state of every academic paper ever
-published, stated out loud because this repository ships code next to the paper and the two
-carry different terms.
+This is the ordinary state of every academic paper. It is written down here because this
+repository ships code next to the paper and the two carry different terms, which is the kind of
+thing that is easy to miss.
 
 ## No implied license beyond the express grants
 
@@ -73,10 +73,7 @@ The project knows what it gave.
 ## If you need more than this
 
 Email [edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com) and say what you want
-to do. A licensing question is not an imposition and will get a straight answer within a week,
-the same as everything else here. Asking is cheaper for you than assuming, and it is cheaper for
-the project than a dispute.
+to do. You get an answer within a week, the same as everything else here, and a licensing
+question is answered in writing like any other.
 
-Nothing in this document is legal advice, and the maintainer is not your lawyer. If your use is
-close enough to the line that this document matters to you, it is close enough to be worth asking
-your own counsel.
+Nothing in this document is legal advice and the maintainer is not your lawyer.

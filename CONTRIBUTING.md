@@ -1,29 +1,30 @@
 # Contributing
 
-**If you have something, tell me. Do not study the process first.**
+**If you have something, tell me. The process below serves that. It does not gate it.**
 
 This paper argues that architecture has a small set of underlying variables, and its evidence is
 cumulative: it gets stronger with every independent data point and weaker with every documented
 case that cuts against it. So the useful thing you can do is add a data point or take one away.
-Everything below is just plumbing for that.
+Everything below is plumbing for that.
 
-## Three ways in, easiest first
+## Three ways in
+
+All three arrive at the same place and earn the same credit. Choose by how you prefer to work.
 
 **1. Email me.** [edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com). Tell me what
-you want to change, add, or tear down, in whatever form it is currently in. A paragraph is fine. I
-answer within a week. If it turns out to be worth doing, I will help you shape it, or I will write
-it up and credit you. This is the preferred path and it is not a lesser one.
+you want to change, add, or tear down, in whatever form it is currently in. I answer within a week.
+If it is worth doing, I will help you shape it, or write it up and credit you. I prefer this route
+because shaping an argument in conversation is faster than reviewing it cold.
 
 **2. Open a proposal issue.** [Use the proposal template](../../issues/new?template=proposal.yml)
-if you would rather work in public or you already know what you want to say. Put your suggested
-wording directly in the issue. You do not need a fork, a branch, or LaTeX.
+if you would rather work in public, or you already know what you want to say. Put your suggested
+wording directly in the issue. No fork, no branch, no LaTeX.
 
-**3. Edit a file in the browser.** Any markdown file in this repository has a pencil icon on
-GitHub. Click it, edit, describe what you changed. GitHub makes the fork and the pull request for
-you. This is the whole workflow for adding an evidence file.
+**3. Edit a file in the browser.** The pencil icon on any markdown file opens an editor, and
+GitHub handles the fork and the pull request. That is the entire workflow for an evidence file.
 
-Prefer talking to guessing. If you are not sure whether something counts, ask, and the answer will
-be a sentence rather than a rejection.
+If you are unsure whether something counts, ask. That question gets a one sentence answer rather
+than a review.
 
 ## How something passes
 

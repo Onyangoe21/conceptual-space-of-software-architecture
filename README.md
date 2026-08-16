@@ -67,12 +67,11 @@ for who decides what and how release timing works.
 
 **The shortest path is to email me at
 [edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com)** and say what you want to
-change, add, or tear down. Any form. A paragraph is fine. I answer within a week and I will help
-shape it, or write it up and credit you. Everything below is for people who would rather work in
-public.
+change, add, or tear down. I answer within a week and I will help shape it, or write it up and
+credit you. Everything below is for people who would rather work in public.
 
-You do not need to read all twenty six pages to add something useful. Pick whichever of these
-matches what you already know.
+Each of the following is a self contained contribution that stands on its own evidence. Pick the
+one that matches what you already know.
 
 1. **You know a system well.** Fill in one row of the survey. Copy
    [`evidence/systems/`](evidence/systems/) and describe how that system answers the recurring
@@ -106,8 +105,8 @@ Every one of these has an issue template with the fields already laid out. Start
 issues, which are specific and pre scoped: a named system nobody has surveyed yet, a suspected
 convergence nobody has documented, a citation that needs strengthening.
 
-Evidence files are markdown with a short front matter block. Filling one in honestly takes about
-ten minutes if you already know the material.
+Evidence files are markdown with a short front matter block. One takes about ten minutes to fill
+in if you already know the material.
 
 ## How you get credit
 
@@ -122,6 +121,9 @@ Three rungs, stated in full in [docs/STANDARDS.md](docs/STANDARDS.md#the-credit-
 Authorship on already posted arXiv versions never changes retroactively. Rung three is a real
 possibility and not a marketing device, which is exactly why it is not offered up front.
 
+The repository opened recently, so [CONTRIBUTORS.md](CONTRIBUTORS.md) is still empty and the next
+version's acknowledgments are unwritten. Early work is disproportionately visible for that reason.
+
 ## Frequently asked
 
 **Can I disagree with the paper?**
@@ -134,9 +136,9 @@ cut against was not saying anything. Counterexamples are held to the same eviden
 supporting evidence, no higher and no lower.
 
 **Do I need to know LaTeX?**
-No. Evidence files are plain markdown. The maintainer does the integration into the paper text.
-If you would rather draft the LaTeX yourself, you are welcome to, and the pull request template
-has a box for saying so.
+No. Evidence files are plain markdown, and the maintainer does the integration into the paper
+text. If you would rather draft the LaTeX yourself, the pull request template has a box for
+saying so. Both routes earn the same rung on the credit ladder.
 
 **Do I need academic credentials?**
 No. A large share of the paper's empirical base is practitioner writing: post mortems,
