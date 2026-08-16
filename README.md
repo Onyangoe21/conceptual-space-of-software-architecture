@@ -5,7 +5,7 @@
 [![Build paper](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/build-paper.yml/badge.svg)](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/build-paper.yml)
 [![Style guard](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/style-guard.yml/badge.svg)](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/actions/workflows/style-guard.yml)
 [![Paper: CC BY 4.0](https://img.shields.io/badge/paper-CC%20BY%204.0-blue)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE-CODE)
+[![Code: Apache 2.0](https://img.shields.io/badge/code-Apache%202.0-blue)](LICENSE-CODE)
 
 Ask two engineers to draw the architecture of the system they share and you will get two
 different diagrams. Ask the same two engineers which proposed change is dangerous, which module
@@ -177,8 +177,17 @@ it, and the contributor is credited in that version's acknowledgments.
 ## License
 
 The paper text and all evidence files are licensed
-[CC BY 4.0](LICENSE). Estimator code is licensed [MIT](LICENSE-CODE). By contributing you agree
-to license your contribution under the corresponding license.
+[CC BY 4.0](LICENSE). Estimator code is licensed [Apache 2.0](LICENSE-CODE), with attribution in
+[NOTICE](NOTICE). By contributing you agree to license your contribution under the corresponding
+license, per section 5 of Apache 2.0 for code. There is no separate contributor license agreement
+to sign.
+
+Apache 2.0 rather than MIT for the code, because it says out loud what MIT leaves unsaid. Section
+3 grants every user a patent license covering the claims a contribution necessarily infringes,
+which is what you need to use an estimator without wondering. Section 5 gives the project the same
+assurance about incoming contributions. Both grants are bounded by what the code actually does,
+and neither reaches anything else. [PATENTS.md](PATENTS.md) states what is granted and what is
+not, for the code and for the paper separately.
 
 ## Code of conduct
 

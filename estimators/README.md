@@ -18,7 +18,12 @@ contribution type here that produces something immediately useful outside the pa
 same code that validates a computability claim is the code an agent would need to actually hold
 an architecture.
 
-Estimators are licensed [MIT](../LICENSE-CODE), separately from the paper text.
+Estimators are licensed [Apache 2.0](../LICENSE-CODE), separately from the paper text, which is
+CC BY 4.0. Apache 2.0 carries an express patent license for what the code needs, granted by every
+contributor and to every contributor, so that an estimator can be run and built on without anyone
+having to reason about what was implied. See
+[docs/STANDARDS.md](../docs/STANDARDS.md#licensing-your-contribution) for the file header and what
+you are agreeing to.
 
 ## The evidence ladder
 
@@ -112,6 +117,12 @@ demonstration of computability.
 compose, since the interesting variables are the ones that cross graphs, and those need two
 estimators' outputs side by side.
 
+**5. The Apache 2.0 header on every source file**, with your own copyright line. The exact text is
+in [docs/STANDARDS.md](../docs/STANDARDS.md#licensing-your-contribution). If your estimator vendors
+or adapts third party code, say so in the README, keep that code's own header and notices intact,
+and check that its license is compatible with Apache 2.0. GPL and its relatives are not, so link to
+that tool and shell out to it rather than copying it in.
+
 ## The output contract
 
 Loose on purpose, because the variables have genuinely different shapes: some are scalars, some
@@ -130,8 +141,8 @@ settings is not reproducible even in principle.
 
 Estimators are held to a lighter bar than evidence, per
 [GOVERNANCE.md](../GOVERNANCE.md#scope-of-this-document). An estimator needs to run, to state
-what it computes and on what evidence, and to be MIT licensed. It does not need to change the
-paper to be worth merging.
+what it computes and on what evidence, and to carry the Apache 2.0 header. It does not need to
+change the paper to be worth merging.
 
 An estimator that *does* ground a computability claim in the paper, by demonstrating that a
 variable tagged estimable really is, is a rung two contribution with a named credit line in

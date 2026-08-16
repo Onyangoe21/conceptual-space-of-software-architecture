@@ -101,5 +101,6 @@ issues are exempt. Write those however you write.
 ---
 
 Questions that are not contributions belong in [Discussions](../../discussions). Contributions are
-licensed [CC BY 4.0](LICENSE), code [MIT](LICENSE-CODE). How decisions get made:
-[GOVERNANCE.md](GOVERNANCE.md).
+licensed [CC BY 4.0](LICENSE), code [Apache 2.0](LICENSE-CODE), with no contributor license
+agreement to sign. What that does and does not grant: [PATENTS.md](PATENTS.md). How decisions get
+made: [GOVERNANCE.md](GOVERNANCE.md).

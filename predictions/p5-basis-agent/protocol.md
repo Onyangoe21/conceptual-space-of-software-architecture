@@ -191,7 +191,7 @@ Results go in [`results/`](results/) with:
 - Task list with blast radius labels, committed before results were collected.
 - Per stratum results with dispersion across repeated runs, not just means.
 - The manipulation check on basis estimate quality.
-- Code to reproduce, under [`estimators/`](../../estimators/) or linked, MIT licensed.
+- Code to reproduce, under [`estimators/`](../../estimators/) or linked, Apache 2.0 licensed.
 - Deviations from this protocol, listed.
 
 Negative results are published. See [the directory README](../README.md).

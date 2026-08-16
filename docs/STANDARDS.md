@@ -297,5 +297,36 @@ docs: clarify archive link requirement
 ## Licensing your contribution
 
 By opening a pull request you agree to license prose and evidence under
-[CC BY 4.0](../LICENSE) and code under [MIT](../LICENSE-CODE). There is no separate contributor
-license agreement to sign.
+[CC BY 4.0](../LICENSE) and code under [Apache 2.0](../LICENSE-CODE). There is no separate
+contributor license agreement to sign, and there will not be one. Apache 2.0 section 5 already
+does the work a CLA usually does: a contribution you submit for inclusion is under the same terms
+as the license itself, unless you say otherwise in writing in the pull request.
+
+That means the patent grant in section 3 runs in both directions. You grant it for what your
+contribution necessarily infringes, and every other contributor has granted it to you for theirs.
+Both grants are scoped to the code, and terminate for a party who brings a patent suit alleging
+that the code infringes. If you are contributing on behalf of an employer, check that you have the
+authority to grant this, which is the same check any Apache project asks for.
+
+Add the standard header to every source file you contribute:
+
+```
+Copyright [yyyy] [name of copyright owner]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+Keep your own copyright line. Contributing does not assign it to anyone, here or elsewhere.
+
+[PATENTS.md](../PATENTS.md) states the whole position in one place, including what the paper's
+CC BY 4.0 license does not grant.
