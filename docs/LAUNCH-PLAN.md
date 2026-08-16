@@ -23,7 +23,7 @@ Complete before anything is shared with anyone:
       written out in full
 - [x] `GOVERNANCE.md` with the decision procedure and the release process
 - [x] Code of conduct with a real contact address
-- [x] Both licenses in place: CC BY 4.0 for the text, MIT for code
+- [x] Both licenses in place: CC BY 4.0 for the text, Apache 2.0 for code, with `NOTICE`
 - [x] `CITATION.cff` valid
 - [x] Three example evidence files committed, one per shape, marked as reference examples so
       nobody mistakes them for open slots

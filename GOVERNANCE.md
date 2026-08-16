@@ -9,10 +9,9 @@ and argued with.
 
 ## Maintainer
 
-**Edwin O Onyango**, [@Onyangoe21](https://github.com/Onyangoe21), edwin.o.onyango.jr@gmail.com
+**Edwin O Onyango**, [@Onyangoe21](https://github.com/Onyangoe21), [edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com)
 
-The maintainer decides what enters the paper. There is no committee, no voting, and no pretense
-of consensus process. What there is instead is an obligation to explain.
+The maintainer decides what enters the paper. There is no committee, no voting, and no pretense of consensus process. What there is instead is an obligation to explain but given I have not done this before, please reach me to ask for changes in these. Please email me if you want to be a maintainer.
 
 ## How decisions are made
 
@@ -37,14 +36,14 @@ specific evidence, explicitly, in the thread. Not to assert a conclusion. To sho
 The maintainer writes, in order:
 
 1. **The convergence test.** Does this show the same variable derived from an independent
-   starting point? Where is the independence established, and where is it assumed? If the two
+  starting point? Where is the independence established, and where is it assumed? If the two
    sources share a lineage, say where the shared ancestor sits.
 2. **The two way traffic test.** Does this show real systems moving under forces the engineers
-   articulated? Are the forces in the sources, or are they the contributor's reconstruction? Is
+  articulated? Are the forces in the sources, or are they the contributor's reconstruction? Is
    there traffic in the other direction, and if not, does that make this a potential rather than
    a coordinate?
 3. **The computability test.** Could a machine check this? What does it need on the evidence
-   ladder? If it needs human intent, how bounded is that input?
+  ladder? If it needs human intent, how bounded is that input?
 
 Then a conclusion, and then what would change it. That last part is required. A rejection that
 does not say what additional evidence would flip it is a dead end rather than a decision, and it
@@ -92,21 +91,21 @@ claim rather than only a citation.
 **What a release consists of.** Each release produces, in this order:
 
 1. A `governance` issue announcing the intent to release, listing every merged change that will
-   ship in it, open for comment for at least one week. This is where a contributor can say that
+  ship in it, open for comment for at least one week. This is where a contributor can say that
    their credit line is wrong, or that a change misrepresents their evidence, while it is still
    cheap to fix.
 2. An updated `paper/CHANGELOG.md` entry for the version, naming **every contributor** whose work
-   ships in it, with what they contributed. The changelog is the permanent public record of who
+  ships in it, with what they contributed. The changelog is the permanent public record of who
    built what, and it is written before the arXiv upload rather than after.
 3. Updated acknowledgments in `paper/conceptual-space-arxiv.tex`, carrying rung one names and
-   rung two named credit lines in CRediT style role language, per
+  rung two named credit lines in CRediT style role language, per
    [CONTRIBUTING.md](CONTRIBUTING.md).
 4. A compiled PDF committed to `paper/conceptual-space.pdf`. The PDF is committed only on
-   release, so that the file in `main` always corresponds to a posted version rather than to an
+  release, so that the file in `main` always corresponds to a posted version rather than to an
    intermediate state. Between releases, read the CI artifact from any pull request.
 5. The arXiv upload, producing the new version number.
 6. A git tag matching the arXiv version exactly: `v2`, `v3`, and so on, on the release commit,
-   with the arXiv identifier in the tag message. A reader who has a citation to a specific arXiv
+  with the arXiv identifier in the tag message. A reader who has a citation to a specific arXiv
    version can then check out the exact source that produced it.
 7. A GitHub release attached to the tag, with the changelog entry as its body.
 8. A post in the Announcements discussion category.
@@ -119,21 +118,32 @@ still large enough to merge, and those are the same threshold.
 ## Operating rhythm
 
 - **Weekly.** The maintainer triages new issues and pull requests. Labels applied, obvious
-  errata merged, contributions that need more sources marked `needs-sources` with a note saying
-  which specific claim needs which specific kind of source.
+errata merged, contributions that need more sources marked `needs-sources` with a note saying
+which specific claim needs which specific kind of source.
 - **First response within one week**, for everything. A first response may be a question rather
-  than a decision. If a week has passed in silence, bumping the thread is the correct thing to
-  do.
+than a decision. If a week has passed in silence, bumping the thread is the correct thing to
+do.
 - **Monthly.** A post in Discussions summarizing what was merged, what is open, and what the
-  project most needs next. Written whether or not the month was busy, because a quiet month is
-  itself information for anyone deciding whether to invest an evening here.
+project most needs next. Written whether or not the month was busy, because a quiet month is
+itself information for anyone deciding whether to invest an evening here.
 - **Quarterly, roughly.** An arXiv revision, per the release process above.
+
+
 
 ## Scope of this document
 
 This document governs the paper and its evidence base. Estimator code under `estimators/` is
 held to a lighter standard: it needs to run, to state what it computes and on what evidence, and
-to be licensed MIT. It does not need to change the paper to be worth merging.
+to be licensed Apache 2.0 with the standard file header. It does not need to change the paper to
+be worth merging.
+
+The code and the paper carry different licenses on purpose, and the split is not cosmetic.
+Estimator code is [Apache 2.0](LICENSE-CODE), which grants users an express patent license for
+what the code needs, in both directions, bounded by section 3 to the claims a contribution
+necessarily infringes. The paper text is [CC BY 4.0](LICENSE), which by its own section 2(b)(2)
+licenses copyright only and grants no patent rights at all. Reading a claim in the paper is not a
+license to practice it. Running an estimator is a license to run that estimator. The full
+statement of what is and is not granted is in [PATENTS.md](PATENTS.md).
 
 Changes to this document are made through a `governance` issue, open for comment, decided by the
 maintainer in writing, like everything else.

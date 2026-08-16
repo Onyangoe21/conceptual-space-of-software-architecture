@@ -14,7 +14,7 @@ body:
         same month. Read [estimators/README.md](https://github.com/Onyangoe21/conceptual-space-of-software-architecture/blob/main/estimators/README.md)
         first for the submission requirements and the list of what is most wanted.
 
-        Estimator code is licensed MIT, separately from the paper text.
+        Estimator code is licensed Apache 2.0, separately from the paper text, which is CC BY 4.0.
 
   - type: input
     id: claim
@@ -118,7 +118,7 @@ body:
       options:
         - label: >-
             I have read estimators/README.md, and I understand that estimator code is licensed
-            MIT.
+            Apache 2.0, including the patent grant in section 3.
           required: true
         - label: I intend to build this. This is not only a suggestion for someone else.
           required: false

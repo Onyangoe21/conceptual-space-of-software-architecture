@@ -82,7 +82,9 @@ repository, plus git history, plus runtime traces, or plus human intent?
 - [ ] Output is JSON or CSV and includes the metadata block: repository, commit hash, estimator
       version, timestamp, parameters
 - [ ] A worked output on a public repository is checked in
-- [ ] Licensed MIT, matching `LICENSE-CODE`
+- [ ] Every source file carries the Apache 2.0 header, matching `LICENSE-CODE`
+- [ ] Any vendored or adapted third party code is named in the README, keeps its own notices, and
+      is under an Apache 2.0 compatible license
 
 ## Credit
 
@@ -100,7 +102,8 @@ repository, plus git history, plus runtime traces, or plus human intent?
       two named credit lines are proposed by the maintainer in this thread and can be corrected
       before merge, and that authorship on already posted arXiv versions never changes
       retroactively
-- [ ] I license this contribution under CC BY 4.0 for prose and evidence, and MIT for code
+- [ ] I license this contribution under CC BY 4.0 for prose and evidence, and Apache 2.0 for code,
+      including the patent grant in section 3, and I have the right to grant it
 
 ## Anything the reviewer should know
 
