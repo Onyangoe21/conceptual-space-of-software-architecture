@@ -108,8 +108,8 @@ Then prose covering:
   validation at all is acceptable if you say so plainly and mark `status: prototype`.
 
 **2. Runnable code**, with pinned dependencies. A `requirements.txt` with versions, a lockfile,
-or a container definition. An estimator that ran once on your machine in 2026 is not a
-demonstration of computability.
+or a container definition. The claim under test is that a machine can compute the variable, which
+means it has to run on a machine that is not yours.
 
 **3. At least one test**, even a small one, that runs without network access.
 
@@ -133,9 +133,9 @@ are partitions, some are matrices, some are per unit fields. Two requirements on
    estimator name and version, the run timestamp, and the parameter values used.
 
 The metadata block is the part that matters. A number without the commit it came from cannot be
-checked by anyone, including you in six months. Extraction quality is known to change these
-results as much as algorithm choice does, so a result that does not record its extraction
-settings is not reproducible even in principle.
+checked by anyone. Extraction quality is known to change these results as much as algorithm
+choice does, so a result that does not record its extraction settings is not reproducible even in
+principle.
 
 ## Review
 

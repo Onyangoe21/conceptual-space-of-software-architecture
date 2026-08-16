@@ -24,8 +24,8 @@ Evidence files are exempt from the paper's voice contract. Write them the way yo
 ## The file format
 
 YAML front matter, then free prose. The schema is small on purpose: if the front matter takes
-you more than ten minutes to fill in, something is wrong with the schema and you should open an
-issue about it.
+you more than ten minutes to fill in, the schema is the thing that failed, and that is worth an
+issue.
 
 ```yaml
 ---

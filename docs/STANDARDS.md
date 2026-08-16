@@ -91,9 +91,9 @@ Two practical rules:
    the failure mode where a source is cited for a claim it does not quite make.
 
 Where a source sits behind an access restriction, say so plainly and mark what you reconstructed
-from secondary quotation. The paper already carries one such caveat about the enumerated value
-sets in several classical dimension tables. That kind of honesty costs nothing and buys the
-reader's trust.
+from secondary quotation. The paper already carries one such caveat, about the enumerated value
+sets in several classical dimension tables. A marked gap can be reviewed and worked around. An
+unmarked one gets found later by somebody else, usually after the claim has been cited.
 
 ---
 
@@ -192,7 +192,8 @@ prints a warning for sentences over sixty words without failing on them. Everyth
 section is editorial and reviewed in the pull request.
 
 If you would rather not write LaTeX, do not. Submit the evidence and the maintainer writes the
-paper text. That is the default path, not a lesser contribution.
+paper text. That is the default path and it earns the same rung on the credit ladder as drafting
+the text yourself.
 
 ---
 
@@ -223,8 +224,8 @@ people" flattens a one line fix and three weeks of work into the same sentence, 
 accurate.
 
 The maintainer proposes the role language in the thread and you can correct it before merge. If
-you think your contribution belongs on this rung and it has been placed on rung one, say so. That
-is a reasonable thing to raise and it will be answered in writing.
+you think your contribution belongs on this rung and it was placed on rung one, say so in the
+thread. Either the placement changes or the reasoning for it gets written out.
 
 ### Rung three: co-authorship on future versions
 
@@ -243,9 +244,9 @@ it, and v1 and v2 stay as they are.
 
 ### What is not on the ladder
 
-Opening an issue that turns out to be wrong costs you nothing and is not held against you. A
-counterexample the theory survives is still a contribution, credited at rung one, and the file
-may stay in the repository as `rejected` with the reasoning attached. The ladder rewards work
+An issue that turns out to be wrong carries no cost, because nothing in this project tracks a hit
+rate. A counterexample the theory survives is still a contribution, credited at rung one, and the
+file may stay in the repository as `rejected` with the reasoning attached. The ladder rewards work
 that was done, not conclusions that happened to be right.
 
 ---

@@ -11,7 +11,16 @@ and argued with.
 
 **Edwin O Onyango**, [@Onyangoe21](https://github.com/Onyangoe21), [edwin.o.onyango.jr@gmail.com](mailto:edwin.o.onyango.jr@gmail.com)
 
-The maintainer decides what enters the paper. There is no committee, no voting, and no pretense of consensus process. What there is instead is an obligation to explain but given I have not done this before, please reach me to ask for changes in these. Please email me if you want to be a maintainer.
+The maintainer decides what enters the paper. There is no committee, no voting, and no pretense
+of consensus process. What there is instead is an obligation to explain, discharged in public, in
+writing, every time.
+
+I have not run a project like this before. That is the reason the rules are written down where
+you can hold me to them rather than kept as a set of instincts, and it means the rules themselves
+are arguable. If something here is wrong, or costs contributors more than it returns, open a
+`governance` issue and say so. How this project runs is revised the same way the paper is.
+
+The role is not permanent and not exclusive. If you want to carry part of it, email me.
 
 ## How decisions are made
 
@@ -52,8 +61,9 @@ tells the next contributor nothing.
 This procedure applies symmetrically to counterexamples. A counterexample the maintainer would
 prefer to reject is exactly the case where the written reasoning matters most, because the
 maintainer has an obvious interest in the theory surviving. Writing the three tests out in full,
-in public, is the check against that interest. Readers are invited to hold the maintainer to it,
-and pointing out that a rejection skipped a test is a legitimate and welcome intervention.
+in public, is the check against that interest. If a rejection here skips a test, say so in the
+thread. That correction is part of the procedure rather than an interruption of it, and it gets
+answered in writing like everything else.
 
 ### When the maintainer is wrong
 

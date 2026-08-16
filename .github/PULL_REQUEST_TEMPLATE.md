@@ -66,7 +66,7 @@ repository, plus git history, plus runtime traces, or plus human intent?
 - [ ] Any new `\cite` key has a matching `\bibitem`
 
 <!-- If you would rather not write LaTeX, do not. Submit the evidence file and say so below. The
-     maintainer writes the paper text, and this is the default path, not a lesser contribution. -->
+     maintainer writes the paper text. This is the default path and it earns the same rung. -->
 
 - [ ] I would like the maintainer to write the paper text for this
 - [ ] I have drafted the paper text myself and accept editing for register
@@ -108,4 +108,5 @@ repository, plus git history, plus runtime traces, or plus human intent?
 ## Anything the reviewer should know
 
 <!-- Where you are unsure. What you could not verify. Which part of this you expect to be
-     argued with. Naming your own weakest joint is a strength, not a concession. -->
+     argued with. Whatever you name here is where review starts. It does not change the bar the
+     contribution has to clear. -->
