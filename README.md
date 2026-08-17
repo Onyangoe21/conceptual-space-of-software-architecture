@@ -25,6 +25,48 @@ meaning how volatile it is, when it takes force, what reversing it would cost, a
 reaches. And finally the quality goals that orient the whole thing, held deliberately separate
 from the coordinates, plus the drift that pulls a system downhill when nobody is pushing.
 
+```mermaid
+flowchart TB
+    problem["Problem graph<br/>what the system must do"]
+    code["Code graph<br/>what depends on what"]
+    runtime["Runtime graph<br/>what talks to what"]
+    org["Organization graph<br/>who talks to whom"]
+
+    decision(["One architectural decision,<br/>laid over all four at once"])
+
+    boundary["Boundary geometry<br/>where the cuts fall, and<br/>whether the four line up"]
+    order["Order structure<br/>who may know whom,<br/>whose decisions bind whose"]
+    commitment["Commitment calculus<br/>volatility, binding time,<br/>reversal cost, how far it reaches"]
+
+    quality["Quality goals, and drift<br/>a value field that orients the rest,<br/>deliberately not a coordinate"]
+
+    problem --> decision
+    code --> decision
+    runtime --> decision
+    org --> decision
+
+    decision --> boundary
+    decision --> order
+    decision --> commitment
+
+    quality -.->|orients| decision
+
+    classDef plane fill:#eef2ff,stroke:#4f46e5,color:#1e1b4b
+    classDef axis fill:#eefbf3,stroke:#0e8a16,color:#052e16
+    classDef value fill:#fff8e6,stroke:#c99a2e,color:#3f2d05
+    classDef core fill:#ede9fe,stroke:#6d28d9,color:#2e1065
+
+    class problem,code,runtime,org plane
+    class boundary,order,commitment axis
+    class quality value
+    class decision core
+```
+
+Read it downward. A decision is taken against four graphs at once, in blue, and the variables in
+green are what position it. The claim the paper defends is that the green row is short, and that
+it is the same short row for every system. Quality goals sit outside that row on purpose, because
+they say which direction is better rather than where a system currently is.
+
 The evidence for those variables is that the field keeps rediscovering them. The measure now
 called propagation cost was derived twice, once from a change cost argument and once from a
 build cost argument, by authors who did not cite each other. Binding time appears independently
@@ -46,8 +88,7 @@ result of a proposed change without installing LaTeX.
 
 ## This paper is open
 
-Most papers are finished when they are posted. This one is not, and the reason is structural
-rather than sentimental.
+Most papers are finished when they are posted. This one is not, and the reason is structural.
 
 The paper's central method is cumulative convergent evidence. A variable earns its place in the
 basis when independent lines of work, starting from different premises and sharing no
