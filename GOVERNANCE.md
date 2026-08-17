@@ -22,6 +22,33 @@ are arguable. If something here is wrong, or costs contributors more than it ret
 
 The role is not permanent and not exclusive. If you want to carry part of it, email me.
 
+## Commercial interest, stated
+
+I am building Ether, a company working on an agentic engineer. This research came out of that
+work, and the company is better off if the basis turns out to be right.
+
+That is a standing interest in one particular outcome, and it sits on top of the interest any
+author has in their own theory surviving. Stating it does not neutralize it. What is supposed to
+neutralize it is the rest of this document, applied without exception: the three tests written
+out in public for every contested contribution, including the ones where the answer is
+comfortable, and every rejection naming what would reverse it. Whether that actually happens is
+visible in the threads, which is the point of deciding there.
+
+Two things follow that are worth naming separately, because they are where a commercial interest
+would show up first if it were doing damage.
+
+Evidence that cuts against the basis is held to the same bar as evidence that supports it, never
+a higher one. A counterexample is the most valuable thing anyone can bring here, and the fact
+that it would be expensive for me is not an argument against it.
+
+No contribution is rejected, delayed, or quietly left to go stale because accepting it would be
+commercially inconvenient. If a decision looks like it went that way, that is a `governance`
+issue, and it gets answered in writing like everything else.
+
+The paper is CC BY 4.0 and the code is Apache 2.0. Neither can be withdrawn, by me or by Ether,
+from anyone who already has it. See [PATENTS.md](PATENTS.md) for what the patent position is and
+what it is not.
+
 ## How decisions are made
 
 Every decision about what enters the paper is made in public, in the issue or pull request
