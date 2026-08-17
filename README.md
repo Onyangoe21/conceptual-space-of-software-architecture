@@ -193,9 +193,24 @@ mailing list thread, the commit. Not a blog summarizing one of those. Archive yo
 engineering blogs disappear.
 
 **Is this affiliated with anyone?**
-No. This is independent research, maintained by the author. Systems and migrations named in the
-paper are named as evidence, from their public engineering accounts, and nothing here is
-endorsed by or produced on behalf of any organization.
+Yes, and the shape of it matters, so here is the whole of it. The author is building Ether, a
+company working on an agentic engineer. This research came out of that work. We needed to know
+what an agent would have to hold in order to reason about an architecture at all, went looking
+for the answer, and found that nobody had written it down. That seemed too consequential to keep
+to ourselves, so it is open, and the intent is that once the estimators are mature anyone can use
+them to read and generate architectures rather than only us.
+
+That may be a reason not to contribute here. It is a fair one and we would rather you weigh it
+now than discover it later. The reasoning that went the other way: the alternative was a private
+in-house version, which means every team working on this solves it separately, and none of the
+answers can be checked against each other. Opening it means the people already working on the
+problem can work on it together and argue in public about whether it is right.
+
+What the commercial interest does not change is written into
+[GOVERNANCE.md](GOVERNANCE.md#commercial-interest-stated). Counterexamples are held to the same
+bar as supporting evidence and never a higher one, and nothing gets rejected or quietly
+deprioritized for being commercially inconvenient. Systems and migrations named in the paper are
+named as evidence, from their public engineering accounts, and none of them endorse this.
 
 **How fast will you respond?**
 Within one week for a first response. See [GOVERNANCE.md](GOVERNANCE.md) for the operating
