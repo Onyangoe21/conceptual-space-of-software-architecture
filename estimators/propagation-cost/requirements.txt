@@ -1,0 +1,14 @@
+# This estimator has no third party dependencies. It uses only the Python
+# standard library: ast, argparse, json, os, subprocess, datetime, pathlib.
+#
+# The one version constraint is the interpreter itself. int.bit_count arrived
+# in Python 3.10, and the transitive closure uses it.
+#
+#     python_requires = >=3.10
+#
+# Verified on CPython 3.12, which is the version the repository's CI pins, and
+# on CPython 3.14.
+#
+# This file is intentionally empty of requirements rather than absent, because
+# estimators/README.md asks every estimator to pin its dependencies, and
+# "there are none" is a pin that a reader should not have to infer.
