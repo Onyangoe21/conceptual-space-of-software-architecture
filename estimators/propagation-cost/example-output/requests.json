@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "estimator": "propagation-cost",
+    "version": "1.0.0",
+    "repository": "requests",
+    "repository_url": "https://github.com/psf/requests.git",
+    "commit": "8068356288978c4f54661ae6f95afe0e0831885e",
+    "run_at": "2026-08-17T11:30:39+00:00",
+    "parameters": {
+      "excludes": [
+        ".git",
+        ".hg",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".svn",
+        ".tox",
+        ".venv",
+        "__pycache__",
+        "build",
+        "dist",
+        "env",
+        "node_modules",
+        "venv"
+      ],
+      "include_tests": false,
+      "language": "python",
+      "granularity": "file"
+    }
+  },
+  "estimates": {
+    "propagation_cost": 0.516529,
+    "direct_density": 0.167355
+  },
+  "graph": {
+    "node_count": 22,
+    "edge_count": 81,
+    "unresolved_imports": 0
+  }
+}
