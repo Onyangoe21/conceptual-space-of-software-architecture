@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "estimator": "propagation-cost",
+    "version": "1.0.0",
+    "repository": "flask",
+    "repository_url": "https://github.com/pallets/flask.git",
+    "commit": "d318b683471101618febed18996405ad26462110",
+    "run_at": "2026-08-17T11:30:39+00:00",
+    "parameters": {
+      "excludes": [
+        ".git",
+        ".hg",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".svn",
+        ".tox",
+        ".venv",
+        "__pycache__",
+        "build",
+        "dist",
+        "env",
+        "node_modules",
+        "venv"
+      ],
+      "include_tests": false,
+      "language": "python",
+      "granularity": "file"
+    }
+  },
+  "estimates": {
+    "propagation_cost": 0.581224,
+    "direct_density": 0.112653
+  },
+  "graph": {
+    "node_count": 35,
+    "edge_count": 138,
+    "unresolved_imports": 0
+  }
+}
