@@ -78,10 +78,11 @@ machine could estimate it, and closes with six falsifiable predictions.
 
 ## Read it
 
-- **arXiv version (citable snapshot):** [ARXIV-LINK]
-- **Latest compiled PDF from this repository:** [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
+- **Compiled PDF, the current state of the paper:** [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
 - **LaTeX source, single file:** [`paper/conceptual-space-arxiv.tex`](paper/conceptual-space-arxiv.tex)
-- **What has changed since arXiv v1:** [`paper/CHANGELOG.md`](paper/CHANGELOG.md)
+- **arXiv version, the citable snapshot:** not posted yet. Until it is, the PDF above is the
+  paper, and the commit hash you read it at is the only stable thing to cite.
+- **What has changed, version by version:** [`paper/CHANGELOG.md`](paper/CHANGELOG.md)
 
 Every pull request that touches the paper builds a PDF as a CI artifact, so you can read the
 result of a proposed change without installing LaTeX.
@@ -98,9 +99,10 @@ more migration that moved in the unfashionable direction, one more surveyed syst
 counterexample that the theory has to survive or bend to. Each of those is a small, bounded
 piece of work, and each of them changes what the paper is entitled to claim.
 
-So the model is this. The arXiv version is a snapshot, frozen and citable. This repository is
-where the paper grows. Contributions that are merged here ship in the next arXiv version, with
-credit. See [CONTRIBUTING.md](CONTRIBUTING.md) for the three ways in, [docs/STANDARDS.md](docs/STANDARDS.md)
+So the model is this. Each arXiv version is a snapshot, frozen and citable, and the first one is
+not posted yet. This repository is where the paper grows. Contributions merged here ship in the
+next arXiv version, with credit, and anything merged before v1 goes out with v1. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the three ways in, [docs/STANDARDS.md](docs/STANDARDS.md)
 for the bar, the file format, and the credit ladder in full, and [GOVERNANCE.md](GOVERNANCE.md)
 for who decides what and how release timing works.
 
@@ -228,9 +230,10 @@ rhythm and the release cadence.
 
 ## Citing
 
-Use [CITATION.cff](CITATION.cff), or cite the arXiv version directly. If you are citing a claim
-that entered the paper through a contribution made here, cite the arXiv version that contains
-it, and the contributor is credited in that version's acknowledgments.
+Use [CITATION.cff](CITATION.cff). There is no arXiv identifier yet, so until v1 is posted, cite
+this repository and the commit you read. Once it is posted, cite the arXiv version that contains
+the claim you are relying on, since the paper is revised as evidence accumulates, and the
+contributor whose work carried that claim in is credited in that version's acknowledgments.
 
 ## License
 

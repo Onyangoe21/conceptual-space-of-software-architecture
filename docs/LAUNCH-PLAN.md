@@ -34,8 +34,11 @@ Complete before anything is shared with anyone:
 - [x] Both CI workflows green on the committed paper
 - [x] All labels created
 - [x] Nine issues pre filed by the maintainer as `good-first-contribution`
-- [ ] arXiv identifier filled in everywhere it is currently a placeholder, meaning the arXiv
-      link in `README.md` and the two identifiers in `CITATION.cff`
+- [x] No placeholder identifiers anywhere. `README.md`, `CITATION.cff`, and
+      `paper/CHANGELOG.md` say plainly that v1 is not posted yet, rather than carrying a dead
+      link that a reader will click
+- [ ] arXiv v1 posted, and the identifier added to `README.md`, `CITATION.cff`, and the
+      `paper/CHANGELOG.md` entry for v1
 - [ ] Discussion categories set up. GitHub does not expose category management through its API,
       so this is done by hand in Settings, Discussions: add **Evidence discussion** and
       **Prediction testing**, keep Announcements, Ideas, and Q&A, and remove General, Polls, and

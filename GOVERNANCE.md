@@ -109,8 +109,9 @@ document. Governance issues are open for comment before a decision.
 
 ## Release process
 
-The paper revs to arXiv as v2, v3, and so on, when accumulated merged changes justify a new
-version.
+Version 1 is not posted yet, so the first release is v1 and it carries whatever has been merged
+by then. After that the paper revs to arXiv as v2, v3, and so on, when accumulated merged changes
+justify a new version.
 
 **Cadence.** Roughly quarterly, and never more than once a month. The upper bound is a
 discipline rather than a policy detail. Each arXiv version is a citable object that somebody may
