@@ -1,10 +1,11 @@
 cff-version: 1.2.0
 title: The Conceptual Space of Software Architecture
 message: >-
-  If you use this work, please cite the arXiv version, which is the citable snapshot. Cite the
-  specific version that contains the claim you are relying on, since the paper is revised as
-  evidence accumulates. Contributors are listed in the acknowledgments of the version they
-  contributed to, and in the changelog entry for that version.
+  The arXiv snapshot is not posted yet, so there is no identifier to cite. Until it is, cite this
+  repository and the commit you read the paper at. Once v1 is posted, cite the arXiv version that
+  contains the claim you are relying on, since the paper is revised as evidence accumulates.
+  Contributors are listed in the acknowledgments of the version they contributed to, and in the
+  changelog entry for that version.
 abstract: >-
   What is software architecture, such that a machine could hold it? This paper asks whether
   architecture has a small generating basis, a short list of latent variables such that every
@@ -43,14 +44,10 @@ license:
   - CC-BY-4.0
   - Apache-2.0
 repository-code: https://github.com/Onyangoe21/conceptual-space-of-software-architecture
-identifiers:
-  - type: other
-    value: arXiv:[ARXIV-ID]
-    description: >-
-      The arXiv identifier for the citable snapshot of this paper. Append the version suffix,
-      for example v1 or v2, when citing a specific revision.
+# When arXiv v1 is posted, add the identifier here and restore preferred-citation as an article
+# carrying it, so that citation managers resolve to the frozen snapshot rather than to main.
 preferred-citation:
-  type: article
+  type: unpublished
   title: >-
     The Conceptual Space of Software Architecture: The Latent Variables That Generate
     Architectural Decisions
@@ -63,8 +60,6 @@ preferred-citation:
       affiliation: Tufts University
   year: 2026
   month: 8
-  journal: arXiv preprint
-  identifiers:
-    - type: other
-      value: arXiv:[ARXIV-ID]
-      description: The arXiv identifier for this preprint.
+  url: https://github.com/Onyangoe21/conceptual-space-of-software-architecture
+  notes: >-
+    Manuscript in preparation, revised openly in the repository. Not yet posted to arXiv.

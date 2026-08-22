@@ -1,6 +1,14 @@
 # Evidence
 
-This directory is the paper's empirical base, opened up.
+This directory is where the paper's empirical base gets extended.
+
+To be exact about what is and is not here, since the difference matters. The base the paper
+already argues from, eighteen surveyed systems and five industrial migrations, lives in the paper
+itself, in the tables of [`paper/conceptual-space.pdf`](../paper/conceptual-space.pdf), and it has
+not been broken out into files here. This directory currently holds three files, one per shape,
+committed as reference examples to copy. Everything else in it will arrive as contributions.
+Backfilling the paper's own eighteen rows into files is itself a useful contribution, and it is
+the kind that makes the existing claims checkable rather than taken on trust.
 
 The paper's method is cumulative convergent evidence. It does not argue that its variables are
 real by defining them carefully. It argues that they are real because independent lines of work

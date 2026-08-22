@@ -1,6 +1,6 @@
 # Changelog
 
-Every content change to the paper since arXiv v1, in human readable form.
+Every content change to the paper, version by version, in human readable form.
 
 This file is not a git log. A git log records that a file changed. This records what a reader
 would now take away differently, and who is responsible for the difference. Formatting changes,
@@ -24,17 +24,20 @@ Change categories used below:
 
 ## Unreleased
 
-Changes merged into `main` and awaiting the next arXiv version.
+Changes merged into `main` and awaiting the next arXiv version. Until v1 is posted, anything
+listed here ships inside v1 rather than in a revision after it.
 
 _Nothing yet. This section fills as contributions are merged._
 
 ---
 
-## v1, August 2026
+## v1, not yet posted
 
-Initial arXiv posting. Baseline for everything above.
+Drafted August 2026. This will become the initial arXiv posting, and it is the baseline for
+everything above. Until it is posted there is no frozen snapshot, only the current state of
+`main`, so anything merged before the posting ships inside v1 rather than after it.
 
-The paper as posted: the four graph decomposition of the architectural object, the four tier
+The paper as drafted: the four graph decomposition of the architectural object, the four tier
 basis of seventeen entries, the three triangulating tests, six reduction tests against the
 field's standing vocabulary, an empirical base of eighteen surveyed systems and five industrial
 migrations, an assessment of what a machine can measure against what coding agents currently
@@ -42,4 +45,5 @@ represent, four undischarged limits, and six falsifiable predictions.
 
 Authors: Edwin O Onyango, Walter Wagunde.
 
-No external contributions, since this repository opened after v1 was posted.
+No external contributions yet. Any that land before the posting are named here and in the
+acknowledgments before v1 goes up.
