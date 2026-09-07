@@ -63,6 +63,21 @@ Nothing that affects the paper's content is decided in private channels. If a co
 a contribution starts somewhere else, by email or in person or in a talk after a conference, the
 substance of it gets written back into the public thread before any decision follows from it.
 
+### Objections filed on the web page
+
+The companion document is also readable at
+[curiousedwin.com/publications](https://curiousedwin.com/publications), one entry per source,
+with a form under each entry for disputing how that source was read. An objection filed there is
+an erratum that arrived by a different door, and it is handled as one: the same
+[review threshold](docs/STANDARDS.md#review-thresholds), which is zero approvals, because it gets
+merged when it is right, and the same rung of the
+[credit ladder](docs/STANDARDS.md#the-credit-ladder-in-full), which is rung one, automatically,
+for anything merged. The form is a private channel, so the paragraph above applies to it without
+exception. Before an entry changes, the objection and the reasoning on it are written into a
+public thread, where somebody other than the person who received them can argue with both. The
+form asks for an email so that a reply can be sent and a name credited as its owner writes it,
+and leaving it blank costs the objection nothing.
+
 ### Resolving disputes about whether evidence meets the bar
 
 When it is unclear whether a contribution clears the bar, and when a contributor disagrees with
