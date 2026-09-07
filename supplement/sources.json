@@ -1,0 +1,1653 @@
+[
+  {
+    "key": "abran2006",
+    "authors": "Abran, A., Meridji, K., Dolado, J. J.",
+    "year": "2006",
+    "title": "Software engineering from an engineering perspective: SWEBOK as a study object",
+    "venue": "UPGRADE/Novatica 7(1):46-52",
+    "url": "https://www.cepis.org/upgrade/index.jsp?p=2145&n=2152",
+    "kind": "agreed",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That Vincenti's taxonomy was mapped onto the software engineering body of knowledge.",
+    "how_read": "Cited only to show the transfer had been done.",
+    "could_be_wrong": "Nothing rests on it beyond priority."
+  },
+  {
+    "key": "acton2014",
+    "authors": "Acton, M.",
+    "year": "2014",
+    "title": "Data-oriented design and C++",
+    "venue": "CppCon 2014; slide text from the official deck",
+    "url": "https://www.youtube.com/watch?v=rX0ItVEVjHc",
+    "open": "https://github.com/CppCon/CppCon2014/tree/master/Presentations/Data-Oriented%20Design%20and%20C%2B%2B",
+    "kind": "agreed (practitioner argument with cache-line accounting)",
+    "used_in": [
+      "The Test",
+      "How Conditions Are Lost"
+    ],
+    "supports": "That when cost is dominated by memory layout the expensive decision is made when the data structure is chosen, and the practitioner's own cache-line arithmetic for the store-versus-recompute inversion.",
+    "how_read": "Read as a public document in which a practitioner states which two costs are being traded and why one moved. The roughly ten-to-one L2 wait figure is Acton's.",
+    "could_be_wrong": "Acton's domain is games, where the regime is unusually memory-bound; the paper treats it as one case in the inversion table, not as universal."
+  },
+  {
+    "key": "aggarwal1987",
+    "authors": "Aggarwal, A., Alpern, B., Chandra, A. K., Snir, M.",
+    "year": "1987",
+    "title": "A model for hierarchical memory",
+    "venue": "Proc. STOC 1987",
+    "url": "https://doi.org/10.1145/28395.28428",
+    "kind": "agreed",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That the classical hierarchical-memory model justifies its cost function by the Mead and Conway log-delay model rather than by geometry.",
+    "how_read": "Read as evidence that the geometric argument was not part of the standard theoretical account, which supports the paper's point that the theorem travels without its derivation.",
+    "could_be_wrong": "The HMM authors may have regarded the geometric argument as obvious rather than absent; the paper reads absence from the text, not from the authors' minds."
+  },
+  {
+    "key": "alexander1977",
+    "authors": "Alexander, C., Ishikawa, S., Silverstein, M.",
+    "year": "1977",
+    "title": "A Pattern Language",
+    "venue": "Oxford University Press",
+    "url": "https://global.oup.com/academic/product/a-pattern-language-9780195019193",
+    "kind": "agreed",
+    "used_in": [
+      "Three Kinds of Knowledge",
+      "The Cost of a Decision"
+    ],
+    "supports": "That the pattern form asks for context and forces, qualitatively.",
+    "how_read": "Read as the nearest existing format to the practice record, and as the one place where rules have been published with conditions for fifty years.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "amdahl1967",
+    "authors": "Amdahl, G. M.",
+    "year": "1967",
+    "title": "Validity of the single processor approach to achieving large scale computing capabilities",
+    "venue": "AFIPS Conference Proceedings 30:483-485",
+    "url": "https://doi.org/10.1145/1465482.1465560",
+    "open": "https://www.cis.upenn.edu/~milom/cis501-Fall09/papers/amdahl-1967.pdf",
+    "kind": "agreed (an argument with an empirical constant)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That the paper contains no equations and one figure, and that it contains an empirical constant (data-management overhead near 40 percent of executed instructions, stable for about ten years) and an explicitly named operating point.",
+    "how_read": "Read against the folklore: the algebra called Amdahl's law is a later formalisation that dropped the constant and silently fixed the problem size. The paper's claim that this took twenty-one years to notice rests on Gustafson 1988.",
+    "could_be_wrong": "Others had noted scaled speedup before Gustafson; Gustafson is the note that made it stick. The 'no equations' claim is about the published text and is checkable.",
+    "explainer": "A job with ten seconds of unsplittable work never runs faster than ten seconds however many processors it is given (Amdahl). Give a thousand processors a thousand times bigger job and the same arithmetic yields near-linear speedup (Gustafson). One algebra, a different variable held fixed."
+  },
+  {
+    "key": "anderson1982",
+    "authors": "Anderson, J. R.",
+    "year": "1982",
+    "title": "Acquisition of cognitive skill",
+    "venue": "Psychological Review 89(4):369-406",
+    "url": "https://doi.org/10.1037/0033-295X.89.4.369",
+    "kind": "measured (a theory with experimental support)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That knowledge begins declarative and becomes procedural through compilation, after which the declarative source is not retrievable from the procedure.",
+    "how_read": "Read as the first of three mechanisms by which conditions get lost. The claim that the condition is 'not present in the representation that fires' is the paper's gloss on knowledge compilation.",
+    "could_be_wrong": "ACT theory has been revised repeatedly; the paper uses only the compilation idea, which survived."
+  },
+  {
+    "key": "anderson2016",
+    "authors": "Anderson, D. J., Carmichael, A.",
+    "year": "2016",
+    "title": "Essential Kanban Condensed",
+    "venue": "Lean Kanban University Press",
+    "url": "https://kanban.university/kanban-guide/",
+    "kind": "agreed",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That the Kanban literature states Little's law, draws the causal conclusion, and then adds stationarity and no-loss conditions.",
+    "how_read": "Read as the practice's own assumption list being stronger than the theorem's, which the paper takes as the authors correctly sensing they need more than the identity gives.",
+    "could_be_wrong": "The paper's reading is charitable to the authors; a stricter reading is that the causal claim is simply unsupported."
+  },
+  {
+    "key": "appuswamy2019",
+    "authors": "Appuswamy, R., Borovica-Gajic, R., Graefe, G., Ailamaki, A.",
+    "year": "2019",
+    "title": "The five-minute rule 30 years later and its impact on the storage hierarchy",
+    "venue": "Communications of the ACM 62(11)",
+    "url": "https://doi.org/10.1145/3318163",
+    "kind": "measured",
+    "used_in": [
+      "The Test",
+      "How Conditions Are Lost"
+    ],
+    "supports": "Memory/disk about four hours, memory/flash about five minutes at 4 KB pages, flash/disk a day or more, and the mechanism: falling DRAM cost dominated the economic ratio while flash improved IOPS about elevenfold against disk's 2.5x.",
+    "how_read": "The paper notes that the 2019 CACM version is numerically distinct from the 2017 ADMS workshop version and should not be merged with it.",
+    "could_be_wrong": "None beyond the original's own approximations."
+  },
+  {
+    "key": "arthur1989",
+    "authors": "Arthur, W. B.",
+    "year": "1989",
+    "title": "Competing technologies, increasing returns, and lock-in by historical events",
+    "venue": "Economic Journal 99:116-131",
+    "url": "https://doi.org/10.2307/2234208",
+    "kind": "agreed (a model)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The general model of lock-in by historical accident.",
+    "how_read": "Cited with David as the economic lineage.",
+    "could_be_wrong": "None specific."
+  },
+  {
+    "key": "bennett1973",
+    "authors": "Bennett, C. H.",
+    "year": "1973",
+    "title": "Logical reversibility of computation",
+    "venue": "IBM Journal of Research and Development 17(6):525-532",
+    "url": "https://doi.org/10.1147/rd.176.0525",
+    "kind": "proved",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That computation can be carried out reversibly if a history is retained, so the only unavoidable dissipation is the final erasure.",
+    "how_read": "Used to restrict Landauer's bound to erasure. This is the first of the two scope conditions the paper insists on.",
+    "could_be_wrong": "Reversible computation in practice carries space and time overheads the paper does not discuss; it uses Bennett only to locate the cost, not to argue that reversible machines are practical."
+  },
+  {
+    "key": "bernard2002",
+    "authors": "Bernard, M., Fernandez, M., Hull, S.",
+    "year": "2002",
+    "title": "The effects of line length on children and adults' online reading performance",
+    "venue": "Usability News 4(2)",
+    "url": "https://psychology.wichita.edu/surl/usabilitynews/42/text_length.asp",
+    "kind": "measured",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "No significant difference in reading speed across 45, 76 and 132 characters per line.",
+    "how_read": "Same use as Dyson.",
+    "could_be_wrong": "Small-sample usability study; the paper treats it as one data point."
+  },
+  {
+    "key": "berut2012",
+    "authors": "Berut, A. et al.",
+    "year": "2012",
+    "title": "Experimental verification of Landauer's principle linking information and thermodynamics",
+    "venue": "Nature 483:187-189",
+    "url": "https://doi.org/10.1038/nature10872",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That the bound has been measured, first in a colloidal particle in an optical trap.",
+    "how_read": "Taken as the first of four measurements. The paper says the measurements establish that the tested devices obey the bound, not that erasure as such carries it.",
+    "could_be_wrong": "Norton has argued that these experiments do not test what they claim to; the paper reports the dispute rather than settling it."
+  },
+  {
+    "key": "bilardi2009",
+    "authors": "Bilardi, G., Ekanadham, K., Pattnaik, P.",
+    "year": "2009 (conference 2002)",
+    "title": "On approximating the ideal random access machine by physical machines",
+    "venue": "Journal of the ACM 56(5), Article 27; earlier Proc. SPAA 2002, pp. 109-116",
+    "url": "https://doi.org/10.1145/1552285.1552288",
+    "open": "https://doi.org/10.1145/564870.564893",
+    "kind": "proved",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That latency to address x is Omega(x^(1/d)) in d dimensions, from bounded device size and bounded signal speed, and that a pipelined hierarchical memory achieves O(x^(1/d)).",
+    "how_read": "This is the load-bearing theorem of the paper. The upper-bound abstract is quoted verbatim from the journal version. The lower bound is taken from the conference abstract, and the journal abstract names the two physical assumptions (minimum device size, maximum signal speed) and calls the hierarchy's latency optimal. The paper reads the result as the reason the storage hierarchy exists, and insists on three scope conditions: latency to address x rather than average latency; reliance on a density bound; latency rather than throughput.",
+    "could_be_wrong": "The lower bound's exact wording has not been checked against the full text, and the paper says so. The density assumption is of Bekenstein type and its scope is under investigation (Hayden and Wang 2025). A reader could also argue that practical hierarchies are shaped far more by cost than by this bound; the paper's reply is that the bound explains why no amount of cost removes the hierarchy, not why it has its current shape.",
+    "explainer": "Pack x memory cells around a processor. In a line the farthest is about x away; in a sheet about the square root of x; in a ball about the cube root. A signal must travel there and back at finite speed, so latency grows at least as x^(1/d). The world has three dimensions."
+  },
+  {
+    "key": "bozkurt2017",
+    "authors": "Bozkurt, I. N. et al.",
+    "year": "2017",
+    "title": "Why is the Internet so slow?!",
+    "venue": "Proc. PAM 2017",
+    "url": "https://doi.org/10.1007/978-3-319-54328-4_13",
+    "open": "https://www.cs.duke.edu/~bozkurt/pam17-slow-internet.pdf",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That median fetch times are about 36 times the speed-of-light floor and minimum ping about 3 times it.",
+    "how_read": "The multiples are taken from the paper's abstract. The paper pairs them with its own fibre-floor arithmetic for New York to London.",
+    "could_be_wrong": "The measurements are from 2016 and from a specific vantage-point set; the multiples have likely moved. The paper's forward claim is about the direction (the gap can only shrink), not the current value."
+  },
+  {
+    "key": "brooks1987",
+    "authors": "Brooks, F. P.",
+    "year": "1987",
+    "title": "No silver bullet: essence and accidents of software engineering",
+    "venue": "IEEE Computer 20(4):10-19",
+    "url": "https://doi.org/10.1109/MC.1987.1663532",
+    "open": "https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf",
+    "kind": "agreed",
+    "supports": "That the conceptual construct of a program (its essence) is distinct from its representation (the accidents), and that the accidents were expected to shrink while the essence would not. The software intention of this paper is a neighbour of Brooks's essence.",
+    "how_read": "Read for the essence/accident distinction and the prediction attached to it. The paper treats the collapse of production cost as the accidents shrinking, as Brooks expected, and the software intention as the essence made concrete enough to have coordinates.",
+    "could_be_wrong": "Brooks's essence includes the whole conceptual construct, including what the paper puts in the first tier (what is wanted). The software intention is narrower: what the machine is to be told. If a reader takes the two as identical, the paper's claim that the first tier is out of scope contradicts the borrowing.",
+    "used_in": [
+      "The Interpreter"
+    ]
+  },
+  {
+    "key": "buse2010",
+    "authors": "Buse, R. P. L., Weimer, W.",
+    "year": "2010",
+    "title": "Learning a metric for code readability",
+    "venue": "IEEE Transactions on Software Engineering 36(4):546-558",
+    "url": "https://doi.org/10.1109/TSE.2009.70",
+    "open": "https://web.eecs.umich.edu/~weimerw/p/weimer-tse2010-readability-preprint.pdf",
+    "kind": "measured",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That characters per line strongly influence a readability metric trained on human ratings.",
+    "how_read": "Read as close to circular for the paper's question, because it measures agreement with opinion rather than any outcome.",
+    "could_be_wrong": "The authors would fairly say the metric predicts defects and maintenance outcomes in later work; the paper does not pursue that."
+  },
+  {
+    "key": "c11",
+    "authors": "ISO/IEC",
+    "year": "2011",
+    "title": "ISO/IEC 9899:2011, draft N1570, section 5.1.2.3 paragraph 6",
+    "venue": "C standard",
+    "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+    "kind": "agreed (a standard)",
+    "used_in": [
+      "Code",
+      "The Limit"
+    ],
+    "supports": "That implementations need emulate '(only) the observable behavior of the abstract machine'.",
+    "how_read": "Read as a preserved quantity written down in a parenthesis, after which optimisation could become mechanical.",
+    "could_be_wrong": "The as-if rule predates C11; the paper cites the draft that is freely available."
+  },
+  {
+    "key": "chipsandcheese",
+    "authors": "Lam, C.",
+    "year": "2022",
+    "title": "AMD's Zen 4, part 2: memory subsystem",
+    "venue": "Chips and Cheese, 8 November 2022",
+    "url": "https://chipsandcheese.com/2022/11/08/amds-zen-4-part-2-memory-subsystem-and-conclusion/",
+    "kind": "measured",
+    "used_in": [
+      "Eight Idealisations",
+      "The Test"
+    ],
+    "supports": "A DRAM latency of about 73 ns on Zen 4 at boost clock.",
+    "how_read": "The cycle conversion (about 420) is the paper's. The paper repeats the author's warning that the measurement used two-megabyte pages, which is not how most applications access memory, and therefore treats 420 as a floor.",
+    "could_be_wrong": "Same configuration caveat as 7-cpu."
+  },
+  {
+    "key": "church1936",
+    "authors": "Church, A.",
+    "year": "1936",
+    "title": "An unsolvable problem of elementary number theory",
+    "venue": "American Journal of Mathematics 58(2):345-363",
+    "url": "https://doi.org/10.2307/2371045",
+    "kind": "proved",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That the lambda calculus is one of the equivalent formalisms of the 1930s.",
+    "how_read": "Cited for the equivalence result only. The paper's claim that the lambda calculus cannot be audited for zeroed costs is the paper's own observation about the formalism, not something Church says.",
+    "could_be_wrong": "A reader could object that cost models for the lambda calculus exist (for example, counting beta reductions). The paper's point is narrower: the calculus has no notion of location, so it cannot be charged for distance, and that is the cost the paper is after.",
+    "explainer": "The lambda calculus is a notation for functions and for substituting arguments into them. A computation is a sequence of rewrites. It has no tape and no head, so there is no such thing in it as where a value is."
+  },
+  {
+    "key": "codd1970",
+    "authors": "Codd, E. F.",
+    "year": "1970",
+    "title": "A relational model of data for large shared data banks",
+    "venue": "Communications of the ACM 13(6):377-387",
+    "url": "https://doi.org/10.1145/362384.362685",
+    "kind": "proved (a formal model)",
+    "used_in": [
+      "How Conditions Are Lost",
+      "The Limit"
+    ],
+    "supports": "That the paper opens by stating an obligation owed to users (protection from having to know how data is organised), and that relational algebra made query planning mechanical.",
+    "how_read": "Read twice: as the first move of the normalise/denormalise cycle, and as an example of a preserved quantity being written down so that generation could follow.",
+    "could_be_wrong": "None specific."
+  },
+  {
+    "key": "conway1968",
+    "authors": "Conway, M. E.",
+    "year": "1968",
+    "title": "How do committees invent?",
+    "venue": "Datamation 14(4):28-31",
+    "url": "https://www.melconway.com/Home/Committees_Paper.html",
+    "kind": "agreed (an observation)",
+    "used_in": [
+      "Rows"
+    ],
+    "supports": "That Conway claimed a homomorphism from the system's linear graph to the organisation's, not an isomorphism.",
+    "how_read": "Read from Conway's own text. The paper's reinterpretation of the law as a cost law over organisation-row reads is the paper's own.",
+    "could_be_wrong": "Conway's exact words are 'homomorphism'; whether he intended the mathematical sense strictly is arguable. The paper uses only the weaker direction."
+  },
+  {
+    "key": "dally2022",
+    "authors": "Dally, W.",
+    "year": "2022",
+    "title": "On the model of computation: point",
+    "venue": "Communications of the ACM 65(9):30-32",
+    "url": "https://doi.org/10.1145/3548783",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine",
+      "The Test"
+    ],
+    "supports": "That uniform-cost memory access does not exist, that cost is distance, and that the model of computation must be extended to say so. Also the four-orders-of-magnitude energy asymmetry between a memory fetch and an add.",
+    "how_read": "Read as the closest published statement of the paper's method by a working architect. The paper credits the move of putting costs back to Dally and claims only the systematic version. The energy figure is taken as stated in the article, without recomputation.",
+    "could_be_wrong": "Dally's piece is a 'point' in a point-counterpoint; the counterpoint argues that the RAM model remains adequate for algorithm design. The paper sides with Dally for engineering while conceding the counterpoint for algorithmics. The energy figure depends on process node and memory type and should be treated as an order of magnitude."
+  },
+  {
+    "key": "david1985",
+    "authors": "David, P. A.",
+    "year": "1985",
+    "title": "Clio and the economics of QWERTY",
+    "venue": "American Economic Review 75(2):332-337",
+    "url": "https://www.jstor.org/stable/1805621",
+    "kind": "agreed (economic history)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That a practice optimal for a lapsed regime can be retained by convention and network effects.",
+    "how_read": "Read as the general form of the paper's claim about lapsed rules. The paper credits the idea here and claims only its expression as a minimisation over a cost model.",
+    "could_be_wrong": "The QWERTY story itself has been disputed (Liebowitz and Margolis); the paper uses the mechanism, not the example's details."
+  },
+  {
+    "key": "dennard1974",
+    "authors": "Dennard, R. H. et al.",
+    "year": "1974",
+    "title": "Design of ion-implanted MOSFETs with very small physical dimensions",
+    "venue": "IEEE Journal of Solid-State Circuits 9(5):256-268",
+    "url": "https://doi.org/10.1109/JSSC.1974.1050511",
+    "kind": "measured (a conditional scaling result)",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That scaling dimensions and voltage together by a common factor keeps power density constant.",
+    "how_read": "Read as a conditional result, and the paper is explicit that its end is physical (subthreshold leakage) while the industry's response (multicore) was a choice. The subthreshold-swing floor of about 60 mV per decade is textbook device physics rather than Dennard's own content.",
+    "could_be_wrong": "The story of Dennard scaling's end is more complicated than leakage alone (wire delay, lithography cost). The paper picks the cleanest physical floor and says so.",
+    "explainer": "A transistor is a switch controlled by a voltage. Shrink its dimensions and voltage together and power per unit area stays constant. But a transistor never fully turns off, the leak grows exponentially as the threshold falls, and how sharply it can turn off has a thermal floor. Below some voltage the leakage dominates and shrinking stops saving power."
+  },
+  {
+    "key": "devanbu2016",
+    "authors": "Devanbu, P., Zimmermann, T., Bird, C.",
+    "year": "2016",
+    "title": "Belief and evidence in empirical software engineering",
+    "venue": "Proc. ICSE 2016",
+    "url": "https://doi.org/10.1145/2884781.2884812",
+    "open": "https://www.microsoft.com/en-us/research/publication/belief-evidence-in-empirical-software-engineering/",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "About 2,500 Microsoft professionals surveyed, 564 responses; beliefs vary by project but do not correspond to project evidence; formed from personal experience; research papers rank second-lowest as a source.",
+    "how_read": "Read as a test of the prediction that the three mechanisms jointly make: practitioners hold beliefs not indexed to their own project's conditions.",
+    "could_be_wrong": "One company; the paper does not claim generality beyond the shape of the finding."
+  },
+  {
+    "key": "dhh2023",
+    "authors": "Heinemeier Hansson, D.",
+    "year": "2023",
+    "title": "We have left the cloud",
+    "venue": "world.hey.com, 23 June 2023",
+    "url": "https://world.hey.com/dhh/we-have-left-the-cloud-251760fb",
+    "kind": "agreed (practitioner account)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "A $3.2m cloud budget, a $1.5m projected saving, and the regime under which renting stays right.",
+    "how_read": "Included specifically because the practitioner states the conditions under which his own decision would reverse.",
+    "could_be_wrong": "Figures are the author's own projections."
+  },
+  {
+    "key": "dyson2004",
+    "authors": "Dyson, M. C.",
+    "year": "2004",
+    "title": "How physical text layout affects reading from screen",
+    "venue": "Behaviour and Information Technology 23(6):377-393",
+    "url": "https://doi.org/10.1080/01449290410001715714",
+    "kind": "measured (review)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That longer lines are read faster, that about 55 characters was rated easiest but not read fastest, and that subjective judgments fail to agree with performance.",
+    "how_read": "Read as the strongest evidence that the direction of the rule (shorter is better) does not follow from reading research on prose.",
+    "could_be_wrong": "Screen-reading research from the early 2000s used displays very different from today's; and it is about prose, which the paper stresses."
+  },
+  {
+    "key": "earman1999",
+    "authors": "Earman, J., Norton, J. D.",
+    "year": "1998-99",
+    "title": "Exorcist XIV: the wrath of Maxwell's demon, parts I and II",
+    "venue": "Studies in History and Philosophy of Modern Physics 29:435-471 and 30:1-40",
+    "url": "https://doi.org/10.1016/S1355-2198(98)00023-9",
+    "kind": "disputed",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That the standard derivations of Landauer's principle assume what they set out to prove.",
+    "how_read": "Reported as the serious side of a live dispute. The paper does not adjudicate.",
+    "could_be_wrong": "The dispute has moved on since 1999 (Bennett 2003, Ladyman et al. 2007, Norton 2011); the paper cites the origin and Norton 2005 rather than the full exchange."
+  },
+  {
+    "key": "eswaran1976",
+    "authors": "Eswaran, K. P., Gray, J. N., Lorie, R. A., Traiger, I. L.",
+    "year": "1976",
+    "title": "The notions of consistency and predicate locks in a database system",
+    "venue": "Communications of the ACM 19(11):624-633",
+    "url": "https://doi.org/10.1145/360363.360369",
+    "kind": "proved",
+    "used_in": [
+      "The Limit"
+    ],
+    "supports": "Serial equivalence as the preserved quantity that made concurrency control mechanical.",
+    "how_read": "Same use as the C standard and Codd: a written-down invariant followed by automation.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "fallacies",
+    "authors": "Deutsch, L. P. and colleagues; explicated by Rotem-Gal-Oz, A.",
+    "year": "c. 1994; 2006",
+    "title": "The fallacies of distributed computing",
+    "venue": "Informal; Rotem-Gal-Oz's white paper",
+    "url": "https://www.rgoarchitects.com/Files/fallacies.pdf",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That the folk version of the audit already exists, as a list of zeroed costs in the form practitioners meet them.",
+    "how_read": "The eight fallacies are read as an informal subset of the idealisations, restricted to idealisation 4. The paper claims the systematic version.",
+    "could_be_wrong": "Attribution of the list is uncertain (Deutsch, Gosling, Lyon and others are variously credited). The paper cites the standard explication rather than an original."
+  },
+  {
+    "key": "flp1985",
+    "authors": "Fischer, M. J., Lynch, N. A., Paterson, M. S.",
+    "year": "1985",
+    "title": "Impossibility of distributed consensus with one faulty process",
+    "venue": "Journal of the ACM 32(2):374-382",
+    "url": "https://doi.org/10.1145/3149.214121",
+    "open": "https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf",
+    "kind": "proved",
+    "supports": "That in an asynchronous system no deterministic protocol guarantees consensus if one process may crash. This is the second wall.",
+    "how_read": "Read for the impossibility statement only. The paper uses it to show that distributed designs are forced to choose what to give up and that the theorem does not make the choice.",
+    "could_be_wrong": "The result is for the fully asynchronous model with crash failures; practical systems escape it with partial synchrony, randomisation or failure detectors. The paper says the theorem forbids a guarantee, not that consensus is unachievable in practice, and a reader who takes it the second way has been misled.",
+    "used_in": [
+      "Walls"
+    ]
+  },
+  {
+    "key": "gamma1994",
+    "authors": "Gamma, E., Helm, R., Johnson, R., Vlissides, J.",
+    "year": "1994",
+    "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "venue": "Addison-Wesley",
+    "url": "https://www.pearson.com/en-us/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480",
+    "kind": "agreed",
+    "used_in": [
+      "Three Kinds of Knowledge",
+      "The Cost of a Decision"
+    ],
+    "supports": "The software pattern form, with its Applicability and Consequences sections.",
+    "how_read": "Same use as Alexander.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "gandy1980",
+    "authors": "Gandy, R.",
+    "year": "1980",
+    "title": "Church's thesis and principles for mechanisms",
+    "venue": "The Kleene Symposium, North-Holland",
+    "url": "https://doi.org/10.1016/S0049-237X(08)71257-6",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "The standard account of why Turing's analysis of a human computer was more persuasive than Church's stipulated definition.",
+    "how_read": "Taken as the origin of the modern reading that Turing's argument works by analysing the computor rather than by defining computability. The paper uses this account for a purpose Gandy did not have: choosing which formalism can be audited.",
+    "could_be_wrong": "Gandy's own contribution is about mechanisms in general, not human computors specifically; the paper cites him as part of a lineage rather than for a specific claim."
+  },
+  {
+    "key": "gilbertlynch2002",
+    "authors": "Gilbert, S., Lynch, N.",
+    "year": "2002",
+    "title": "Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services",
+    "venue": "ACM SIGACT News 33(2):51-59",
+    "url": "https://doi.org/10.1145/564585.564601",
+    "open": "https://users.ece.cmu.edu/~adrian/731-sp04/readings/GL-cap.pdf",
+    "kind": "proved",
+    "supports": "That a service cannot at once be linearisable, always available and tolerant of partitions. Cited as the second half of the second wall.",
+    "how_read": "Read as a proved statement of what cannot be had together, and used to show that even a wall hands the decision back to the prices, because it forbids all three and says nothing about which two to keep.",
+    "could_be_wrong": "The theorem's consistency is linearisability and its availability is every request to a non-failing node getting a response; weaker definitions of either dissolve the trade-off. The folklore 'pick two' reading is stronger than the theorem, and the paper should not be read as endorsing it.",
+    "used_in": [
+      "Walls"
+    ]
+  },
+  {
+    "key": "gluck2020",
+    "authors": "Gluck, A.",
+    "year": "2020",
+    "title": "Introducing domain-oriented microservice architecture",
+    "venue": "Uber Engineering Blog, 23 July 2020",
+    "url": "https://www.uber.com/blog/microservice-architecture/",
+    "kind": "agreed (practitioner account)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "Fifty services across twelve teams touched for one root cause.",
+    "how_read": "Same use as Noonan.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "graefe2007",
+    "authors": "Graefe, G.",
+    "year": "2007",
+    "title": "The five-minute rule twenty years later (and how flash memory changes the rules)",
+    "venue": "Proc. DaMoN 2007; republished ACM Queue 6(4), 2008",
+    "url": "https://doi.org/10.1145/1363189.1363198",
+    "open": "https://queue.acm.org/detail.cfm?id=1413264",
+    "kind": "measured",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The split into three crossovers with flash present: memory/disk about 90 minutes, memory/flash about 15 minutes, flash/disk about 2.25 hours, and the invitation to recompute for one's own equipment.",
+    "how_read": "Numbers taken as stated.",
+    "could_be_wrong": "The DaMoN and Queue versions differ slightly in presentation; the paper cites both."
+  },
+  {
+    "key": "gray1987",
+    "authors": "Gray, J., Putzolu, G. R.",
+    "year": "1987",
+    "title": "The 5 minute rule for trading memory for disc accesses and the 10 byte rule for trading memory for CPU time",
+    "venue": "Proc. ACM SIGMOD 1987, pp. 395-398",
+    "url": "https://doi.org/10.1145/38713.38755",
+    "open": "https://dsf.berkeley.edu/cs286/papers/fiveminute-sigmod1987.pdf",
+    "kind": "measured (a formula with stated inputs)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The break-even formula A$/(M$ x B), the 1987 inputs, the 400-second result, and the warning that the constants depend on price ratios that change.",
+    "how_read": "This is the paper's model of a practice published with its conditions. The arithmetic in the paper is reconstructed from the stated inputs. The warning sentence is quoted verbatim.",
+    "could_be_wrong": "The 1987 inputs are approximate in the original ('about'); the paper's reconstruction rounds the same way. The paper does not discuss the ten-byte rule."
+  },
+  {
+    "key": "graygraefe1997",
+    "authors": "Gray, J., Graefe, G.",
+    "year": "1997",
+    "title": "The five-minute rule ten years later, and other computer storage rules of thumb",
+    "venue": "ACM SIGMOD Record 26(4):63-68",
+    "url": "https://doi.org/10.1145/271074.271094",
+    "kind": "measured",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The 266-second recomputation and the observation that page size growth absorbed the price change.",
+    "how_read": "The page-size point is the paper's most-used detail: it shows why a formula is needed to see that a headline was right for the wrong reason.",
+    "could_be_wrong": "None beyond the original's own approximations."
+  },
+  {
+    "key": "grier2005",
+    "authors": "Grier, D. A.",
+    "year": "2005",
+    "title": "When Computers Were Human",
+    "venue": "Princeton University Press",
+    "url": "https://press.princeton.edu/books/paperback/9780691133829/when-computers-were-human",
+    "kind": "agreed (history)",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "Prony's division of computational labour on the model of Adam Smith's pin factory; the practice of duplicate computation as an error check; the organisation of computing rooms.",
+    "how_read": "Used to show that the real clerks of the period were already paying the idealisations: writing the sheet for bounded people, redundancy against errors, the cost of moving results. Richardson's forecast factory is from Richardson's own 1922 book, well known and not separately cited.",
+    "could_be_wrong": "The paper's mapping of each historical practice onto a idealisation is its own reading."
+  },
+  {
+    "key": "grudin1996",
+    "authors": "Grudin, J.",
+    "year": "1996",
+    "title": "Evaluating opportunities for design capture",
+    "venue": "Design Rationale: Concepts, Techniques, and Use, Lawrence Erlbaum",
+    "url": "https://www.microsoft.com/en-us/research/publication/evaluating-opportunities-for-design-capture/",
+    "kind": "agreed",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That in rationale capture the person who does the capturing is not the person who benefits.",
+    "how_read": "The paper's sentence 'nobody has ever been promoted for writing down the conditions under which their own advice would stop being correct' is a paraphrase of Grudin's point.",
+    "could_be_wrong": "None specific."
+  },
+  {
+    "key": "gunter2000",
+    "authors": "Gunter, C. A., Gunter, E. L., Jackson, M., Zave, P.",
+    "year": "2000",
+    "title": "A reference model for requirements and specifications",
+    "venue": "IEEE Software 17(3):37-43",
+    "url": "https://doi.org/10.1109/52.841999",
+    "open": "http://egunter.cs.illinois.edu/papers/ICRE2000.pdf",
+    "kind": "agreed",
+    "supports": "The world, requirements, specification, program, machine layering, which the paper's three tiers inherit: tier one works from world to requirements, tier two from requirements to specification, tier three from specification to program.",
+    "how_read": "Read as the layering the paper does not claim. What the paper adds is an account of what shapes the specification (walls and prices) and what happens when specification-to-program becomes free.",
+    "could_be_wrong": "The reference model's artefacts are formal objects with proof obligations; the paper's software intention is not required to be formal, so the mapping of tiers onto WRSPM is a correspondence, not an identity.",
+    "used_in": [
+      "The Interpreter"
+    ]
+  },
+  {
+    "key": "gustafson1988",
+    "authors": "Gustafson, J. L.",
+    "year": "1988",
+    "title": "Reevaluating Amdahl's law",
+    "venue": "Communications of the ACM 31(5):532-533",
+    "url": "https://doi.org/10.1145/42411.42415",
+    "open": "https://www.johngustafson.net/pubs/pub13/amdahl.htm",
+    "kind": "agreed (with measurements)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The recovery of the fixed-size assumption ('it may be most realistic to assume that run time, not problem size, is constant') and measured speedups near 1020 on 1024 processors.",
+    "how_read": "The quoted sentence is verbatim. The paper reads the note as a condition being put back rather than as a rival law.",
+    "could_be_wrong": "Gustafson's own framing is as a reevaluation, not a recovery of a deleted condition; that reading is the paper's."
+  },
+  {
+    "key": "hayden2025",
+    "authors": "Hayden, P., Wang, J.",
+    "year": "2025",
+    "title": "On the Bekenstein bound",
+    "venue": "Quantum 9:1664",
+    "url": "https://doi.org/10.22331/q-2025-03-11-1664",
+    "open": "https://arxiv.org/abs/2409.07894",
+    "kind": "disputed",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That the density bound underlying the latency theorem is still under active investigation.",
+    "how_read": "Used only to keep the paper honest about the physics under the theorem. Nothing in the engineering argument depends on the exact form of the Bekenstein bound.",
+    "could_be_wrong": "The paper may overstate the dependence: Bilardi et al.'s argument needs only that devices have a minimum size, which is far weaker than the Bekenstein bound."
+  },
+  {
+    "key": "hennessy2019",
+    "authors": "Hennessy, J. L., Patterson, D. A.",
+    "year": "2019",
+    "title": "A new golden age for computer architecture",
+    "venue": "Communications of the ACM 62(2):48-60",
+    "url": "https://doi.org/10.1145/3282307",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills",
+      "Eight Idealisations"
+    ],
+    "supports": "The dating of Dennard scaling's end (slowed significantly in 2007, faded by 2012), and the DRAM latency versus processor performance growth rates (about 1.07 versus 1.25 to 1.52 per year).",
+    "how_read": "The quotation is verbatim. The growth rates are the standard figures the authors have carried across editions of their textbook.",
+    "could_be_wrong": "The growth rates are historical averages over different eras; the paper uses them for the direction and rough magnitude of the memory wall, not for any precise ratio."
+  },
+  {
+    "key": "hodges1983",
+    "authors": "Hodges, A.",
+    "year": "1983",
+    "title": "Alan Turing: The Enigma",
+    "venue": "Burnett Books; later editions Princeton University Press",
+    "url": "https://press.princeton.edu/books/paperback/9780691164724/alan-turing",
+    "kind": "agreed (biography)",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That the 1936 paper originated in Newman's spring 1935 Cambridge lectures on the foundations of mathematics, which posed Hilbert's Entscheidungsproblem, and that Turing's aim was to settle that problem rather than to mechanise clerical work.",
+    "how_read": "Used to correct a tempting but wrong motive. The paper states that Turing was not asking whether a machine could replace the clerk, and that the description of the clerk was the means of making 'mechanical' precise.",
+    "could_be_wrong": "Biographical reconstruction of motive is always partly inference; the paper's own title, which names the Entscheidungsproblem, is the primary evidence and Hodges the secondary."
+  },
+  {
+    "key": "hong2016",
+    "authors": "Hong, J., Lambson, B., Dhuey, S., Bokor, J.",
+    "year": "2016",
+    "title": "Experimental test of Landauer's principle in single-bit operations on nanomagnetic memory bits",
+    "venue": "Science Advances 2(3):e1501492",
+    "url": "https://doi.org/10.1126/sciadv.1501492",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "A measurement in a nanomagnetic system, closer to a real memory technology.",
+    "how_read": "Same use as Berut.",
+    "could_be_wrong": "Same caveat as Berut."
+  },
+  {
+    "key": "hpqa",
+    "authors": "Hennessy, J. L., Patterson, D. A.",
+    "year": "various editions",
+    "title": "Computer Architecture: A Quantitative Approach, chapter 2",
+    "venue": "Morgan Kaufmann",
+    "url": "https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1",
+    "kind": "agreed",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That the textbook rationale for the memory hierarchy is locality plus the observation that smaller hardware can be made faster, an argument from economics and manufacturing.",
+    "how_read": "Same use as Aggarwal: the standard account does not carry the geometric necessity.",
+    "could_be_wrong": "Edition-dependent; the paper cites the chapter rather than a page."
+  },
+  {
+    "key": "ibm-card",
+    "authors": "IBM",
+    "year": "undated",
+    "title": "The punched card",
+    "venue": "ibm.com/history",
+    "url": "https://www.ibm.com/history/punched-card",
+    "kind": "agreed (history)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The 1928 rectangular-hole 80-column card.",
+    "how_read": "Used for the date and the mechanism (denser packing across a fixed width).",
+    "could_be_wrong": "Corporate history page; the date is corroborated elsewhere."
+  },
+  {
+    "key": "jansenbosch2005",
+    "authors": "Jansen, A., Bosch, J.",
+    "year": "2005",
+    "title": "Software architecture as a set of architectural design decisions",
+    "venue": "Proc. WICSA 2005",
+    "url": "https://doi.org/10.1109/WICSA.2005.61",
+    "kind": "agreed",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The 'architectural knowledge vaporisation' framing: rationale disappears while the artefact persists.",
+    "how_read": "Cited as the software-internal statement of the same phenomenon.",
+    "could_be_wrong": "None specific."
+  },
+  {
+    "key": "jones-cards",
+    "authors": "Jones, D. W.",
+    "year": "undated",
+    "title": "Punched cards: a brief illustrated technical history",
+    "venue": "University of Iowa",
+    "url": "https://homepage.cs.uiowa.edu/~jones/cards/history.html",
+    "kind": "agreed (history)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The 1890 Hollerith card dimensions (7 3/8 by 3 1/4 inches) and that the size was chosen to fit boxes made for the Treasury Department.",
+    "how_read": "Taken as the origin of the fixed card width. The paper's chain (box, card, holes, columns, terminals, style guides) is assembled from this and the next two sources.",
+    "could_be_wrong": "The Treasury-box story is widely repeated and Jones is the best-documented source for it, but it rests on secondary accounts."
+  },
+  {
+    "key": "jun2014",
+    "authors": "Jun, Y., Gavrilov, M., Bechhoefer, J.",
+    "year": "2014",
+    "title": "High-precision test of Landauer's principle in a feedback trap",
+    "venue": "Physical Review Letters 113:190601",
+    "url": "https://doi.org/10.1103/PhysRevLett.113.190601",
+    "open": "https://arxiv.org/abs/1408.5089",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "A second, higher-precision measurement.",
+    "how_read": "Same use as Berut.",
+    "could_be_wrong": "Same caveat as Berut."
+  },
+  {
+    "key": "kalia2019",
+    "authors": "Kalia, A., Kaminsky, M., Andersen, D. G.",
+    "year": "2019",
+    "title": "Datacenter RPCs can be general and fast",
+    "venue": "Proc. NSDI 2019",
+    "url": "https://www.usenix.org/conference/nsdi19/presentation/kalia",
+    "kind": "measured",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "Median RPC latency of 2.1 to 3.7 microseconds with kernel bypass.",
+    "how_read": "Used as the research floor for a network call, against which the paper places the ordinary stack's 250 microseconds. The point is that the span from function call to network call depends on infrastructure, and quoting the high end without naming infrastructure is selective.",
+    "could_be_wrong": "eRPC's numbers are for specific hardware and small messages."
+  },
+  {
+    "key": "kingman1961",
+    "authors": "Kingman, J. F. C.",
+    "year": "1961",
+    "title": "The single server queue in heavy traffic",
+    "venue": "Mathematical Proceedings of the Cambridge Philosophical Society 57(4):902-904",
+    "url": "https://doi.org/10.1017/S0305004100036094",
+    "kind": "proved (approximation)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That waiting time in a G/G/1 queue near full utilisation grows as rho/(1 - rho) times a variability term.",
+    "how_read": "Identified as the mechanism that would justify WIP limits, and then shown to carry exactly the assumptions (single server, near-one utilisation, distributional) that software development violates.",
+    "could_be_wrong": "Multi-server and network generalisations exist; none removes the utilisation assumption.",
+    "explainer": "A barista busy 95 percent of the time has almost no idle capacity to absorb a burst, so a line forms and drains slowly. The waiting factor rho/(1-rho) is 1 at half utilisation, 9 at 0.9, 19 at 0.95."
+  },
+  {
+    "key": "kleene1936",
+    "authors": "Kleene, S. C.",
+    "year": "1936",
+    "title": "Lambda-definability and recursiveness",
+    "venue": "Duke Mathematical Journal 2:340-353",
+    "url": "https://doi.org/10.1215/S0012-7094-36-00227-2",
+    "kind": "proved",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "The equivalence of the three formalisms, which is what is proved, as opposed to the Church-Turing thesis, which is not.",
+    "how_read": "Cited only to keep the distinction between the proved equivalence and the unproved thesis honest.",
+    "could_be_wrong": "Nothing load bearing rests on this citation."
+  },
+  {
+    "key": "klein1986",
+    "authors": "Klein, G. A., Calderwood, R., Clinton-Cirocco, A.",
+    "year": "1986",
+    "title": "Rapid decision making on the fire ground",
+    "venue": "Proceedings of the Human Factors Society 30(16):576-580",
+    "url": "https://doi.org/10.1177/154193128603000616",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "Twenty-six commanders, 156 decision points, comparison of options in under twelve percent, recognition of a prototype in over eighty percent.",
+    "how_read": "Read as the second mechanism: what is retrieved under time pressure is a prototype that carries an action, so the cost model never enters working memory.",
+    "could_be_wrong": "The percentages are from the original small study; later RPD work broadly confirms the shape."
+  },
+  {
+    "key": "knuth1974",
+    "authors": "Knuth, D. E.",
+    "year": "1974",
+    "title": "Structured programming with go to statements",
+    "venue": "ACM Computing Surveys 6(4):261-301; the passage is at p. 268",
+    "url": "https://doi.org/10.1145/356635.356640",
+    "open": "https://pic.plover.com/knuth-GOTO.pdf",
+    "kind": "agreed",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The full paragraph containing the premature-optimisation sentence, including its stated cost (debugging and maintenance) and its stated procedure (identify the critical code first).",
+    "how_read": "The paragraph is quoted in full and verbatim. The paper's claim that the proverb is used against Knuth's position is an observation about usage, not about the text. The claim that the regime lapsed rests on the memory-wall figures from 7-cpu, Chips and Cheese, and Dally.",
+    "could_be_wrong": "The attribution of the sentence to Hoare is a separate folklore question the paper does not enter."
+  },
+  {
+    "key": "landauer1961",
+    "authors": "Landauer, R.",
+    "year": "1961",
+    "title": "Irreversibility and heat generation in the computing process",
+    "venue": "IBM Journal of Research and Development 5(3):183-191",
+    "url": "https://doi.org/10.1147/rd.53.0183",
+    "kind": "proved (within standard statistical mechanics); disputed at foundations",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That erasing a bit dissipates at least kT ln 2, and that the cost attaches to logically irreversible operations.",
+    "how_read": "The bound is taken as stated. The paper is careful to attach two scope conditions (erasure not computation; quasi-static limit) that Landauer's own paper is consistent with but which are usually dropped.",
+    "could_be_wrong": "See Earman and Norton. The paper's use does not depend on the dispute, because its point is that the number is too small to matter either way.",
+    "explainer": "Entropy counts how many microscopic arrangements of the world are consistent with what is known. Forcing an unknown bit to zero halves that count for the bit, and the second law says total entropy cannot fall, so the difference must appear elsewhere as heat."
+  },
+  {
+    "key": "lane2023",
+    "authors": "Lane, T.",
+    "year": "2023",
+    "title": "Re: let's make PostgreSQL multi-threaded",
+    "venue": "pgsql-hackers mailing list, 5 June 2023",
+    "url": "https://www.postgresql.org/message-id/3506428.1685974034%40sss.pgh.pa.us",
+    "kind": "agreed (practitioner deliberation)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The quoted warning that a threads migration 'will be a disaster... largely silently, and much of it is not under our control'.",
+    "how_read": "Read as an inversion argued to have crossed, with transition cost priced higher by an expert in the codebase.",
+    "could_be_wrong": "The quotation is verbatim; the ellipsis elides text."
+  },
+  {
+    "key": "lehman1980",
+    "authors": "Lehman, M. M.",
+    "year": "1980",
+    "title": "Programs, life cycles, and laws of software evolution",
+    "venue": "Proceedings of the IEEE 68(9):1060-1076",
+    "url": "https://doi.org/10.1109/PROC.1980.11805",
+    "kind": "measured (empirical regularities)",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "The E-type condition, that a program embedded in the world must continually change, and the law that structure degrades under change unless effort is spent against it.",
+    "how_read": "Read as the founding statement of idealisation 8. The paper notes that the crisp wordings usually quoted come from the 1997 restatement.",
+    "could_be_wrong": "Lehman's laws are regularities observed in a few systems and their status as laws is contested; the paper calls them empirical regularities, not theorems."
+  },
+  {
+    "key": "leiserson2020",
+    "authors": "Leiserson, C. E. et al.",
+    "year": "2020",
+    "title": "There's plenty of room at the Top: what will drive computer performance after Moore's law?",
+    "venue": "Science 368(6495):eaam9744",
+    "url": "https://doi.org/10.1126/science.aam9744",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "A 62,806x speedup from Python to hand-tuned AVX intrinsics on one matrix-multiplication kernel.",
+    "how_read": "Used as the practitioner-side evidence for the buy-hardware-versus-optimise inversion after Dennard scaling ended.",
+    "could_be_wrong": "The kernel is chosen for illustration and the ratio is extreme; the paper uses it as one row of a table."
+  },
+  {
+    "key": "li2007",
+    "authors": "Li, C., Ding, C., Shen, K.",
+    "year": "2007",
+    "title": "Quantifying the cost of context switch",
+    "venue": "Proc. ExpCS 2007",
+    "url": "https://doi.org/10.1145/1281700.1281702",
+    "open": "https://www.cs.rochester.edu/u/cli/research/switch.pdf",
+    "kind": "measured",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "A direct context switch cost of about 3.8 microseconds, with indirect cost from cache and TLB pollution running into hundreds of microseconds.",
+    "how_read": "Read for the shape of the finding, that indirect costs dominate direct ones, which the paper takes as characteristic of idealisation 3.",
+    "could_be_wrong": "2007 hardware; absolute numbers have changed. The dominance of indirect cost has not."
+  },
+  {
+    "key": "little1961",
+    "authors": "Little, J. D. C.",
+    "year": "1961",
+    "title": "A proof for the queuing formula: L = lambda W",
+    "venue": "Operations Research 9(3):383-387",
+    "url": "https://doi.org/10.1287/opre.9.3.383",
+    "kind": "proved",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "The identity L = lambda W.",
+    "how_read": "Read as an identity, not a mechanism: it constrains the three averages and says nothing about what happens when one is changed.",
+    "could_be_wrong": "None.",
+    "explainer": "Customers arrive at a coffee shop at two per minute and each stays five minutes; on average ten are inside. That is L = lambda W, and it is bookkeeping rather than a model of coffee shops."
+  },
+  {
+    "key": "lloyd2000",
+    "authors": "Lloyd, S.",
+    "year": "2000",
+    "title": "Ultimate physical limits to computation",
+    "venue": "Nature 406:1047-1054",
+    "url": "https://doi.org/10.1038/35023282",
+    "open": "https://arxiv.org/abs/quant-ph/9908043",
+    "kind": "proved and computed",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That for a one-kilogram, one-litre computer at ordinary density the ratio of communication time across the machine to the time to flip one bit is on the order of 10^10, approaching unity only at black-hole density.",
+    "how_read": "The paper deliberately ignores Lloyd's headline operations-per-second number and uses the ratio, which it reads as the physical reason a large machine cannot be serial. This is the argument the paper offers in place of 'Dennard scaling forced multicore'.",
+    "could_be_wrong": "The ratio is for an idealised machine; real machines are far from these limits, so the ratio is an existence argument rather than a design constraint. The paper uses it only in that role."
+  },
+  {
+    "key": "margolus1998",
+    "authors": "Margolus, N., Levitin, L. B.",
+    "year": "1998",
+    "title": "The maximum speed of dynamical evolution",
+    "venue": "Physica D 120:188-195",
+    "url": "https://doi.org/10.1016/S0167-2789(98)00054-2",
+    "open": "https://arxiv.org/abs/quant-ph/9710043",
+    "kind": "proved",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That a quantum system passes through mutually orthogonal states no faster than a rate set by its average energy above the ground state.",
+    "how_read": "Cited for the bound itself; the engineering consequence is drawn from Lloyd.",
+    "could_be_wrong": "Nothing in the paper depends on the exact constant."
+  },
+  {
+    "key": "mcmullin1985",
+    "authors": "McMullin, E.",
+    "year": "1985",
+    "title": "Galilean idealization",
+    "venue": "Studies in History and Philosophy of Science 16(3):247-273",
+    "url": "https://doi.org/10.1016/0039-3681(85)90001-9",
+    "open": "https://philpapers.org/rec/MCMGI",
+    "kind": "agreed",
+    "supports": "That idealisation names a deliberate, correctable simplification in which a real quantity is set aside to make a theory tractable, and that putting the quantity back (de-idealisation) is a recognised method. This is the paper's warrant for the word idealisation and for its method.",
+    "how_read": "Read for the distinction between idealisations that are meant to be corrected later and those that are not. Turing's zeroing of costs is read as the first kind.",
+    "could_be_wrong": "McMullin's taxonomy has several sub-kinds (construct, causal, formal); the paper uses the word in its broad sense and does not commit to his taxonomy. A philosopher of science could object that Turing's move was not Galilean idealisation but abstraction (leaving properties out rather than setting them to a limit); the paper's reply is that the costs were represented and set to zero, which is the limit case.",
+    "used_in": [
+      "The Machine"
+    ]
+  },
+  {
+    "key": "mendonca2021",
+    "authors": "Mendonca, N. C., Box, C., Manolache, C., Ryan, L.",
+    "year": "2021",
+    "title": "The monolith strikes back: why Istio migrated from microservices to a monolithic architecture",
+    "venue": "IEEE Software 38(5):17-22",
+    "url": "https://doi.org/10.1109/MS.2021.3080335",
+    "kind": "agreed (practitioner account)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "'Microservices have to be right sized', from the Istio migration.",
+    "how_read": "Same use as Noonan.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "menzies2017",
+    "authors": "Menzies, T., Nichols, W., Shull, F., Layman, L.",
+    "year": "2017",
+    "title": "Are delayed issues harder to resolve? Revisiting cost-to-fix of defects throughout the lifecycle",
+    "venue": "Empirical Software Engineering 22(4):1903-1935",
+    "url": "https://doi.org/10.1007/s10664-016-9469-x",
+    "open": "https://arxiv.org/abs/1609.04886",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "Across 171 projects, no evidence that defects become more expensive to fix the longer they linger.",
+    "how_read": "Stated as a second counter-case: a widely held belief with large process investment behind it and no support.",
+    "could_be_wrong": "The projects are TSP projects with unusual discipline; generality is limited, which the authors note."
+  },
+  {
+    "key": "meza2015",
+    "authors": "Meza, J., Wu, Q., Kumar, S., Mutlu, O.",
+    "year": "2015",
+    "title": "A large-scale study of flash memory failures in the field",
+    "venue": "Proc. SIGMETRICS 2015",
+    "url": "https://doi.org/10.1145/2745844.2745848",
+    "open": "https://users.ece.cmu.edu/~omutlu/pub/flash-memory-failures_sigmetrics15.pdf",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "Comparable field failure figures for flash.",
+    "how_read": "Cited to show that the tape-fails bill is not specific to DRAM.",
+    "could_be_wrong": "The paper quotes no specific number from it."
+  },
+  {
+    "key": "nanavati2005",
+    "authors": "Nanavati, A. A., Bias, R. G.",
+    "year": "2005",
+    "title": "Optimal line length in reading: a literature review",
+    "venue": "Visible Language 39(2):121-145",
+    "url": "https://www.proquest.com/docview/232916050",
+    "kind": "measured (review)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "A recommendation not to exceed about 70 characters, on the reasoning that very short and very long lines both interrupt eye movement.",
+    "how_read": "Cited as the review that comes nearest to supporting a limit, and still only for prose.",
+    "could_be_wrong": "The review's recommendation is a synthesis, not a measurement."
+  },
+  {
+    "key": "napkinmath",
+    "authors": "Eskildsen, S.",
+    "year": "2026 re-measurement",
+    "title": "napkin-math",
+    "venue": "GitHub repository; single-host rows re-measured on GCP c4-standard-48-lssd, 8 March 2026",
+    "url": "https://github.com/sirupsen/napkin-math",
+    "kind": "measured (rounded)",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "The rounded latency ladder: sequential memory about 0.5 ns, random memory about 20 ns, local flash random read about 100 microseconds, disk about 10 ms, object storage about 80 ms; in-process call about 1 ns, system call about 300 ns, same-region network about 250 microseconds.",
+    "how_read": "The numbers are deliberately rounded for memorisation, and the paper says so. They are used for orders of magnitude, never for ratios that need precision.",
+    "could_be_wrong": "They are one host on one cloud on one date. Any reader's numbers will differ, and the paper's argument that the reader should measure their own is partly a response to that."
+  },
+  {
+    "key": "naur1985",
+    "authors": "Naur, P.",
+    "year": "1985",
+    "title": "Programming as theory building",
+    "venue": "Microprocessing and Microprogramming 15(5):253-261",
+    "url": "https://doi.org/10.1016/0165-6074(85)90032-8",
+    "open": "https://pages.cs.wisc.edu/~remzi/Naur.pdf",
+    "kind": "agreed (an argument)",
+    "used_in": [
+      "The Interpreter",
+      "Eight Idealisations"
+    ],
+    "supports": "That the product of programming is a theory held by the programmers, which cannot be written down in advance, and that this is why specification-first methods fail.",
+    "how_read": "Read as the founding statement of idealisation 7. The paper's phrase 'the input is discovered during the building' is a paraphrase of Naur's argument.",
+    "could_be_wrong": "Naur's point is about the theory of the program, not only about requirements; the paper narrows it to the input."
+  },
+  {
+    "key": "noonan2018",
+    "authors": "Noonan, A.",
+    "year": "2018",
+    "title": "Goodbye microservices: from 100s of problem children to 1 superstar",
+    "venue": "Segment Engineering Blog, 10 July 2018",
+    "url": "https://segment.com/blog/goodbye-microservices/",
+    "kind": "agreed (practitioner account)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That operational overhead grew linearly with each added destination service.",
+    "how_read": "A migration write-up in which the two costs are stated; the paper's inversion table is built from such documents.",
+    "could_be_wrong": "Engineering blogs disappear; an archive link should be kept."
+  },
+  {
+    "key": "norton2005",
+    "authors": "Norton, J. D.",
+    "year": "2005",
+    "title": "Eaters of the lotus: Landauer's principle and the return of Maxwell's demon",
+    "venue": "Studies in History and Philosophy of Modern Physics 36:375-411",
+    "url": "https://doi.org/10.1016/j.shpsb.2004.12.002",
+    "open": "https://sites.pitt.edu/~jdnorton/papers/Eaters_of_the_lotus.pdf",
+    "kind": "disputed",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "The continued form of the objection.",
+    "how_read": "Same as Earman and Norton.",
+    "could_be_wrong": "Same."
+  },
+  {
+    "key": "nygard2011",
+    "authors": "Nygard, M.",
+    "year": "2011",
+    "title": "Documenting architecture decisions",
+    "venue": "cognitect.com",
+    "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+    "kind": "agreed",
+    "used_in": [
+      "The Cost of a Decision"
+    ],
+    "supports": "That architecture decision records ask, in one line, that changes in context which should trigger re-evaluation be noted.",
+    "how_read": "Read as the nearest practitioner format, which asks for the right thing without asking for a ratio, a threshold or a date.",
+    "could_be_wrong": "Later ADR templates (MADR and others) add fields; the paper cites the origin."
+  },
+  {
+    "key": "parnas1972",
+    "authors": "Parnas, D. L.",
+    "year": "1972",
+    "title": "On the criteria to be used in decomposing systems into modules",
+    "venue": "Communications of the ACM 15(12):1053-1058",
+    "url": "https://doi.org/10.1145/361598.361623",
+    "open": "https://www.win.tue.nl/~wstomv/edu/2ip30/references/criteria_for_modularization.pdf",
+    "kind": "agreed (a design argument)",
+    "used_in": [
+      "The Limit"
+    ],
+    "supports": "That decomposition should begin with a list of design decisions likely to change, each hidden by a module.",
+    "how_read": "Read with the emphasis on 'likely to change': the list is a forecast supplied by a person, not derived from the code. This is the paper's argument for why architecture's preserved quantity has never been written down.",
+    "could_be_wrong": "Parnas would likely agree that the list is a judgment; whether he would agree that it is in principle underivable from artefacts is the paper's extension."
+  },
+  {
+    "key": "prechelt2001",
+    "authors": "Prechelt, L., Unger, B., Tichy, W. F., Brossler, P., Votta, L. G.",
+    "year": "2001",
+    "title": "A controlled experiment in maintenance comparing design patterns to simpler solutions",
+    "venue": "IEEE Transactions on Software Engineering 27(12):1134-1144",
+    "url": "https://doi.org/10.1109/32.988711",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That unless there is a clear reason to prefer the simpler solution it is probably wise to choose the pattern's flexibility, and that identifying exceptions requires 'software engineering common sense'.",
+    "how_read": "Stated as a counter-case: some cached answers are robust across a regime one never leaves. The common-sense remark is read as the conditions being unstatable even in a controlled experiment.",
+    "could_be_wrong": "Small experiment; the paper uses it to bound its own claim, not to establish one."
+  },
+  {
+    "key": "proesmans2020",
+    "authors": "Proesmans, K., Ehrich, J., Bechhoefer, J.",
+    "year": "2020",
+    "title": "Finite-time Landauer principle",
+    "venue": "Physical Review Letters 125:100602",
+    "url": "https://doi.org/10.1103/PhysRevLett.125.100602",
+    "open": "https://arxiv.org/abs/2006.03242",
+    "kind": "proved",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That erasing in finite time costs kT ln 2 plus a term growing as 1/tau.",
+    "how_read": "The second scope condition. Read as establishing that 'zero-dissipation computing' is a statement about infinitely slow computing.",
+    "could_be_wrong": "The 1/tau form is for a particular class of protocols; the paper uses only the qualitative point that finite time adds cost."
+  },
+  {
+    "key": "reis2019",
+    "authors": "Reis, C., Moshchuk, A., Oskov, N.",
+    "year": "2019",
+    "title": "Site isolation: process separation for web sites within the browser",
+    "venue": "Proc. USENIX Security 2019, pp. 1661-1678",
+    "url": "https://www.usenix.org/conference/usenixsecurity19/presentation/reis",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That after Spectre 'it is no longer safe to render documents from different web sites in the same process', at 9 to 13 percent memory overhead.",
+    "how_read": "The paper's bounding case: no price moved, a premise was falsified. It is included to show what the framework cannot forecast.",
+    "could_be_wrong": "None; quotation verbatim."
+  },
+  {
+    "key": "rice1953",
+    "authors": "Rice, H. G.",
+    "year": "1953",
+    "title": "Classes of recursively enumerable sets and their decision problems",
+    "venue": "Transactions of the American Mathematical Society 74(2):358-366",
+    "url": "https://doi.org/10.1090/S0002-9947-1953-0053041-6",
+    "open": "https://www.ams.org/journals/tran/1953-074-02/S0002-9947-1953-0053041-6/S0002-9947-1953-0053041-6.pdf",
+    "kind": "proved",
+    "supports": "That no non-trivial semantic property of what a program computes is decidable from the program's text, which is the general form of the first wall in the section on what the machine cannot do.",
+    "how_read": "Read as the theorem behind the claim that a sheet cannot in general be checked by reading it, and that typing and testing are compromises with that fact.",
+    "could_be_wrong": "Rice's theorem concerns properties of the partial function computed, over all inputs. Many practical checks are about a specific input or a bounded run, where the theorem does not apply. The paper's sentence should be read as about the general case only.",
+    "used_in": [
+      "Walls"
+    ]
+  },
+  {
+    "key": "saltzer1984",
+    "authors": "Saltzer, J. H., Reed, D. P., Clark, D. D.",
+    "year": "1984",
+    "title": "End-to-end arguments in system design",
+    "venue": "ACM Transactions on Computer Systems 2(4):277-288",
+    "url": "https://doi.org/10.1145/357401.357402",
+    "open": "https://web.mit.edu/Saltzer/www/publications/endtoend/endtoend.pdf",
+    "kind": "agreed (a design argument with a stated cost model)",
+    "used_in": [
+      "Rows"
+    ],
+    "supports": "That the argument does not say where to put early checks, is 'a guideline' rather than an absolute rule, and comes with a worked cost model (one message in a hundred dropped) that yields a crossover.",
+    "how_read": "Read as the paper's model of a rule published with its conditions. Both quoted sentences are verbatim. The paper also notes that 'smart endpoints and dumb pipes' does not appear in it.",
+    "could_be_wrong": "The under-determination sentence is in the original, but reading the whole paper as primarily a who-pays analysis is the paper's emphasis, not the authors'."
+  },
+  {
+    "key": "schroeder2009",
+    "authors": "Schroeder, B., Pinheiro, E., Weber, W.-D.",
+    "year": "2009",
+    "title": "DRAM errors in the wild: a large-scale field study",
+    "venue": "Proc. SIGMETRICS 2009",
+    "url": "https://doi.org/10.1145/1555349.1555372",
+    "open": "https://research.google/pubs/dram-errors-in-the-wild-a-large-scale-field-study/",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That more than eight percent of DIMMs in Google's fleet saw at least one correctable error per year over two and a half years, well above prior estimates.",
+    "how_read": "The number is taken as the paper reports it (about 8.2 percent of DIMMs affected per year). The paper uses it as the measured bill for idealisation 4 and as the 'where we are' entry in the floors table.",
+    "could_be_wrong": "The figure is fleet-specific and from 2006-2008 hardware; per-device rates have changed. The paper's forward argument deliberately uses rate times count rather than rate alone."
+  },
+  {
+    "key": "sevencpu",
+    "authors": "7-cpu.com",
+    "year": "undated",
+    "title": "Intel Skylake microarchitecture page",
+    "venue": "7-cpu.com; i7-6700 at 4.0 GHz, DDR4-2400 CL15",
+    "url": "https://www.7-cpu.com/cpu/Skylake.html",
+    "kind": "measured",
+    "used_in": [
+      "Eight Idealisations",
+      "The Test"
+    ],
+    "supports": "A last-level cache miss served from DRAM at about 61 ns on the named part.",
+    "how_read": "The nanosecond figure is the site's; the conversion to about 250 cycles at 4 GHz is the paper's, and the paper says so.",
+    "could_be_wrong": "Memory latency depends heavily on configuration; the figure is one part on one configuration."
+  },
+  {
+    "key": "shipman1999",
+    "authors": "Shipman, F. M., Marshall, C. C.",
+    "year": "1999",
+    "title": "Formality considered harmful: experiences, emerging themes, and directions on the use of formal representations in interactive systems",
+    "venue": "Computer Supported Cooperative Work 8:333-352",
+    "url": "https://doi.org/10.1023/A:1008716330212",
+    "kind": "measured (experience reports)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That users resist making context explicit and that premature structure damages the work.",
+    "how_read": "Read as the third, economic mechanism. Paired with Grudin.",
+    "could_be_wrong": "None specific."
+  },
+  {
+    "key": "shirriff2019",
+    "authors": "Shirriff, K.",
+    "year": "2019",
+    "title": "IBM, sonic delay lines, and the history of the 80x24 display",
+    "venue": "righto.com, November 2019",
+    "url": "https://www.righto.com/2019/11/ibm-sonic-delay-lines-and-history-of.html",
+    "kind": "agreed (history)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That the source of 80-column lines is 'clearly punch cards', and that mid-1970s terminals shipped in dozens of sizes (31x11, 52x48, 133x64).",
+    "how_read": "The quotation is verbatim. The list of sizes is read as decisive against any technological-determinism story.",
+    "could_be_wrong": "None found."
+  },
+  {
+    "key": "shute2013",
+    "authors": "Shute, J. et al.",
+    "year": "2013",
+    "title": "F1: a distributed SQL database that scales",
+    "venue": "PVLDB 6(11):1068-1079",
+    "url": "https://doi.org/10.14778/2536222.2536232",
+    "open": "https://research.google/pubs/f1-a-distributed-sql-database-that-scales/",
+    "kind": "agreed (practitioner account)",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The phrase 'an unacceptable burden to place on developers' about eventual consistency.",
+    "how_read": "Used as the return move of the cycle, with the two costs (developer time versus throughput) stated by the practitioners themselves.",
+    "could_be_wrong": "None; the quotation is verbatim."
+  },
+  {
+    "key": "sieg1997",
+    "authors": "Sieg, W.",
+    "year": "1997",
+    "title": "Step by recursive step: Church's analysis of effective calculability",
+    "venue": "Bulletin of Symbolic Logic 3(2):154-180",
+    "url": "https://doi.org/10.2307/421012",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That Church's approach was definitional and Turing's was analytic, and that Godel was persuaded by the latter.",
+    "how_read": "Read as the most careful modern statement of the Church-versus-Turing history. The paper takes from it only the contrast between stipulation and analysis.",
+    "could_be_wrong": "Sieg's later work refines the 'analysis' reading considerably; the paper's one-sentence use is a simplification."
+  },
+  {
+    "key": "simon1962",
+    "authors": "Simon, H. A.",
+    "year": "1962",
+    "title": "The architecture of complexity",
+    "venue": "Proceedings of the American Philosophical Society 106(6):467-482",
+    "url": "https://www.jstor.org/stable/985254",
+    "open": "https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf",
+    "kind": "agreed (an argument)",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "That complex systems assembled by bounded processes end up as hierarchies of nearly decomposable parts.",
+    "how_read": "Read as the founding argument for idealisation 6: because builders are bounded, artefacts are modular. The paper attributes modularity, abstraction and information hiding to this idealisation.",
+    "could_be_wrong": "Simon's argument is about evolutionary stability of intermediate forms as much as about bounded builders; the paper takes the second reading."
+  },
+  {
+    "key": "simon1996",
+    "authors": "Simon, H. A.",
+    "year": "1996",
+    "title": "The Sciences of the Artificial (3rd ed.)",
+    "venue": "MIT Press",
+    "url": "https://mitpress.mit.edu/9780262690232/the-sciences-of-the-artificial/",
+    "open": "",
+    "kind": "agreed",
+    "supports": "That an artifact is the meeting point, an interface, between an inner environment (its own substance and organisation) and an outer environment (the surroundings it serves), and that a well-adapted artifact can be predicted from its goals and outer environment with few assumptions about the inner. The interpreter of this paper stands at Simon's meeting point.",
+    "how_read": "Read as the direct ancestor of the interpreter framing. The paper shifts attention from the artifact to the person who shapes it and to what the inner environment charges.",
+    "could_be_wrong": "Simon's point is that the inner environment can often be ignored when adaptation succeeds; the paper's point is the opposite, that the inner environment's costs are what shape the decisions. The two are compatible (Simon is describing successful artifacts, the paper is describing the work of making them) but a reader could take the citation as endorsing a view the paper argues against.",
+    "used_in": [
+      "The Interpreter"
+    ]
+  },
+  {
+    "key": "sjoberg2018",
+    "authors": "Sjoberg, D. I. K.",
+    "year": "2018",
+    "title": "An empirical study of WIP in kanban teams",
+    "venue": "Proc. ESEM 2018",
+    "url": "https://doi.org/10.1145/3239235.3239251",
+    "kind": "measured",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "Over 8,000 work items across four years and five teams at one company: WIP correlates with lead time and with productivity; no published study indicates an optimal limit; replication is called for.",
+    "how_read": "Read as the single empirical study, and as partly inconsistent with the practice's advocacy. The paper searched for a replication and found none.",
+    "could_be_wrong": "The paper's search may have missed a replication; that would be a welcome correction."
+  },
+  {
+    "key": "soare1996",
+    "authors": "Soare, R. I.",
+    "year": "1996",
+    "title": "Computability and recursion",
+    "venue": "Bulletin of Symbolic Logic 2(3):284-321",
+    "url": "https://doi.org/10.2307/420992",
+    "open": "http://www.people.cs.uchicago.edu/~soare/History/compute.pdf",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "The historical account of Turing modelling a clerk and stripping him down.",
+    "how_read": "Same use as Gandy and Sieg. Soare is cited because he states plainly that Turing's machine is a model of a human being computing.",
+    "could_be_wrong": "Nothing beyond the historical framing rests on it."
+  },
+  {
+    "key": "soares2010",
+    "authors": "Soares, L., Stumm, M.",
+    "year": "2010",
+    "title": "FlexSC: flexible system call scheduling with exception-less system calls",
+    "venue": "Proc. OSDI 2010",
+    "url": "https://www.usenix.org/conference/osdi10/flexsc-flexible-system-call-scheduling-exception-less-system-calls",
+    "kind": "measured",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "A direct mode-switch cost of about 150 cycles against a full footprint of about 12,300 cycles for a single pread.",
+    "how_read": "Same use as Li et al.: indirect cost dominates.",
+    "could_be_wrong": "Measured on a specific Nehalem-era machine; the ratio, not the absolute, is what the paper uses."
+  },
+  {
+    "key": "stidham1974",
+    "authors": "Stidham, S., Jr.",
+    "year": "1974",
+    "title": "A last word on L = lambda W",
+    "venue": "Operations Research 22(2):417-421",
+    "url": "https://doi.org/10.1287/opre.22.2.417",
+    "kind": "proved",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That the identity holds with 'as hypotheses only that the limiting averages, lambda and W, exist and are finite'.",
+    "how_read": "The quotation is verbatim. The paper uses Stidham to show how weak the theorem's hypotheses are, which is what makes the gap to the practice's assumptions visible.",
+    "could_be_wrong": "None."
+  },
+  {
+    "key": "stonebraker2005",
+    "authors": "Stonebraker, M., Cetintemel, U.",
+    "year": "2005",
+    "title": "'One size fits all': an idea whose time has come and gone",
+    "venue": "Proc. ICDE 2005",
+    "url": "https://doi.org/10.1109/ICDE.2005.1",
+    "open": "https://cs.brown.edu/~ugur/fits_all.pdf",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "The 900 versus 160,000 messages per second comparison between a relational engine and a specialised stream engine.",
+    "how_read": "Used as the middle move of the normalise/denormalise cycle.",
+    "could_be_wrong": "The comparison is between different workloads and engines; the paper uses it for the direction of the argument."
+  },
+  {
+    "key": "sutter2005",
+    "authors": "Sutter, H.",
+    "year": "2005",
+    "title": "The free lunch is over: a fundamental turn toward concurrency in software",
+    "venue": "Dr. Dobb's Journal 30(3)",
+    "url": "http://www.gotw.ca/publications/concurrency-ddj.htm",
+    "kind": "agreed",
+    "used_in": [
+      "Predictions"
+    ],
+    "supports": "A self-reported lag of one to two years between the crossover and the practice change.",
+    "how_read": "One data point for the lag in Prediction 1.",
+    "could_be_wrong": "Self-report."
+  },
+  {
+    "key": "turing1936",
+    "authors": "Turing, A. M.",
+    "year": "1936",
+    "title": "On computable numbers, with an application to the Entscheidungsproblem",
+    "venue": "Proceedings of the London Mathematical Society s2-42:230-265",
+    "url": "https://doi.org/10.1112/plms/s2-42.1.230",
+    "open": "https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf",
+    "kind": "proved",
+    "used_in": [
+      "The Machine",
+      "Walls"
+    ],
+    "supports": "That the machine was obtained by analysing what a human computer does (section 9 of the paper), that the five operations are the whole of it, and that the clerk's behaviour is fully determined by the observed symbol and the state of mind.",
+    "how_read": "Section 9 is read as an inventory: Turing names each thing the clerk does and then abstracts it. The paper takes the naming as the useful act, because a cost that was named before being set to zero can be put back. The clerk-decides-nothing reading takes Turing's phrase that behaviour is 'determined by' symbol and state literally.",
+    "could_be_wrong": "Turing's paper does not contain the halting problem by name or in its modern form; the paper avoids attributing it. Whether section 9 is best read as an empirical analysis of human computing or as a conceptual argument is debated in the philosophy of computing; the paper follows Gandy, Sieg and Soare, which is the majority view but not the only one.",
+    "explainer": "A Turing machine is a strip of squares each holding one symbol, a head over one square, a finite state, and a table that for each state-and-symbol pair says what to write, which way to move, and which state to enter. The five operations are read, write, move, change state, halt."
+  },
+  {
+    "key": "turing1950",
+    "authors": "Turing, A. M.",
+    "year": "1950",
+    "title": "Computing machinery and intelligence",
+    "venue": "Mind 59(236):433-460",
+    "url": "https://doi.org/10.1093/mind/LIX.236.433",
+    "open": "https://academic.oup.com/mind/article/LIX/236/433/986238",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That Turing later defined a digital computer as a machine intended to carry out any operations which could be done by a human computer (section 4).",
+    "how_read": "Cited to show that the consequence the paper draws from the 1936 description, that it says which part of a clerk's work a machine could do, is one Turing drew himself.",
+    "could_be_wrong": "The 1950 paper is about intelligence rather than clerical replacement; the paper uses only its definition of the digital computer."
+  },
+  {
+    "key": "vacanti2015",
+    "authors": "Vacanti, D.",
+    "year": "2015",
+    "title": "Actionable Agile Metrics for Predictability",
+    "venue": "ActionableAgile Press",
+    "url": "https://actionableagile.com/books/aamfp/",
+    "kind": "agreed",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "Five operational assumptions under which the identity is used, with the statement that breaking any one breaks the equation.",
+    "how_read": "Same use as Anderson and Carmichael.",
+    "could_be_wrong": "Same."
+  },
+  {
+    "key": "valiant1990",
+    "authors": "Valiant, L. G.",
+    "year": "1990",
+    "title": "A bridging model for parallel computation",
+    "venue": "Communications of the ACM 33(8):103-111",
+    "url": "https://doi.org/10.1145/79173.79181",
+    "kind": "agreed",
+    "used_in": [
+      "The Machine"
+    ],
+    "supports": "That a model of computation can have the structural job of standing between the physical machine and the programmer's abstraction.",
+    "how_read": "Cited for the idea of a bridging model, not for BSP's specifics. The paper's audit is a different bridging exercise, from the physical layer up to practice rather than from the algorithm down to the machine.",
+    "could_be_wrong": "Valiant's model prices communication and synchronisation; it does not attempt to enumerate zeroed costs. Calling it a precursor is fair; calling it the same project is not, and the paper does not."
+  },
+  {
+    "key": "vanleeuwen2001",
+    "authors": "van Leeuwen, J., Wiedermann, J.",
+    "year": "2001",
+    "title": "The Turing machine paradigm in contemporary computing",
+    "venue": "Mathematics Unlimited: 2001 and Beyond, Springer",
+    "url": "https://doi.org/10.1007/978-3-642-56478-9_59",
+    "open": "https://webspace.science.uu.nl/~leeuw112/mathunl.pdf",
+    "kind": "agreed",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "That the classical paradigm should be relaxed from closed to open interaction, from a fixed program to an evolving one, and from terminating to perpetual computation.",
+    "how_read": "These three relaxations are the paper's idealisations 6, 7 and 8. The paper says plainly that these were the three that felt most original before this paper was found, and claims only the full enumeration and the sorting.",
+    "could_be_wrong": "Van Leeuwen and Wiedermann's interest is in computability beyond Turing machines, not in engineering practice; the mapping onto idealisations is the paper's."
+  },
+  {
+    "key": "vincenti1990",
+    "authors": "Vincenti, W. G.",
+    "year": "1990",
+    "title": "What Engineers Know and How They Know It",
+    "venue": "Johns Hopkins University Press",
+    "url": "https://www.press.jhu.edu/books/title/1719/what-engineers-know-and-how-they-know-it",
+    "kind": "agreed",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That engineering knowledge is not applied science, that design generates knowledge of its own, and that one category of engineering knowledge is prescriptive: drawn from experience without grounding in theory.",
+    "how_read": "Read as the source of the claim that much of the field is prescription validated by uptake. The paper's addition is a physical layer against which to test which prescriptions have a correlate underneath.",
+    "could_be_wrong": "Vincenti's categories are richer than 'prescriptive versus grounded'; the paper uses one of his distinctions."
+  },
+  {
+    "key": "vonneumann1956",
+    "authors": "von Neumann, J.",
+    "year": "1956",
+    "title": "Probabilistic logics and the synthesis of reliable organisms from unreliable components",
+    "venue": "Automata Studies, Princeton University Press",
+    "url": "https://doi.org/10.1515/9781400882618-003",
+    "open": "https://static.ias.edu/pitp/archive/2012files/Probabilistic_Logics.pdf",
+    "kind": "proved",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "That reliable computation is obtainable from unreliable components at finite redundancy overhead, provided component error probability is below a threshold.",
+    "how_read": "Read as the reason the tape-fails bill is survivable. The paper uses the qualitative shape (threshold, finite overhead), not von Neumann's specific constants, which are known to be loose.",
+    "could_be_wrong": "Von Neumann's threshold and overhead were improved substantially by later work (Pippenger, and others). The paper's use survives any of those refinements.",
+    "explainer": "Take three copies of a component that fails with probability p and use whatever two agree on. The vote fails only when two fail together, with probability about 3p^2, which is much smaller than p when p is small. Repeat as needed."
+  },
+  {
+    "key": "wulf1995",
+    "authors": "Wulf, W. A., McKee, S. A.",
+    "year": "1995",
+    "title": "Hitting the memory wall: implications of the obvious",
+    "venue": "ACM SIGARCH Computer Architecture News 23(1):20-24",
+    "url": "https://doi.org/10.1145/216585.216588",
+    "kind": "agreed (an extrapolation)",
+    "used_in": [
+      "Eight Idealisations"
+    ],
+    "supports": "That the memory wall was foreseen in 1994 from trivial arithmetic on published growth rates.",
+    "how_read": "Cited for the subtitle as much as the content: the point is that a consequential fact was derivable from the obvious, and the paper's method is to keep deriving such facts.",
+    "could_be_wrong": "Wulf and McKee's specific projections were pessimistic; caches and prefetching softened the wall. The paper cites the direction, which was right."
+  },
+  {
+    "key": "yan2018",
+    "authors": "Yan, L. L. et al.",
+    "year": "2018",
+    "title": "Single-atom demonstration of the quantum Landauer principle",
+    "venue": "Physical Review Letters 120:210601",
+    "url": "https://doi.org/10.1103/PhysRevLett.120.210601",
+    "open": "https://arxiv.org/abs/1803.10424",
+    "kind": "measured",
+    "used_in": [
+      "Four Bills"
+    ],
+    "supports": "A measurement in a single trapped ion.",
+    "how_read": "Same use as Berut.",
+    "could_be_wrong": "Same caveat as Berut."
+  },
+  {
+    "key": "zannier2007",
+    "authors": "Zannier, C., Chiasson, M., Maurer, F.",
+    "year": "2007",
+    "title": "A model of design decision making based on empirical results of interviews with software designers",
+    "venue": "Information and Software Technology 49(6):637-653",
+    "url": "https://doi.org/10.1016/j.infsof.2007.02.010",
+    "kind": "measured",
+    "used_in": [
+      "How Conditions Are Lost"
+    ],
+    "supports": "That the more structured a design decision, the fewer options a designer considers.",
+    "how_read": "Cited as the software-specific counterpart of Klein.",
+    "could_be_wrong": "Interview study with a modest sample."
+  },
+  {
+    "key": "zavejackson1997",
+    "authors": "Zave, P., Jackson, M.",
+    "year": "1997",
+    "title": "Four dark corners of requirements engineering",
+    "venue": "ACM Transactions on Software Engineering and Methodology 6(1):1-30",
+    "url": "https://doi.org/10.1145/237432.237434",
+    "open": "https://www.researchgate.net/publication/220403555_Four_Dark_Corners_of_Requirements_Engineering",
+    "kind": "agreed",
+    "supports": "That requirements are statements about the world, the specification is a statement at the interface between world and machine, and the two must be kept apart.",
+    "how_read": "Read as the closest prior statement of the line between the paper's first and second tiers. Jackson and Zave's specification sits where the software intention sits; the paper adds that the specification is shaped by what the machine cannot do and what it charges.",
+    "could_be_wrong": "Zave and Jackson's specification is a formal object with a proof obligation (world and specification entail the requirement). The software intention is not required to be formal. Treating the two as the same object overstates what the paper has.",
+    "used_in": [
+      "The Interpreter"
+    ]
+  },
+  {
+    "key": "zhang2025",
+    "authors": "Zhang, T. et al.",
+    "year": "2025",
+    "title": "Five-minute rule 40 years later",
+    "venue": "arXiv:2511.03944 (preprint)",
+    "url": "https://arxiv.org/abs/2511.03944",
+    "kind": "measured (preprint)",
+    "used_in": [
+      "The Test"
+    ],
+    "supports": "That a first-principles revisit charging for host processor and memory bandwidth reports the threshold collapsing to seconds.",
+    "how_read": "Cited as a preprint and flagged as such. Used only to extend the recomputation series by one step.",
+    "could_be_wrong": "Unreviewed at the time of writing."
+  }
+]

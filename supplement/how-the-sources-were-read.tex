@@ -1,0 +1,1180 @@
+\documentclass[11pt,oneside]{article}
+\pdfoutput=1
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\usepackage{parskip}
+\usepackage{enumitem}
+\definecolor{accent}{RGB}{40,72,120}
+\hypersetup{colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent}
+\titleformat{\section}{\large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape How the Sources Were Read}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setstretch{1.04}
+\setlength{\parskip}{0.4em}
+\newcommand{\field}[1]{\par\noindent\textbf{\color{accent}#1.}\ }
+\title{\vspace{-1.2cm}\textbf{\color{accent}How the Sources Were Read}\\[0.3cm]
+\large Companion to \emph{What Computation Costs}}
+\author{Edwin O Onyango \and Walter O Wagunde}
+\date{September 2026}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{What this is}
+\emph{What Computation Costs} rests on about a hundred sources. The paper cites them and moves
+on. This document is the account of how each was read: where in the paper it is used, what it
+was taken to support, how it was interpreted, and where that interpretation could be wrong.
+Where the paper needed a formal result explained from scratch and the explanation was not part
+of the argument, the explanation is here, under the source it belongs to.
+
+The document exists so that a reader who doubts a claim can go straight to the reading behind
+it, and so that the reading can be objected to. Every entry here is also published as a page at
+\url{https://curiousedwin.com/publications/what-computation-costs/sources}, where each
+interpretation can be opened, the source followed, and an objection filed against that entry
+alone. Objections that survive change the paper, with credit, under the process described in
+the repository.
+
+The file this document is generated from, \texttt{supplement/sources.json}, is the single source
+of truth. The web page and this PDF are two renderings of it.
+
+\section*{Where each source is used}
+
+\begin{description}[leftmargin=1.2em,itemsep=1pt]
+\item[The Test] \hyperlink{src:abran2006}{abran2006}, \hyperlink{src:acton2014}{acton2014}, \hyperlink{src:anderson2016}{anderson2016}, \hyperlink{src:appuswamy2019}{appuswamy2019}, \hyperlink{src:bernard2002}{bernard2002}, \hyperlink{src:buse2010}{buse2010}, \hyperlink{src:chipsandcheese}{chipsandcheese}, \hyperlink{src:dally2022}{dally2022}, \hyperlink{src:dyson2004}{dyson2004}, \hyperlink{src:graefe2007}{graefe2007}, \hyperlink{src:gray1987}{gray1987}, \hyperlink{src:graygraefe1997}{graygraefe1997}, \hyperlink{src:ibm-card}{ibm-card}, \hyperlink{src:jones-cards}{jones-cards}, \hyperlink{src:kingman1961}{kingman1961}, \hyperlink{src:knuth1974}{knuth1974}, \hyperlink{src:little1961}{little1961}, \hyperlink{src:nanavati2005}{nanavati2005}, \hyperlink{src:sevencpu}{sevencpu}, \hyperlink{src:shirriff2019}{shirriff2019}, \hyperlink{src:sjoberg2018}{sjoberg2018}, \hyperlink{src:stidham1974}{stidham1974}, \hyperlink{src:vacanti2015}{vacanti2015}, \hyperlink{src:vincenti1990}{vincenti1990}, \hyperlink{src:zhang2025}{zhang2025}
+\item[How Conditions Are Lost] \hyperlink{src:acton2014}{acton2014}, \hyperlink{src:aggarwal1987}{aggarwal1987}, \hyperlink{src:amdahl1967}{amdahl1967}, \hyperlink{src:anderson1982}{anderson1982}, \hyperlink{src:appuswamy2019}{appuswamy2019}, \hyperlink{src:arthur1989}{arthur1989}, \hyperlink{src:codd1970}{codd1970}, \hyperlink{src:david1985}{david1985}, \hyperlink{src:devanbu2016}{devanbu2016}, \hyperlink{src:dhh2023}{dhh2023}, \hyperlink{src:gluck2020}{gluck2020}, \hyperlink{src:grudin1996}{grudin1996}, \hyperlink{src:gustafson1988}{gustafson1988}, \hyperlink{src:hpqa}{hpqa}, \hyperlink{src:jansenbosch2005}{jansenbosch2005}, \hyperlink{src:klein1986}{klein1986}, \hyperlink{src:lane2023}{lane2023}, \hyperlink{src:leiserson2020}{leiserson2020}, \hyperlink{src:mendonca2021}{mendonca2021}, \hyperlink{src:menzies2017}{menzies2017}, \hyperlink{src:noonan2018}{noonan2018}, \hyperlink{src:prechelt2001}{prechelt2001}, \hyperlink{src:reis2019}{reis2019}, \hyperlink{src:shipman1999}{shipman1999}, \hyperlink{src:shute2013}{shute2013}, \hyperlink{src:stonebraker2005}{stonebraker2005}, \hyperlink{src:zannier2007}{zannier2007}
+\item[Three Kinds of Knowledge] \hyperlink{src:alexander1977}{alexander1977}, \hyperlink{src:gamma1994}{gamma1994}
+\item[The Cost of a Decision] \hyperlink{src:alexander1977}{alexander1977}, \hyperlink{src:gamma1994}{gamma1994}, \hyperlink{src:nygard2011}{nygard2011}
+\item[Four Bills] \hyperlink{src:bennett1973}{bennett1973}, \hyperlink{src:berut2012}{berut2012}, \hyperlink{src:bilardi2009}{bilardi2009}, \hyperlink{src:bozkurt2017}{bozkurt2017}, \hyperlink{src:dennard1974}{dennard1974}, \hyperlink{src:earman1999}{earman1999}, \hyperlink{src:hayden2025}{hayden2025}, \hyperlink{src:hennessy2019}{hennessy2019}, \hyperlink{src:hong2016}{hong2016}, \hyperlink{src:jun2014}{jun2014}, \hyperlink{src:landauer1961}{landauer1961}, \hyperlink{src:lloyd2000}{lloyd2000}, \hyperlink{src:margolus1998}{margolus1998}, \hyperlink{src:meza2015}{meza2015}, \hyperlink{src:norton2005}{norton2005}, \hyperlink{src:proesmans2020}{proesmans2020}, \hyperlink{src:schroeder2009}{schroeder2009}, \hyperlink{src:vonneumann1956}{vonneumann1956}, \hyperlink{src:yan2018}{yan2018}
+\item[The Interpreter] \hyperlink{src:brooks1987}{brooks1987}, \hyperlink{src:gunter2000}{gunter2000}, \hyperlink{src:naur1985}{naur1985}, \hyperlink{src:simon1996}{simon1996}, \hyperlink{src:zavejackson1997}{zavejackson1997}
+\item[Code] \hyperlink{src:c11}{c11}
+\item[The Limit] \hyperlink{src:c11}{c11}, \hyperlink{src:codd1970}{codd1970}, \hyperlink{src:eswaran1976}{eswaran1976}, \hyperlink{src:parnas1972}{parnas1972}
+\item[Eight Idealisations] \hyperlink{src:chipsandcheese}{chipsandcheese}, \hyperlink{src:hennessy2019}{hennessy2019}, \hyperlink{src:kalia2019}{kalia2019}, \hyperlink{src:lehman1980}{lehman1980}, \hyperlink{src:li2007}{li2007}, \hyperlink{src:napkinmath}{napkinmath}, \hyperlink{src:naur1985}{naur1985}, \hyperlink{src:sevencpu}{sevencpu}, \hyperlink{src:simon1962}{simon1962}, \hyperlink{src:soares2010}{soares2010}, \hyperlink{src:vanleeuwen2001}{vanleeuwen2001}, \hyperlink{src:wulf1995}{wulf1995}
+\item[The Machine] \hyperlink{src:church1936}{church1936}, \hyperlink{src:dally2022}{dally2022}, \hyperlink{src:fallacies}{fallacies}, \hyperlink{src:gandy1980}{gandy1980}, \hyperlink{src:grier2005}{grier2005}, \hyperlink{src:hodges1983}{hodges1983}, \hyperlink{src:kleene1936}{kleene1936}, \hyperlink{src:mcmullin1985}{mcmullin1985}, \hyperlink{src:sieg1997}{sieg1997}, \hyperlink{src:soare1996}{soare1996}, \hyperlink{src:turing1936}{turing1936}, \hyperlink{src:turing1950}{turing1950}, \hyperlink{src:valiant1990}{valiant1990}
+\item[Rows] \hyperlink{src:conway1968}{conway1968}, \hyperlink{src:saltzer1984}{saltzer1984}
+\item[Walls] \hyperlink{src:flp1985}{flp1985}, \hyperlink{src:gilbertlynch2002}{gilbertlynch2002}, \hyperlink{src:rice1953}{rice1953}, \hyperlink{src:turing1936}{turing1936}
+\item[Predictions] \hyperlink{src:sutter2005}{sutter2005}
+\end{description}
+\section*{The sources, one by one}
+\addcontentsline{toc}{section}{The sources, one by one}
+\hypertarget{src:abran2006}{}
+\subsection*{Abran, A., Meridji, K., Dolado, J. J. (2006). Software engineering from an engineering perspective: SWEBOK as a study object}
+\noindent\small\emph{UPGRADE/Novatica 7(1):46-52}. Key \texttt{abran2006}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.cepis.org/upgrade/index.jsp?p=2145&n=2152}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That Vincenti's taxonomy was mapped onto the software engineering body of knowledge.
+\field{How it was read} Cited only to show the transfer had been done.
+\field{Where the reading could be wrong} Nothing rests on it beyond priority.
+
+\hypertarget{src:acton2014}{}
+\subsection*{Acton, M. (2014). Data-oriented design and C++}
+\noindent\small\emph{CppCon 2014; slide text from the official deck}. Key \texttt{acton2014}. Standing: agreed (practitioner argument with cache-line accounting).
+\par\noindent\small Source: \url{https://www.youtube.com/watch?v=rX0ItVEVjHc}
+\par\noindent\small Open copy: \url{https://github.com/CppCon/CppCon2014/tree/master/Presentations/Data-Oriented%20Design%20and%20C%2B%2B}
+\normalsize
+\field{Used in} The Test; How Conditions Are Lost.
+\field{Taken to support} That when cost is dominated by memory layout the expensive decision is made when the data structure is chosen, and the practitioner's own cache-line arithmetic for the store-versus-recompute inversion.
+\field{How it was read} Read as a public document in which a practitioner states which two costs are being traded and why one moved. The roughly ten-to-one L2 wait figure is Acton's.
+\field{Where the reading could be wrong} Acton's domain is games, where the regime is unusually memory-bound; the paper treats it as one case in the inversion table, not as universal.
+
+\hypertarget{src:aggarwal1987}{}
+\subsection*{Aggarwal, A., Alpern, B., Chandra, A. K., Snir, M. (1987). A model for hierarchical memory}
+\noindent\small\emph{Proc. STOC 1987}. Key \texttt{aggarwal1987}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1145/28395.28428}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That the classical hierarchical-memory model justifies its cost function by the Mead and Conway log-delay model rather than by geometry.
+\field{How it was read} Read as evidence that the geometric argument was not part of the standard theoretical account, which supports the paper's point that the theorem travels without its derivation.
+\field{Where the reading could be wrong} The HMM authors may have regarded the geometric argument as obvious rather than absent; the paper reads absence from the text, not from the authors' minds.
+
+\hypertarget{src:alexander1977}{}
+\subsection*{Alexander, C., Ishikawa, S., Silverstein, M. (1977). A Pattern Language}
+\noindent\small\emph{Oxford University Press}. Key \texttt{alexander1977}. Standing: agreed.
+\par\noindent\small Source: \url{https://global.oup.com/academic/product/a-pattern-language-9780195019193}
+\normalsize
+\field{Used in} Three Kinds of Knowledge; The Cost of a Decision.
+\field{Taken to support} That the pattern form asks for context and forces, qualitatively.
+\field{How it was read} Read as the nearest existing format to the practice record, and as the one place where rules have been published with conditions for fifty years.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:amdahl1967}{}
+\subsection*{Amdahl, G. M. (1967). Validity of the single processor approach to achieving large scale computing capabilities}
+\noindent\small\emph{AFIPS Conference Proceedings 30:483-485}. Key \texttt{amdahl1967}. Standing: agreed (an argument with an empirical constant).
+\par\noindent\small Source: \url{https://doi.org/10.1145/1465482.1465560}
+\par\noindent\small Open copy: \url{https://www.cis.upenn.edu/~milom/cis501-Fall09/papers/amdahl-1967.pdf}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That the paper contains no equations and one figure, and that it contains an empirical constant (data-management overhead near 40 percent of executed instructions, stable for about ten years) and an explicitly named operating point.
+\field{How it was read} Read against the folklore: the algebra called Amdahl's law is a later formalisation that dropped the constant and silently fixed the problem size. The paper's claim that this took twenty-one years to notice rests on Gustafson 1988.
+\field{Where the reading could be wrong} Others had noted scaled speedup before Gustafson; Gustafson is the note that made it stick. The 'no equations' claim is about the published text and is checkable.
+\field{The result, from scratch} A job with ten seconds of unsplittable work never runs faster than ten seconds however many processors it is given (Amdahl). Give a thousand processors a thousand times bigger job and the same arithmetic yields near-linear speedup (Gustafson). One algebra, a different variable held fixed.
+
+\hypertarget{src:anderson1982}{}
+\subsection*{Anderson, J. R. (1982). Acquisition of cognitive skill}
+\noindent\small\emph{Psychological Review 89(4):369-406}. Key \texttt{anderson1982}. Standing: measured (a theory with experimental support).
+\par\noindent\small Source: \url{https://doi.org/10.1037/0033-295X.89.4.369}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That knowledge begins declarative and becomes procedural through compilation, after which the declarative source is not retrievable from the procedure.
+\field{How it was read} Read as the first of three mechanisms by which conditions get lost. The claim that the condition is 'not present in the representation that fires' is the paper's gloss on knowledge compilation.
+\field{Where the reading could be wrong} ACT theory has been revised repeatedly; the paper uses only the compilation idea, which survived.
+
+\hypertarget{src:anderson2016}{}
+\subsection*{Anderson, D. J., Carmichael, A. (2016). Essential Kanban Condensed}
+\noindent\small\emph{Lean Kanban University Press}. Key \texttt{anderson2016}. Standing: agreed.
+\par\noindent\small Source: \url{https://kanban.university/kanban-guide/}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That the Kanban literature states Little's law, draws the causal conclusion, and then adds stationarity and no-loss conditions.
+\field{How it was read} Read as the practice's own assumption list being stronger than the theorem's, which the paper takes as the authors correctly sensing they need more than the identity gives.
+\field{Where the reading could be wrong} The paper's reading is charitable to the authors; a stricter reading is that the causal claim is simply unsupported.
+
+\hypertarget{src:appuswamy2019}{}
+\subsection*{Appuswamy, R., Borovica-Gajic, R., Graefe, G., Ailamaki, A. (2019). The five-minute rule 30 years later and its impact on the storage hierarchy}
+\noindent\small\emph{Communications of the ACM 62(11)}. Key \texttt{appuswamy2019}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/3318163}
+\normalsize
+\field{Used in} The Test; How Conditions Are Lost.
+\field{Taken to support} Memory/disk about four hours, memory/flash about five minutes at 4 KB pages, flash/disk a day or more, and the mechanism: falling DRAM cost dominated the economic ratio while flash improved IOPS about elevenfold against disk's 2.5x.
+\field{How it was read} The paper notes that the 2019 CACM version is numerically distinct from the 2017 ADMS workshop version and should not be merged with it.
+\field{Where the reading could be wrong} None beyond the original's own approximations.
+
+\hypertarget{src:arthur1989}{}
+\subsection*{Arthur, W. B. (1989). Competing technologies, increasing returns, and lock-in by historical events}
+\noindent\small\emph{Economic Journal 99:116-131}. Key \texttt{arthur1989}. Standing: agreed (a model).
+\par\noindent\small Source: \url{https://doi.org/10.2307/2234208}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The general model of lock-in by historical accident.
+\field{How it was read} Cited with David as the economic lineage.
+\field{Where the reading could be wrong} None specific.
+
+\hypertarget{src:bennett1973}{}
+\subsection*{Bennett, C. H. (1973). Logical reversibility of computation}
+\noindent\small\emph{IBM Journal of Research and Development 17(6):525-532}. Key \texttt{bennett1973}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1147/rd.176.0525}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That computation can be carried out reversibly if a history is retained, so the only unavoidable dissipation is the final erasure.
+\field{How it was read} Used to restrict Landauer's bound to erasure. This is the first of the two scope conditions the paper insists on.
+\field{Where the reading could be wrong} Reversible computation in practice carries space and time overheads the paper does not discuss; it uses Bennett only to locate the cost, not to argue that reversible machines are practical.
+
+\hypertarget{src:bernard2002}{}
+\subsection*{Bernard, M., Fernandez, M., Hull, S. (2002). The effects of line length on children and adults' online reading performance}
+\noindent\small\emph{Usability News 4(2)}. Key \texttt{bernard2002}. Standing: measured.
+\par\noindent\small Source: \url{https://psychology.wichita.edu/surl/usabilitynews/42/text_length.asp}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} No significant difference in reading speed across 45, 76 and 132 characters per line.
+\field{How it was read} Same use as Dyson.
+\field{Where the reading could be wrong} Small-sample usability study; the paper treats it as one data point.
+
+\hypertarget{src:berut2012}{}
+\subsection*{Berut, A. et al. (2012). Experimental verification of Landauer's principle linking information and thermodynamics}
+\noindent\small\emph{Nature 483:187-189}. Key \texttt{berut2012}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1038/nature10872}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That the bound has been measured, first in a colloidal particle in an optical trap.
+\field{How it was read} Taken as the first of four measurements. The paper says the measurements establish that the tested devices obey the bound, not that erasure as such carries it.
+\field{Where the reading could be wrong} Norton has argued that these experiments do not test what they claim to; the paper reports the dispute rather than settling it.
+
+\hypertarget{src:bilardi2009}{}
+\subsection*{Bilardi, G., Ekanadham, K., Pattnaik, P. (2009 (conference 2002)). On approximating the ideal random access machine by physical machines}
+\noindent\small\emph{Journal of the ACM 56(5), Article 27; earlier Proc. SPAA 2002, pp. 109-116}. Key \texttt{bilardi2009}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1145/1552285.1552288}
+\par\noindent\small Open copy: \url{https://doi.org/10.1145/564870.564893}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That latency to address x is Omega(x\textasciicircum{}(1/d)) in d dimensions, from bounded device size and bounded signal speed, and that a pipelined hierarchical memory achieves O(x\textasciicircum{}(1/d)).
+\field{How it was read} This is the load-bearing theorem of the paper. The upper-bound abstract is quoted verbatim from the journal version. The lower bound is taken from the conference abstract, and the journal abstract names the two physical assumptions (minimum device size, maximum signal speed) and calls the hierarchy's latency optimal. The paper reads the result as the reason the storage hierarchy exists, and insists on three scope conditions: latency to address x rather than average latency; reliance on a density bound; latency rather than throughput.
+\field{Where the reading could be wrong} The lower bound's exact wording has not been checked against the full text, and the paper says so. The density assumption is of Bekenstein type and its scope is under investigation (Hayden and Wang 2025). A reader could also argue that practical hierarchies are shaped far more by cost than by this bound; the paper's reply is that the bound explains why no amount of cost removes the hierarchy, not why it has its current shape.
+\field{The result, from scratch} Pack x memory cells around a processor. In a line the farthest is about x away; in a sheet about the square root of x; in a ball about the cube root. A signal must travel there and back at finite speed, so latency grows at least as x\textasciicircum{}(1/d). The world has three dimensions.
+
+\hypertarget{src:bozkurt2017}{}
+\subsection*{Bozkurt, I. N. et al. (2017). Why is the Internet so slow?!}
+\noindent\small\emph{Proc. PAM 2017}. Key \texttt{bozkurt2017}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1007/978-3-319-54328-4_13}
+\par\noindent\small Open copy: \url{https://www.cs.duke.edu/~bozkurt/pam17-slow-internet.pdf}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That median fetch times are about 36 times the speed-of-light floor and minimum ping about 3 times it.
+\field{How it was read} The multiples are taken from the paper's abstract. The paper pairs them with its own fibre-floor arithmetic for New York to London.
+\field{Where the reading could be wrong} The measurements are from 2016 and from a specific vantage-point set; the multiples have likely moved. The paper's forward claim is about the direction (the gap can only shrink), not the current value.
+
+\hypertarget{src:brooks1987}{}
+\subsection*{Brooks, F. P. (1987). No silver bullet: essence and accidents of software engineering}
+\noindent\small\emph{IEEE Computer 20(4):10-19}. Key \texttt{brooks1987}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1109/MC.1987.1663532}
+\par\noindent\small Open copy: \url{https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf}
+\normalsize
+\field{Used in} The Interpreter.
+\field{Taken to support} That the conceptual construct of a program (its essence) is distinct from its representation (the accidents), and that the accidents were expected to shrink while the essence would not. The software intention of this paper is a neighbour of Brooks's essence.
+\field{How it was read} Read for the essence/accident distinction and the prediction attached to it. The paper treats the collapse of production cost as the accidents shrinking, as Brooks expected, and the software intention as the essence made concrete enough to have coordinates.
+\field{Where the reading could be wrong} Brooks's essence includes the whole conceptual construct, including what the paper puts in the first tier (what is wanted). The software intention is narrower: what the machine is to be told. If a reader takes the two as identical, the paper's claim that the first tier is out of scope contradicts the borrowing.
+
+\hypertarget{src:buse2010}{}
+\subsection*{Buse, R. P. L., Weimer, W. (2010). Learning a metric for code readability}
+\noindent\small\emph{IEEE Transactions on Software Engineering 36(4):546-558}. Key \texttt{buse2010}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1109/TSE.2009.70}
+\par\noindent\small Open copy: \url{https://web.eecs.umich.edu/~weimerw/p/weimer-tse2010-readability-preprint.pdf}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That characters per line strongly influence a readability metric trained on human ratings.
+\field{How it was read} Read as close to circular for the paper's question, because it measures agreement with opinion rather than any outcome.
+\field{Where the reading could be wrong} The authors would fairly say the metric predicts defects and maintenance outcomes in later work; the paper does not pursue that.
+
+\hypertarget{src:c11}{}
+\subsection*{ISO/IEC (2011). ISO/IEC 9899:2011, draft N1570, section 5.1.2.3 paragraph 6}
+\noindent\small\emph{C standard}. Key \texttt{c11}. Standing: agreed (a standard).
+\par\noindent\small Source: \url{https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf}
+\normalsize
+\field{Used in} Code; The Limit.
+\field{Taken to support} That implementations need emulate '(only) the observable behavior of the abstract machine'.
+\field{How it was read} Read as a preserved quantity written down in a parenthesis, after which optimisation could become mechanical.
+\field{Where the reading could be wrong} The as-if rule predates C11; the paper cites the draft that is freely available.
+
+\hypertarget{src:chipsandcheese}{}
+\subsection*{Lam, C. (2022). AMD's Zen 4, part 2: memory subsystem}
+\noindent\small\emph{Chips and Cheese, 8 November 2022}. Key \texttt{chipsandcheese}. Standing: measured.
+\par\noindent\small Source: \url{https://chipsandcheese.com/2022/11/08/amds-zen-4-part-2-memory-subsystem-and-conclusion/}
+\normalsize
+\field{Used in} Eight Idealisations; The Test.
+\field{Taken to support} A DRAM latency of about 73 ns on Zen 4 at boost clock.
+\field{How it was read} The cycle conversion (about 420) is the paper's. The paper repeats the author's warning that the measurement used two-megabyte pages, which is not how most applications access memory, and therefore treats 420 as a floor.
+\field{Where the reading could be wrong} Same configuration caveat as 7-cpu.
+
+\hypertarget{src:church1936}{}
+\subsection*{Church, A. (1936). An unsolvable problem of elementary number theory}
+\noindent\small\emph{American Journal of Mathematics 58(2):345-363}. Key \texttt{church1936}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.2307/2371045}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That the lambda calculus is one of the equivalent formalisms of the 1930s.
+\field{How it was read} Cited for the equivalence result only. The paper's claim that the lambda calculus cannot be audited for zeroed costs is the paper's own observation about the formalism, not something Church says.
+\field{Where the reading could be wrong} A reader could object that cost models for the lambda calculus exist (for example, counting beta reductions). The paper's point is narrower: the calculus has no notion of location, so it cannot be charged for distance, and that is the cost the paper is after.
+\field{The result, from scratch} The lambda calculus is a notation for functions and for substituting arguments into them. A computation is a sequence of rewrites. It has no tape and no head, so there is no such thing in it as where a value is.
+
+\hypertarget{src:codd1970}{}
+\subsection*{Codd, E. F. (1970). A relational model of data for large shared data banks}
+\noindent\small\emph{Communications of the ACM 13(6):377-387}. Key \texttt{codd1970}. Standing: proved (a formal model).
+\par\noindent\small Source: \url{https://doi.org/10.1145/362384.362685}
+\normalsize
+\field{Used in} How Conditions Are Lost; The Limit.
+\field{Taken to support} That the paper opens by stating an obligation owed to users (protection from having to know how data is organised), and that relational algebra made query planning mechanical.
+\field{How it was read} Read twice: as the first move of the normalise/denormalise cycle, and as an example of a preserved quantity being written down so that generation could follow.
+\field{Where the reading could be wrong} None specific.
+
+\hypertarget{src:conway1968}{}
+\subsection*{Conway, M. E. (1968). How do committees invent?}
+\noindent\small\emph{Datamation 14(4):28-31}. Key \texttt{conway1968}. Standing: agreed (an observation).
+\par\noindent\small Source: \url{https://www.melconway.com/Home/Committees_Paper.html}
+\normalsize
+\field{Used in} Rows.
+\field{Taken to support} That Conway claimed a homomorphism from the system's linear graph to the organisation's, not an isomorphism.
+\field{How it was read} Read from Conway's own text. The paper's reinterpretation of the law as a cost law over organisation-row reads is the paper's own.
+\field{Where the reading could be wrong} Conway's exact words are 'homomorphism'; whether he intended the mathematical sense strictly is arguable. The paper uses only the weaker direction.
+
+\hypertarget{src:dally2022}{}
+\subsection*{Dally, W. (2022). On the model of computation: point}
+\noindent\small\emph{Communications of the ACM 65(9):30-32}. Key \texttt{dally2022}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1145/3548783}
+\normalsize
+\field{Used in} The Machine; The Test.
+\field{Taken to support} That uniform-cost memory access does not exist, that cost is distance, and that the model of computation must be extended to say so. Also the four-orders-of-magnitude energy asymmetry between a memory fetch and an add.
+\field{How it was read} Read as the closest published statement of the paper's method by a working architect. The paper credits the move of putting costs back to Dally and claims only the systematic version. The energy figure is taken as stated in the article, without recomputation.
+\field{Where the reading could be wrong} Dally's piece is a 'point' in a point-counterpoint; the counterpoint argues that the RAM model remains adequate for algorithm design. The paper sides with Dally for engineering while conceding the counterpoint for algorithmics. The energy figure depends on process node and memory type and should be treated as an order of magnitude.
+
+\hypertarget{src:david1985}{}
+\subsection*{David, P. A. (1985). Clio and the economics of QWERTY}
+\noindent\small\emph{American Economic Review 75(2):332-337}. Key \texttt{david1985}. Standing: agreed (economic history).
+\par\noindent\small Source: \url{https://www.jstor.org/stable/1805621}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That a practice optimal for a lapsed regime can be retained by convention and network effects.
+\field{How it was read} Read as the general form of the paper's claim about lapsed rules. The paper credits the idea here and claims only its expression as a minimisation over a cost model.
+\field{Where the reading could be wrong} The QWERTY story itself has been disputed (Liebowitz and Margolis); the paper uses the mechanism, not the example's details.
+
+\hypertarget{src:dennard1974}{}
+\subsection*{Dennard, R. H. et al. (1974). Design of ion-implanted MOSFETs with very small physical dimensions}
+\noindent\small\emph{IEEE Journal of Solid-State Circuits 9(5):256-268}. Key \texttt{dennard1974}. Standing: measured (a conditional scaling result).
+\par\noindent\small Source: \url{https://doi.org/10.1109/JSSC.1974.1050511}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That scaling dimensions and voltage together by a common factor keeps power density constant.
+\field{How it was read} Read as a conditional result, and the paper is explicit that its end is physical (subthreshold leakage) while the industry's response (multicore) was a choice. The subthreshold-swing floor of about 60 mV per decade is textbook device physics rather than Dennard's own content.
+\field{Where the reading could be wrong} The story of Dennard scaling's end is more complicated than leakage alone (wire delay, lithography cost). The paper picks the cleanest physical floor and says so.
+\field{The result, from scratch} A transistor is a switch controlled by a voltage. Shrink its dimensions and voltage together and power per unit area stays constant. But a transistor never fully turns off, the leak grows exponentially as the threshold falls, and how sharply it can turn off has a thermal floor. Below some voltage the leakage dominates and shrinking stops saving power.
+
+\hypertarget{src:devanbu2016}{}
+\subsection*{Devanbu, P., Zimmermann, T., Bird, C. (2016). Belief and evidence in empirical software engineering}
+\noindent\small\emph{Proc. ICSE 2016}. Key \texttt{devanbu2016}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/2884781.2884812}
+\par\noindent\small Open copy: \url{https://www.microsoft.com/en-us/research/publication/belief-evidence-in-empirical-software-engineering/}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} About 2,500 Microsoft professionals surveyed, 564 responses; beliefs vary by project but do not correspond to project evidence; formed from personal experience; research papers rank second-lowest as a source.
+\field{How it was read} Read as a test of the prediction that the three mechanisms jointly make: practitioners hold beliefs not indexed to their own project's conditions.
+\field{Where the reading could be wrong} One company; the paper does not claim generality beyond the shape of the finding.
+
+\hypertarget{src:dhh2023}{}
+\subsection*{Heinemeier Hansson, D. (2023). We have left the cloud}
+\noindent\small\emph{world.hey.com, 23 June 2023}. Key \texttt{dhh2023}. Standing: agreed (practitioner account).
+\par\noindent\small Source: \url{https://world.hey.com/dhh/we-have-left-the-cloud-251760fb}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} A \$3.2m cloud budget, a \$1.5m projected saving, and the regime under which renting stays right.
+\field{How it was read} Included specifically because the practitioner states the conditions under which his own decision would reverse.
+\field{Where the reading could be wrong} Figures are the author's own projections.
+
+\hypertarget{src:dyson2004}{}
+\subsection*{Dyson, M. C. (2004). How physical text layout affects reading from screen}
+\noindent\small\emph{Behaviour and Information Technology 23(6):377-393}. Key \texttt{dyson2004}. Standing: measured (review).
+\par\noindent\small Source: \url{https://doi.org/10.1080/01449290410001715714}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That longer lines are read faster, that about 55 characters was rated easiest but not read fastest, and that subjective judgments fail to agree with performance.
+\field{How it was read} Read as the strongest evidence that the direction of the rule (shorter is better) does not follow from reading research on prose.
+\field{Where the reading could be wrong} Screen-reading research from the early 2000s used displays very different from today's; and it is about prose, which the paper stresses.
+
+\hypertarget{src:earman1999}{}
+\subsection*{Earman, J., Norton, J. D. (1998-99). Exorcist XIV: the wrath of Maxwell's demon, parts I and II}
+\noindent\small\emph{Studies in History and Philosophy of Modern Physics 29:435-471 and 30:1-40}. Key \texttt{earman1999}. Standing: disputed.
+\par\noindent\small Source: \url{https://doi.org/10.1016/S1355-2198(98)00023-9}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That the standard derivations of Landauer's principle assume what they set out to prove.
+\field{How it was read} Reported as the serious side of a live dispute. The paper does not adjudicate.
+\field{Where the reading could be wrong} The dispute has moved on since 1999 (Bennett 2003, Ladyman et al. 2007, Norton 2011); the paper cites the origin and Norton 2005 rather than the full exchange.
+
+\hypertarget{src:eswaran1976}{}
+\subsection*{Eswaran, K. P., Gray, J. N., Lorie, R. A., Traiger, I. L. (1976). The notions of consistency and predicate locks in a database system}
+\noindent\small\emph{Communications of the ACM 19(11):624-633}. Key \texttt{eswaran1976}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1145/360363.360369}
+\normalsize
+\field{Used in} The Limit.
+\field{Taken to support} Serial equivalence as the preserved quantity that made concurrency control mechanical.
+\field{How it was read} Same use as the C standard and Codd: a written-down invariant followed by automation.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:fallacies}{}
+\subsection*{Deutsch, L. P. and colleagues; explicated by Rotem-Gal-Oz, A. (c. 1994; 2006). The fallacies of distributed computing}
+\noindent\small\emph{Informal; Rotem-Gal-Oz's white paper}. Key \texttt{fallacies}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.rgoarchitects.com/Files/fallacies.pdf}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That the folk version of the audit already exists, as a list of zeroed costs in the form practitioners meet them.
+\field{How it was read} The eight fallacies are read as an informal subset of the idealisations, restricted to idealisation 4. The paper claims the systematic version.
+\field{Where the reading could be wrong} Attribution of the list is uncertain (Deutsch, Gosling, Lyon and others are variously credited). The paper cites the standard explication rather than an original.
+
+\hypertarget{src:flp1985}{}
+\subsection*{Fischer, M. J., Lynch, N. A., Paterson, M. S. (1985). Impossibility of distributed consensus with one faulty process}
+\noindent\small\emph{Journal of the ACM 32(2):374-382}. Key \texttt{flp1985}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1145/3149.214121}
+\par\noindent\small Open copy: \url{https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf}
+\normalsize
+\field{Used in} Walls.
+\field{Taken to support} That in an asynchronous system no deterministic protocol guarantees consensus if one process may crash. This is the second wall.
+\field{How it was read} Read for the impossibility statement only. The paper uses it to show that distributed designs are forced to choose what to give up and that the theorem does not make the choice.
+\field{Where the reading could be wrong} The result is for the fully asynchronous model with crash failures; practical systems escape it with partial synchrony, randomisation or failure detectors. The paper says the theorem forbids a guarantee, not that consensus is unachievable in practice, and a reader who takes it the second way has been misled.
+
+\hypertarget{src:gamma1994}{}
+\subsection*{Gamma, E., Helm, R., Johnson, R., Vlissides, J. (1994). Design Patterns: Elements of Reusable Object-Oriented Software}
+\noindent\small\emph{Addison-Wesley}. Key \texttt{gamma1994}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.pearson.com/en-us/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480}
+\normalsize
+\field{Used in} Three Kinds of Knowledge; The Cost of a Decision.
+\field{Taken to support} The software pattern form, with its Applicability and Consequences sections.
+\field{How it was read} Same use as Alexander.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:gandy1980}{}
+\subsection*{Gandy, R. (1980). Church's thesis and principles for mechanisms}
+\noindent\small\emph{The Kleene Symposium, North-Holland}. Key \texttt{gandy1980}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1016/S0049-237X(08)71257-6}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} The standard account of why Turing's analysis of a human computer was more persuasive than Church's stipulated definition.
+\field{How it was read} Taken as the origin of the modern reading that Turing's argument works by analysing the computor rather than by defining computability. The paper uses this account for a purpose Gandy did not have: choosing which formalism can be audited.
+\field{Where the reading could be wrong} Gandy's own contribution is about mechanisms in general, not human computors specifically; the paper cites him as part of a lineage rather than for a specific claim.
+
+\hypertarget{src:gilbertlynch2002}{}
+\subsection*{Gilbert, S., Lynch, N. (2002). Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services}
+\noindent\small\emph{ACM SIGACT News 33(2):51-59}. Key \texttt{gilbertlynch2002}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1145/564585.564601}
+\par\noindent\small Open copy: \url{https://users.ece.cmu.edu/~adrian/731-sp04/readings/GL-cap.pdf}
+\normalsize
+\field{Used in} Walls.
+\field{Taken to support} That a service cannot at once be linearisable, always available and tolerant of partitions. Cited as the second half of the second wall.
+\field{How it was read} Read as a proved statement of what cannot be had together, and used to show that even a wall hands the decision back to the prices, because it forbids all three and says nothing about which two to keep.
+\field{Where the reading could be wrong} The theorem's consistency is linearisability and its availability is every request to a non-failing node getting a response; weaker definitions of either dissolve the trade-off. The folklore 'pick two' reading is stronger than the theorem, and the paper should not be read as endorsing it.
+
+\hypertarget{src:gluck2020}{}
+\subsection*{Gluck, A. (2020). Introducing domain-oriented microservice architecture}
+\noindent\small\emph{Uber Engineering Blog, 23 July 2020}. Key \texttt{gluck2020}. Standing: agreed (practitioner account).
+\par\noindent\small Source: \url{https://www.uber.com/blog/microservice-architecture/}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} Fifty services across twelve teams touched for one root cause.
+\field{How it was read} Same use as Noonan.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:graefe2007}{}
+\subsection*{Graefe, G. (2007). The five-minute rule twenty years later (and how flash memory changes the rules)}
+\noindent\small\emph{Proc. DaMoN 2007; republished ACM Queue 6(4), 2008}. Key \texttt{graefe2007}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/1363189.1363198}
+\par\noindent\small Open copy: \url{https://queue.acm.org/detail.cfm?id=1413264}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The split into three crossovers with flash present: memory/disk about 90 minutes, memory/flash about 15 minutes, flash/disk about 2.25 hours, and the invitation to recompute for one's own equipment.
+\field{How it was read} Numbers taken as stated.
+\field{Where the reading could be wrong} The DaMoN and Queue versions differ slightly in presentation; the paper cites both.
+
+\hypertarget{src:gray1987}{}
+\subsection*{Gray, J., Putzolu, G. R. (1987). The 5 minute rule for trading memory for disc accesses and the 10 byte rule for trading memory for CPU time}
+\noindent\small\emph{Proc. ACM SIGMOD 1987, pp. 395-398}. Key \texttt{gray1987}. Standing: measured (a formula with stated inputs).
+\par\noindent\small Source: \url{https://doi.org/10.1145/38713.38755}
+\par\noindent\small Open copy: \url{https://dsf.berkeley.edu/cs286/papers/fiveminute-sigmod1987.pdf}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The break-even formula A\$/(M\$ x B), the 1987 inputs, the 400-second result, and the warning that the constants depend on price ratios that change.
+\field{How it was read} This is the paper's model of a practice published with its conditions. The arithmetic in the paper is reconstructed from the stated inputs. The warning sentence is quoted verbatim.
+\field{Where the reading could be wrong} The 1987 inputs are approximate in the original ('about'); the paper's reconstruction rounds the same way. The paper does not discuss the ten-byte rule.
+
+\hypertarget{src:graygraefe1997}{}
+\subsection*{Gray, J., Graefe, G. (1997). The five-minute rule ten years later, and other computer storage rules of thumb}
+\noindent\small\emph{ACM SIGMOD Record 26(4):63-68}. Key \texttt{graygraefe1997}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/271074.271094}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The 266-second recomputation and the observation that page size growth absorbed the price change.
+\field{How it was read} The page-size point is the paper's most-used detail: it shows why a formula is needed to see that a headline was right for the wrong reason.
+\field{Where the reading could be wrong} None beyond the original's own approximations.
+
+\hypertarget{src:grier2005}{}
+\subsection*{Grier, D. A. (2005). When Computers Were Human}
+\noindent\small\emph{Princeton University Press}. Key \texttt{grier2005}. Standing: agreed (history).
+\par\noindent\small Source: \url{https://press.princeton.edu/books/paperback/9780691133829/when-computers-were-human}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} Prony's division of computational labour on the model of Adam Smith's pin factory; the practice of duplicate computation as an error check; the organisation of computing rooms.
+\field{How it was read} Used to show that the real clerks of the period were already paying the idealisations: writing the sheet for bounded people, redundancy against errors, the cost of moving results. Richardson's forecast factory is from Richardson's own 1922 book, well known and not separately cited.
+\field{Where the reading could be wrong} The paper's mapping of each historical practice onto a idealisation is its own reading.
+
+\hypertarget{src:grudin1996}{}
+\subsection*{Grudin, J. (1996). Evaluating opportunities for design capture}
+\noindent\small\emph{Design Rationale: Concepts, Techniques, and Use, Lawrence Erlbaum}. Key \texttt{grudin1996}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.microsoft.com/en-us/research/publication/evaluating-opportunities-for-design-capture/}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That in rationale capture the person who does the capturing is not the person who benefits.
+\field{How it was read} The paper's sentence 'nobody has ever been promoted for writing down the conditions under which their own advice would stop being correct' is a paraphrase of Grudin's point.
+\field{Where the reading could be wrong} None specific.
+
+\hypertarget{src:gunter2000}{}
+\subsection*{Gunter, C. A., Gunter, E. L., Jackson, M., Zave, P. (2000). A reference model for requirements and specifications}
+\noindent\small\emph{IEEE Software 17(3):37-43}. Key \texttt{gunter2000}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1109/52.841999}
+\par\noindent\small Open copy: \url{http://egunter.cs.illinois.edu/papers/ICRE2000.pdf}
+\normalsize
+\field{Used in} The Interpreter.
+\field{Taken to support} The world, requirements, specification, program, machine layering, which the paper's three tiers inherit: tier one works from world to requirements, tier two from requirements to specification, tier three from specification to program.
+\field{How it was read} Read as the layering the paper does not claim. What the paper adds is an account of what shapes the specification (walls and prices) and what happens when specification-to-program becomes free.
+\field{Where the reading could be wrong} The reference model's artefacts are formal objects with proof obligations; the paper's software intention is not required to be formal, so the mapping of tiers onto WRSPM is a correspondence, not an identity.
+
+\hypertarget{src:gustafson1988}{}
+\subsection*{Gustafson, J. L. (1988). Reevaluating Amdahl's law}
+\noindent\small\emph{Communications of the ACM 31(5):532-533}. Key \texttt{gustafson1988}. Standing: agreed (with measurements).
+\par\noindent\small Source: \url{https://doi.org/10.1145/42411.42415}
+\par\noindent\small Open copy: \url{https://www.johngustafson.net/pubs/pub13/amdahl.htm}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The recovery of the fixed-size assumption ('it may be most realistic to assume that run time, not problem size, is constant') and measured speedups near 1020 on 1024 processors.
+\field{How it was read} The quoted sentence is verbatim. The paper reads the note as a condition being put back rather than as a rival law.
+\field{Where the reading could be wrong} Gustafson's own framing is as a reevaluation, not a recovery of a deleted condition; that reading is the paper's.
+
+\hypertarget{src:hayden2025}{}
+\subsection*{Hayden, P., Wang, J. (2025). On the Bekenstein bound}
+\noindent\small\emph{Quantum 9:1664}. Key \texttt{hayden2025}. Standing: disputed.
+\par\noindent\small Source: \url{https://doi.org/10.22331/q-2025-03-11-1664}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/2409.07894}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That the density bound underlying the latency theorem is still under active investigation.
+\field{How it was read} Used only to keep the paper honest about the physics under the theorem. Nothing in the engineering argument depends on the exact form of the Bekenstein bound.
+\field{Where the reading could be wrong} The paper may overstate the dependence: Bilardi et al.'s argument needs only that devices have a minimum size, which is far weaker than the Bekenstein bound.
+
+\hypertarget{src:hennessy2019}{}
+\subsection*{Hennessy, J. L., Patterson, D. A. (2019). A new golden age for computer architecture}
+\noindent\small\emph{Communications of the ACM 62(2):48-60}. Key \texttt{hennessy2019}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/3282307}
+\normalsize
+\field{Used in} Four Bills; Eight Idealisations.
+\field{Taken to support} The dating of Dennard scaling's end (slowed significantly in 2007, faded by 2012), and the DRAM latency versus processor performance growth rates (about 1.07 versus 1.25 to 1.52 per year).
+\field{How it was read} The quotation is verbatim. The growth rates are the standard figures the authors have carried across editions of their textbook.
+\field{Where the reading could be wrong} The growth rates are historical averages over different eras; the paper uses them for the direction and rough magnitude of the memory wall, not for any precise ratio.
+
+\hypertarget{src:hodges1983}{}
+\subsection*{Hodges, A. (1983). Alan Turing: The Enigma}
+\noindent\small\emph{Burnett Books; later editions Princeton University Press}. Key \texttt{hodges1983}. Standing: agreed (biography).
+\par\noindent\small Source: \url{https://press.princeton.edu/books/paperback/9780691164724/alan-turing}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That the 1936 paper originated in Newman's spring 1935 Cambridge lectures on the foundations of mathematics, which posed Hilbert's Entscheidungsproblem, and that Turing's aim was to settle that problem rather than to mechanise clerical work.
+\field{How it was read} Used to correct a tempting but wrong motive. The paper states that Turing was not asking whether a machine could replace the clerk, and that the description of the clerk was the means of making 'mechanical' precise.
+\field{Where the reading could be wrong} Biographical reconstruction of motive is always partly inference; the paper's own title, which names the Entscheidungsproblem, is the primary evidence and Hodges the secondary.
+
+\hypertarget{src:hong2016}{}
+\subsection*{Hong, J., Lambson, B., Dhuey, S., Bokor, J. (2016). Experimental test of Landauer's principle in single-bit operations on nanomagnetic memory bits}
+\noindent\small\emph{Science Advances 2(3):e1501492}. Key \texttt{hong2016}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1126/sciadv.1501492}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} A measurement in a nanomagnetic system, closer to a real memory technology.
+\field{How it was read} Same use as Berut.
+\field{Where the reading could be wrong} Same caveat as Berut.
+
+\hypertarget{src:hpqa}{}
+\subsection*{Hennessy, J. L., Patterson, D. A. (various editions). Computer Architecture: A Quantitative Approach, chapter 2}
+\noindent\small\emph{Morgan Kaufmann}. Key \texttt{hpqa}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That the textbook rationale for the memory hierarchy is locality plus the observation that smaller hardware can be made faster, an argument from economics and manufacturing.
+\field{How it was read} Same use as Aggarwal: the standard account does not carry the geometric necessity.
+\field{Where the reading could be wrong} Edition-dependent; the paper cites the chapter rather than a page.
+
+\hypertarget{src:ibm-card}{}
+\subsection*{IBM (undated). The punched card}
+\noindent\small\emph{ibm.com/history}. Key \texttt{ibm-card}. Standing: agreed (history).
+\par\noindent\small Source: \url{https://www.ibm.com/history/punched-card}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The 1928 rectangular-hole 80-column card.
+\field{How it was read} Used for the date and the mechanism (denser packing across a fixed width).
+\field{Where the reading could be wrong} Corporate history page; the date is corroborated elsewhere.
+
+\hypertarget{src:jansenbosch2005}{}
+\subsection*{Jansen, A., Bosch, J. (2005). Software architecture as a set of architectural design decisions}
+\noindent\small\emph{Proc. WICSA 2005}. Key \texttt{jansenbosch2005}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1109/WICSA.2005.61}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The 'architectural knowledge vaporisation' framing: rationale disappears while the artefact persists.
+\field{How it was read} Cited as the software-internal statement of the same phenomenon.
+\field{Where the reading could be wrong} None specific.
+
+\hypertarget{src:jones-cards}{}
+\subsection*{Jones, D. W. (undated). Punched cards: a brief illustrated technical history}
+\noindent\small\emph{University of Iowa}. Key \texttt{jones-cards}. Standing: agreed (history).
+\par\noindent\small Source: \url{https://homepage.cs.uiowa.edu/~jones/cards/history.html}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The 1890 Hollerith card dimensions (7 3/8 by 3 1/4 inches) and that the size was chosen to fit boxes made for the Treasury Department.
+\field{How it was read} Taken as the origin of the fixed card width. The paper's chain (box, card, holes, columns, terminals, style guides) is assembled from this and the next two sources.
+\field{Where the reading could be wrong} The Treasury-box story is widely repeated and Jones is the best-documented source for it, but it rests on secondary accounts.
+
+\hypertarget{src:jun2014}{}
+\subsection*{Jun, Y., Gavrilov, M., Bechhoefer, J. (2014). High-precision test of Landauer's principle in a feedback trap}
+\noindent\small\emph{Physical Review Letters 113:190601}. Key \texttt{jun2014}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1103/PhysRevLett.113.190601}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/1408.5089}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} A second, higher-precision measurement.
+\field{How it was read} Same use as Berut.
+\field{Where the reading could be wrong} Same caveat as Berut.
+
+\hypertarget{src:kalia2019}{}
+\subsection*{Kalia, A., Kaminsky, M., Andersen, D. G. (2019). Datacenter RPCs can be general and fast}
+\noindent\small\emph{Proc. NSDI 2019}. Key \texttt{kalia2019}. Standing: measured.
+\par\noindent\small Source: \url{https://www.usenix.org/conference/nsdi19/presentation/kalia}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} Median RPC latency of 2.1 to 3.7 microseconds with kernel bypass.
+\field{How it was read} Used as the research floor for a network call, against which the paper places the ordinary stack's 250 microseconds. The point is that the span from function call to network call depends on infrastructure, and quoting the high end without naming infrastructure is selective.
+\field{Where the reading could be wrong} eRPC's numbers are for specific hardware and small messages.
+
+\hypertarget{src:kingman1961}{}
+\subsection*{Kingman, J. F. C. (1961). The single server queue in heavy traffic}
+\noindent\small\emph{Mathematical Proceedings of the Cambridge Philosophical Society 57(4):902-904}. Key \texttt{kingman1961}. Standing: proved (approximation).
+\par\noindent\small Source: \url{https://doi.org/10.1017/S0305004100036094}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That waiting time in a G/G/1 queue near full utilisation grows as rho/(1 - rho) times a variability term.
+\field{How it was read} Identified as the mechanism that would justify WIP limits, and then shown to carry exactly the assumptions (single server, near-one utilisation, distributional) that software development violates.
+\field{Where the reading could be wrong} Multi-server and network generalisations exist; none removes the utilisation assumption.
+\field{The result, from scratch} A barista busy 95 percent of the time has almost no idle capacity to absorb a burst, so a line forms and drains slowly. The waiting factor rho/(1-rho) is 1 at half utilisation, 9 at 0.9, 19 at 0.95.
+
+\hypertarget{src:kleene1936}{}
+\subsection*{Kleene, S. C. (1936). Lambda-definability and recursiveness}
+\noindent\small\emph{Duke Mathematical Journal 2:340-353}. Key \texttt{kleene1936}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1215/S0012-7094-36-00227-2}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} The equivalence of the three formalisms, which is what is proved, as opposed to the Church-Turing thesis, which is not.
+\field{How it was read} Cited only to keep the distinction between the proved equivalence and the unproved thesis honest.
+\field{Where the reading could be wrong} Nothing load bearing rests on this citation.
+
+\hypertarget{src:klein1986}{}
+\subsection*{Klein, G. A., Calderwood, R., Clinton-Cirocco, A. (1986). Rapid decision making on the fire ground}
+\noindent\small\emph{Proceedings of the Human Factors Society 30(16):576-580}. Key \texttt{klein1986}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1177/154193128603000616}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} Twenty-six commanders, 156 decision points, comparison of options in under twelve percent, recognition of a prototype in over eighty percent.
+\field{How it was read} Read as the second mechanism: what is retrieved under time pressure is a prototype that carries an action, so the cost model never enters working memory.
+\field{Where the reading could be wrong} The percentages are from the original small study; later RPD work broadly confirms the shape.
+
+\hypertarget{src:knuth1974}{}
+\subsection*{Knuth, D. E. (1974). Structured programming with go to statements}
+\noindent\small\emph{ACM Computing Surveys 6(4):261-301; the passage is at p. 268}. Key \texttt{knuth1974}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1145/356635.356640}
+\par\noindent\small Open copy: \url{https://pic.plover.com/knuth-GOTO.pdf}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The full paragraph containing the premature-optimisation sentence, including its stated cost (debugging and maintenance) and its stated procedure (identify the critical code first).
+\field{How it was read} The paragraph is quoted in full and verbatim. The paper's claim that the proverb is used against Knuth's position is an observation about usage, not about the text. The claim that the regime lapsed rests on the memory-wall figures from 7-cpu, Chips and Cheese, and Dally.
+\field{Where the reading could be wrong} The attribution of the sentence to Hoare is a separate folklore question the paper does not enter.
+
+\hypertarget{src:landauer1961}{}
+\subsection*{Landauer, R. (1961). Irreversibility and heat generation in the computing process}
+\noindent\small\emph{IBM Journal of Research and Development 5(3):183-191}. Key \texttt{landauer1961}. Standing: proved (within standard statistical mechanics); disputed at foundations.
+\par\noindent\small Source: \url{https://doi.org/10.1147/rd.53.0183}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That erasing a bit dissipates at least kT ln 2, and that the cost attaches to logically irreversible operations.
+\field{How it was read} The bound is taken as stated. The paper is careful to attach two scope conditions (erasure not computation; quasi-static limit) that Landauer's own paper is consistent with but which are usually dropped.
+\field{Where the reading could be wrong} See Earman and Norton. The paper's use does not depend on the dispute, because its point is that the number is too small to matter either way.
+\field{The result, from scratch} Entropy counts how many microscopic arrangements of the world are consistent with what is known. Forcing an unknown bit to zero halves that count for the bit, and the second law says total entropy cannot fall, so the difference must appear elsewhere as heat.
+
+\hypertarget{src:lane2023}{}
+\subsection*{Lane, T. (2023). Re: let's make PostgreSQL multi-threaded}
+\noindent\small\emph{pgsql-hackers mailing list, 5 June 2023}. Key \texttt{lane2023}. Standing: agreed (practitioner deliberation).
+\par\noindent\small Source: \url{https://www.postgresql.org/message-id/3506428.1685974034%40sss.pgh.pa.us}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The quoted warning that a threads migration 'will be a disaster... largely silently, and much of it is not under our control'.
+\field{How it was read} Read as an inversion argued to have crossed, with transition cost priced higher by an expert in the codebase.
+\field{Where the reading could be wrong} The quotation is verbatim; the ellipsis elides text.
+
+\hypertarget{src:lehman1980}{}
+\subsection*{Lehman, M. M. (1980). Programs, life cycles, and laws of software evolution}
+\noindent\small\emph{Proceedings of the IEEE 68(9):1060-1076}. Key \texttt{lehman1980}. Standing: measured (empirical regularities).
+\par\noindent\small Source: \url{https://doi.org/10.1109/PROC.1980.11805}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} The E-type condition, that a program embedded in the world must continually change, and the law that structure degrades under change unless effort is spent against it.
+\field{How it was read} Read as the founding statement of idealisation 8. The paper notes that the crisp wordings usually quoted come from the 1997 restatement.
+\field{Where the reading could be wrong} Lehman's laws are regularities observed in a few systems and their status as laws is contested; the paper calls them empirical regularities, not theorems.
+
+\hypertarget{src:leiserson2020}{}
+\subsection*{Leiserson, C. E. et al. (2020). There's plenty of room at the Top: what will drive computer performance after Moore's law?}
+\noindent\small\emph{Science 368(6495):eaam9744}. Key \texttt{leiserson2020}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1126/science.aam9744}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} A 62,806x speedup from Python to hand-tuned AVX intrinsics on one matrix-multiplication kernel.
+\field{How it was read} Used as the practitioner-side evidence for the buy-hardware-versus-optimise inversion after Dennard scaling ended.
+\field{Where the reading could be wrong} The kernel is chosen for illustration and the ratio is extreme; the paper uses it as one row of a table.
+
+\hypertarget{src:li2007}{}
+\subsection*{Li, C., Ding, C., Shen, K. (2007). Quantifying the cost of context switch}
+\noindent\small\emph{Proc. ExpCS 2007}. Key \texttt{li2007}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/1281700.1281702}
+\par\noindent\small Open copy: \url{https://www.cs.rochester.edu/u/cli/research/switch.pdf}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} A direct context switch cost of about 3.8 microseconds, with indirect cost from cache and TLB pollution running into hundreds of microseconds.
+\field{How it was read} Read for the shape of the finding, that indirect costs dominate direct ones, which the paper takes as characteristic of idealisation 3.
+\field{Where the reading could be wrong} 2007 hardware; absolute numbers have changed. The dominance of indirect cost has not.
+
+\hypertarget{src:little1961}{}
+\subsection*{Little, J. D. C. (1961). A proof for the queuing formula: L = lambda W}
+\noindent\small\emph{Operations Research 9(3):383-387}. Key \texttt{little1961}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1287/opre.9.3.383}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} The identity L = lambda W.
+\field{How it was read} Read as an identity, not a mechanism: it constrains the three averages and says nothing about what happens when one is changed.
+\field{Where the reading could be wrong} None.
+\field{The result, from scratch} Customers arrive at a coffee shop at two per minute and each stays five minutes; on average ten are inside. That is L = lambda W, and it is bookkeeping rather than a model of coffee shops.
+
+\hypertarget{src:lloyd2000}{}
+\subsection*{Lloyd, S. (2000). Ultimate physical limits to computation}
+\noindent\small\emph{Nature 406:1047-1054}. Key \texttt{lloyd2000}. Standing: proved and computed.
+\par\noindent\small Source: \url{https://doi.org/10.1038/35023282}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/quant-ph/9908043}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That for a one-kilogram, one-litre computer at ordinary density the ratio of communication time across the machine to the time to flip one bit is on the order of 10\textasciicircum{}10, approaching unity only at black-hole density.
+\field{How it was read} The paper deliberately ignores Lloyd's headline operations-per-second number and uses the ratio, which it reads as the physical reason a large machine cannot be serial. This is the argument the paper offers in place of 'Dennard scaling forced multicore'.
+\field{Where the reading could be wrong} The ratio is for an idealised machine; real machines are far from these limits, so the ratio is an existence argument rather than a design constraint. The paper uses it only in that role.
+
+\hypertarget{src:margolus1998}{}
+\subsection*{Margolus, N., Levitin, L. B. (1998). The maximum speed of dynamical evolution}
+\noindent\small\emph{Physica D 120:188-195}. Key \texttt{margolus1998}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1016/S0167-2789(98)00054-2}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/quant-ph/9710043}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That a quantum system passes through mutually orthogonal states no faster than a rate set by its average energy above the ground state.
+\field{How it was read} Cited for the bound itself; the engineering consequence is drawn from Lloyd.
+\field{Where the reading could be wrong} Nothing in the paper depends on the exact constant.
+
+\hypertarget{src:mcmullin1985}{}
+\subsection*{McMullin, E. (1985). Galilean idealization}
+\noindent\small\emph{Studies in History and Philosophy of Science 16(3):247-273}. Key \texttt{mcmullin1985}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1016/0039-3681(85)90001-9}
+\par\noindent\small Open copy: \url{https://philpapers.org/rec/MCMGI}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That idealisation names a deliberate, correctable simplification in which a real quantity is set aside to make a theory tractable, and that putting the quantity back (de-idealisation) is a recognised method. This is the paper's warrant for the word idealisation and for its method.
+\field{How it was read} Read for the distinction between idealisations that are meant to be corrected later and those that are not. Turing's zeroing of costs is read as the first kind.
+\field{Where the reading could be wrong} McMullin's taxonomy has several sub-kinds (construct, causal, formal); the paper uses the word in its broad sense and does not commit to his taxonomy. A philosopher of science could object that Turing's move was not Galilean idealisation but abstraction (leaving properties out rather than setting them to a limit); the paper's reply is that the costs were represented and set to zero, which is the limit case.
+
+\hypertarget{src:mendonca2021}{}
+\subsection*{Mendonca, N. C., Box, C., Manolache, C., Ryan, L. (2021). The monolith strikes back: why Istio migrated from microservices to a monolithic architecture}
+\noindent\small\emph{IEEE Software 38(5):17-22}. Key \texttt{mendonca2021}. Standing: agreed (practitioner account).
+\par\noindent\small Source: \url{https://doi.org/10.1109/MS.2021.3080335}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} 'Microservices have to be right sized', from the Istio migration.
+\field{How it was read} Same use as Noonan.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:menzies2017}{}
+\subsection*{Menzies, T., Nichols, W., Shull, F., Layman, L. (2017). Are delayed issues harder to resolve? Revisiting cost-to-fix of defects throughout the lifecycle}
+\noindent\small\emph{Empirical Software Engineering 22(4):1903-1935}. Key \texttt{menzies2017}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1007/s10664-016-9469-x}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/1609.04886}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} Across 171 projects, no evidence that defects become more expensive to fix the longer they linger.
+\field{How it was read} Stated as a second counter-case: a widely held belief with large process investment behind it and no support.
+\field{Where the reading could be wrong} The projects are TSP projects with unusual discipline; generality is limited, which the authors note.
+
+\hypertarget{src:meza2015}{}
+\subsection*{Meza, J., Wu, Q., Kumar, S., Mutlu, O. (2015). A large-scale study of flash memory failures in the field}
+\noindent\small\emph{Proc. SIGMETRICS 2015}. Key \texttt{meza2015}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/2745844.2745848}
+\par\noindent\small Open copy: \url{https://users.ece.cmu.edu/~omutlu/pub/flash-memory-failures_sigmetrics15.pdf}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} Comparable field failure figures for flash.
+\field{How it was read} Cited to show that the tape-fails bill is not specific to DRAM.
+\field{Where the reading could be wrong} The paper quotes no specific number from it.
+
+\hypertarget{src:nanavati2005}{}
+\subsection*{Nanavati, A. A., Bias, R. G. (2005). Optimal line length in reading: a literature review}
+\noindent\small\emph{Visible Language 39(2):121-145}. Key \texttt{nanavati2005}. Standing: measured (review).
+\par\noindent\small Source: \url{https://www.proquest.com/docview/232916050}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} A recommendation not to exceed about 70 characters, on the reasoning that very short and very long lines both interrupt eye movement.
+\field{How it was read} Cited as the review that comes nearest to supporting a limit, and still only for prose.
+\field{Where the reading could be wrong} The review's recommendation is a synthesis, not a measurement.
+
+\hypertarget{src:napkinmath}{}
+\subsection*{Eskildsen, S. (2026 re-measurement). napkin-math}
+\noindent\small\emph{GitHub repository; single-host rows re-measured on GCP c4-standard-48-lssd, 8 March 2026}. Key \texttt{napkinmath}. Standing: measured (rounded).
+\par\noindent\small Source: \url{https://github.com/sirupsen/napkin-math}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} The rounded latency ladder: sequential memory about 0.5 ns, random memory about 20 ns, local flash random read about 100 microseconds, disk about 10 ms, object storage about 80 ms; in-process call about 1 ns, system call about 300 ns, same-region network about 250 microseconds.
+\field{How it was read} The numbers are deliberately rounded for memorisation, and the paper says so. They are used for orders of magnitude, never for ratios that need precision.
+\field{Where the reading could be wrong} They are one host on one cloud on one date. Any reader's numbers will differ, and the paper's argument that the reader should measure their own is partly a response to that.
+
+\hypertarget{src:naur1985}{}
+\subsection*{Naur, P. (1985). Programming as theory building}
+\noindent\small\emph{Microprocessing and Microprogramming 15(5):253-261}. Key \texttt{naur1985}. Standing: agreed (an argument).
+\par\noindent\small Source: \url{https://doi.org/10.1016/0165-6074(85)90032-8}
+\par\noindent\small Open copy: \url{https://pages.cs.wisc.edu/~remzi/Naur.pdf}
+\normalsize
+\field{Used in} The Interpreter; Eight Idealisations.
+\field{Taken to support} That the product of programming is a theory held by the programmers, which cannot be written down in advance, and that this is why specification-first methods fail.
+\field{How it was read} Read as the founding statement of idealisation 7. The paper's phrase 'the input is discovered during the building' is a paraphrase of Naur's argument.
+\field{Where the reading could be wrong} Naur's point is about the theory of the program, not only about requirements; the paper narrows it to the input.
+
+\hypertarget{src:noonan2018}{}
+\subsection*{Noonan, A. (2018). Goodbye microservices: from 100s of problem children to 1 superstar}
+\noindent\small\emph{Segment Engineering Blog, 10 July 2018}. Key \texttt{noonan2018}. Standing: agreed (practitioner account).
+\par\noindent\small Source: \url{https://segment.com/blog/goodbye-microservices/}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That operational overhead grew linearly with each added destination service.
+\field{How it was read} A migration write-up in which the two costs are stated; the paper's inversion table is built from such documents.
+\field{Where the reading could be wrong} Engineering blogs disappear; an archive link should be kept.
+
+\hypertarget{src:norton2005}{}
+\subsection*{Norton, J. D. (2005). Eaters of the lotus: Landauer's principle and the return of Maxwell's demon}
+\noindent\small\emph{Studies in History and Philosophy of Modern Physics 36:375-411}. Key \texttt{norton2005}. Standing: disputed.
+\par\noindent\small Source: \url{https://doi.org/10.1016/j.shpsb.2004.12.002}
+\par\noindent\small Open copy: \url{https://sites.pitt.edu/~jdnorton/papers/Eaters_of_the_lotus.pdf}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} The continued form of the objection.
+\field{How it was read} Same as Earman and Norton.
+\field{Where the reading could be wrong} Same.
+
+\hypertarget{src:nygard2011}{}
+\subsection*{Nygard, M. (2011). Documenting architecture decisions}
+\noindent\small\emph{cognitect.com}. Key \texttt{nygard2011}. Standing: agreed.
+\par\noindent\small Source: \url{https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions}
+\normalsize
+\field{Used in} The Cost of a Decision.
+\field{Taken to support} That architecture decision records ask, in one line, that changes in context which should trigger re-evaluation be noted.
+\field{How it was read} Read as the nearest practitioner format, which asks for the right thing without asking for a ratio, a threshold or a date.
+\field{Where the reading could be wrong} Later ADR templates (MADR and others) add fields; the paper cites the origin.
+
+\hypertarget{src:parnas1972}{}
+\subsection*{Parnas, D. L. (1972). On the criteria to be used in decomposing systems into modules}
+\noindent\small\emph{Communications of the ACM 15(12):1053-1058}. Key \texttt{parnas1972}. Standing: agreed (a design argument).
+\par\noindent\small Source: \url{https://doi.org/10.1145/361598.361623}
+\par\noindent\small Open copy: \url{https://www.win.tue.nl/~wstomv/edu/2ip30/references/criteria_for_modularization.pdf}
+\normalsize
+\field{Used in} The Limit.
+\field{Taken to support} That decomposition should begin with a list of design decisions likely to change, each hidden by a module.
+\field{How it was read} Read with the emphasis on 'likely to change': the list is a forecast supplied by a person, not derived from the code. This is the paper's argument for why architecture's preserved quantity has never been written down.
+\field{Where the reading could be wrong} Parnas would likely agree that the list is a judgment; whether he would agree that it is in principle underivable from artefacts is the paper's extension.
+
+\hypertarget{src:prechelt2001}{}
+\subsection*{Prechelt, L., Unger, B., Tichy, W. F., Brossler, P., Votta, L. G. (2001). A controlled experiment in maintenance comparing design patterns to simpler solutions}
+\noindent\small\emph{IEEE Transactions on Software Engineering 27(12):1134-1144}. Key \texttt{prechelt2001}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1109/32.988711}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That unless there is a clear reason to prefer the simpler solution it is probably wise to choose the pattern's flexibility, and that identifying exceptions requires 'software engineering common sense'.
+\field{How it was read} Stated as a counter-case: some cached answers are robust across a regime one never leaves. The common-sense remark is read as the conditions being unstatable even in a controlled experiment.
+\field{Where the reading could be wrong} Small experiment; the paper uses it to bound its own claim, not to establish one.
+
+\hypertarget{src:proesmans2020}{}
+\subsection*{Proesmans, K., Ehrich, J., Bechhoefer, J. (2020). Finite-time Landauer principle}
+\noindent\small\emph{Physical Review Letters 125:100602}. Key \texttt{proesmans2020}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1103/PhysRevLett.125.100602}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/2006.03242}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That erasing in finite time costs kT ln 2 plus a term growing as 1/tau.
+\field{How it was read} The second scope condition. Read as establishing that 'zero-dissipation computing' is a statement about infinitely slow computing.
+\field{Where the reading could be wrong} The 1/tau form is for a particular class of protocols; the paper uses only the qualitative point that finite time adds cost.
+
+\hypertarget{src:reis2019}{}
+\subsection*{Reis, C., Moshchuk, A., Oskov, N. (2019). Site isolation: process separation for web sites within the browser}
+\noindent\small\emph{Proc. USENIX Security 2019, pp. 1661-1678}. Key \texttt{reis2019}. Standing: measured.
+\par\noindent\small Source: \url{https://www.usenix.org/conference/usenixsecurity19/presentation/reis}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That after Spectre 'it is no longer safe to render documents from different web sites in the same process', at 9 to 13 percent memory overhead.
+\field{How it was read} The paper's bounding case: no price moved, a premise was falsified. It is included to show what the framework cannot forecast.
+\field{Where the reading could be wrong} None; quotation verbatim.
+
+\hypertarget{src:rice1953}{}
+\subsection*{Rice, H. G. (1953). Classes of recursively enumerable sets and their decision problems}
+\noindent\small\emph{Transactions of the American Mathematical Society 74(2):358-366}. Key \texttt{rice1953}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1090/S0002-9947-1953-0053041-6}
+\par\noindent\small Open copy: \url{https://www.ams.org/journals/tran/1953-074-02/S0002-9947-1953-0053041-6/S0002-9947-1953-0053041-6.pdf}
+\normalsize
+\field{Used in} Walls.
+\field{Taken to support} That no non-trivial semantic property of what a program computes is decidable from the program's text, which is the general form of the first wall in the section on what the machine cannot do.
+\field{How it was read} Read as the theorem behind the claim that a sheet cannot in general be checked by reading it, and that typing and testing are compromises with that fact.
+\field{Where the reading could be wrong} Rice's theorem concerns properties of the partial function computed, over all inputs. Many practical checks are about a specific input or a bounded run, where the theorem does not apply. The paper's sentence should be read as about the general case only.
+
+\hypertarget{src:saltzer1984}{}
+\subsection*{Saltzer, J. H., Reed, D. P., Clark, D. D. (1984). End-to-end arguments in system design}
+\noindent\small\emph{ACM Transactions on Computer Systems 2(4):277-288}. Key \texttt{saltzer1984}. Standing: agreed (a design argument with a stated cost model).
+\par\noindent\small Source: \url{https://doi.org/10.1145/357401.357402}
+\par\noindent\small Open copy: \url{https://web.mit.edu/Saltzer/www/publications/endtoend/endtoend.pdf}
+\normalsize
+\field{Used in} Rows.
+\field{Taken to support} That the argument does not say where to put early checks, is 'a guideline' rather than an absolute rule, and comes with a worked cost model (one message in a hundred dropped) that yields a crossover.
+\field{How it was read} Read as the paper's model of a rule published with its conditions. Both quoted sentences are verbatim. The paper also notes that 'smart endpoints and dumb pipes' does not appear in it.
+\field{Where the reading could be wrong} The under-determination sentence is in the original, but reading the whole paper as primarily a who-pays analysis is the paper's emphasis, not the authors'.
+
+\hypertarget{src:schroeder2009}{}
+\subsection*{Schroeder, B., Pinheiro, E., Weber, W.-D. (2009). DRAM errors in the wild: a large-scale field study}
+\noindent\small\emph{Proc. SIGMETRICS 2009}. Key \texttt{schroeder2009}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/1555349.1555372}
+\par\noindent\small Open copy: \url{https://research.google/pubs/dram-errors-in-the-wild-a-large-scale-field-study/}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That more than eight percent of DIMMs in Google's fleet saw at least one correctable error per year over two and a half years, well above prior estimates.
+\field{How it was read} The number is taken as the paper reports it (about 8.2 percent of DIMMs affected per year). The paper uses it as the measured bill for idealisation 4 and as the 'where we are' entry in the floors table.
+\field{Where the reading could be wrong} The figure is fleet-specific and from 2006-2008 hardware; per-device rates have changed. The paper's forward argument deliberately uses rate times count rather than rate alone.
+
+\hypertarget{src:sevencpu}{}
+\subsection*{7-cpu.com (undated). Intel Skylake microarchitecture page}
+\noindent\small\emph{7-cpu.com; i7-6700 at 4.0 GHz, DDR4-2400 CL15}. Key \texttt{sevencpu}. Standing: measured.
+\par\noindent\small Source: \url{https://www.7-cpu.com/cpu/Skylake.html}
+\normalsize
+\field{Used in} Eight Idealisations; The Test.
+\field{Taken to support} A last-level cache miss served from DRAM at about 61 ns on the named part.
+\field{How it was read} The nanosecond figure is the site's; the conversion to about 250 cycles at 4 GHz is the paper's, and the paper says so.
+\field{Where the reading could be wrong} Memory latency depends heavily on configuration; the figure is one part on one configuration.
+
+\hypertarget{src:shipman1999}{}
+\subsection*{Shipman, F. M., Marshall, C. C. (1999). Formality considered harmful: experiences, emerging themes, and directions on the use of formal representations in interactive systems}
+\noindent\small\emph{Computer Supported Cooperative Work 8:333-352}. Key \texttt{shipman1999}. Standing: measured (experience reports).
+\par\noindent\small Source: \url{https://doi.org/10.1023/A:1008716330212}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That users resist making context explicit and that premature structure damages the work.
+\field{How it was read} Read as the third, economic mechanism. Paired with Grudin.
+\field{Where the reading could be wrong} None specific.
+
+\hypertarget{src:shirriff2019}{}
+\subsection*{Shirriff, K. (2019). IBM, sonic delay lines, and the history of the 80x24 display}
+\noindent\small\emph{righto.com, November 2019}. Key \texttt{shirriff2019}. Standing: agreed (history).
+\par\noindent\small Source: \url{https://www.righto.com/2019/11/ibm-sonic-delay-lines-and-history-of.html}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That the source of 80-column lines is 'clearly punch cards', and that mid-1970s terminals shipped in dozens of sizes (31x11, 52x48, 133x64).
+\field{How it was read} The quotation is verbatim. The list of sizes is read as decisive against any technological-determinism story.
+\field{Where the reading could be wrong} None found.
+
+\hypertarget{src:shute2013}{}
+\subsection*{Shute, J. et al. (2013). F1: a distributed SQL database that scales}
+\noindent\small\emph{PVLDB 6(11):1068-1079}. Key \texttt{shute2013}. Standing: agreed (practitioner account).
+\par\noindent\small Source: \url{https://doi.org/10.14778/2536222.2536232}
+\par\noindent\small Open copy: \url{https://research.google/pubs/f1-a-distributed-sql-database-that-scales/}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The phrase 'an unacceptable burden to place on developers' about eventual consistency.
+\field{How it was read} Used as the return move of the cycle, with the two costs (developer time versus throughput) stated by the practitioners themselves.
+\field{Where the reading could be wrong} None; the quotation is verbatim.
+
+\hypertarget{src:sieg1997}{}
+\subsection*{Sieg, W. (1997). Step by recursive step: Church's analysis of effective calculability}
+\noindent\small\emph{Bulletin of Symbolic Logic 3(2):154-180}. Key \texttt{sieg1997}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.2307/421012}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That Church's approach was definitional and Turing's was analytic, and that Godel was persuaded by the latter.
+\field{How it was read} Read as the most careful modern statement of the Church-versus-Turing history. The paper takes from it only the contrast between stipulation and analysis.
+\field{Where the reading could be wrong} Sieg's later work refines the 'analysis' reading considerably; the paper's one-sentence use is a simplification.
+
+\hypertarget{src:simon1962}{}
+\subsection*{Simon, H. A. (1962). The architecture of complexity}
+\noindent\small\emph{Proceedings of the American Philosophical Society 106(6):467-482}. Key \texttt{simon1962}. Standing: agreed (an argument).
+\par\noindent\small Source: \url{https://www.jstor.org/stable/985254}
+\par\noindent\small Open copy: \url{https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} That complex systems assembled by bounded processes end up as hierarchies of nearly decomposable parts.
+\field{How it was read} Read as the founding argument for idealisation 6: because builders are bounded, artefacts are modular. The paper attributes modularity, abstraction and information hiding to this idealisation.
+\field{Where the reading could be wrong} Simon's argument is about evolutionary stability of intermediate forms as much as about bounded builders; the paper takes the second reading.
+
+\hypertarget{src:simon1996}{}
+\subsection*{Simon, H. A. (1996). The Sciences of the Artificial (3rd ed.)}
+\noindent\small\emph{MIT Press}. Key \texttt{simon1996}. Standing: agreed.
+\par\noindent\small Source: \url{https://mitpress.mit.edu/9780262690232/the-sciences-of-the-artificial/}
+\normalsize
+\field{Used in} The Interpreter.
+\field{Taken to support} That an artifact is the meeting point, an interface, between an inner environment (its own substance and organisation) and an outer environment (the surroundings it serves), and that a well-adapted artifact can be predicted from its goals and outer environment with few assumptions about the inner. The interpreter of this paper stands at Simon's meeting point.
+\field{How it was read} Read as the direct ancestor of the interpreter framing. The paper shifts attention from the artifact to the person who shapes it and to what the inner environment charges.
+\field{Where the reading could be wrong} Simon's point is that the inner environment can often be ignored when adaptation succeeds; the paper's point is the opposite, that the inner environment's costs are what shape the decisions. The two are compatible (Simon is describing successful artifacts, the paper is describing the work of making them) but a reader could take the citation as endorsing a view the paper argues against.
+
+\hypertarget{src:sjoberg2018}{}
+\subsection*{Sjoberg, D. I. K. (2018). An empirical study of WIP in kanban teams}
+\noindent\small\emph{Proc. ESEM 2018}. Key \texttt{sjoberg2018}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1145/3239235.3239251}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} Over 8,000 work items across four years and five teams at one company: WIP correlates with lead time and with productivity; no published study indicates an optimal limit; replication is called for.
+\field{How it was read} Read as the single empirical study, and as partly inconsistent with the practice's advocacy. The paper searched for a replication and found none.
+\field{Where the reading could be wrong} The paper's search may have missed a replication; that would be a welcome correction.
+
+\hypertarget{src:soare1996}{}
+\subsection*{Soare, R. I. (1996). Computability and recursion}
+\noindent\small\emph{Bulletin of Symbolic Logic 2(3):284-321}. Key \texttt{soare1996}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.2307/420992}
+\par\noindent\small Open copy: \url{http://www.people.cs.uchicago.edu/~soare/History/compute.pdf}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} The historical account of Turing modelling a clerk and stripping him down.
+\field{How it was read} Same use as Gandy and Sieg. Soare is cited because he states plainly that Turing's machine is a model of a human being computing.
+\field{Where the reading could be wrong} Nothing beyond the historical framing rests on it.
+
+\hypertarget{src:soares2010}{}
+\subsection*{Soares, L., Stumm, M. (2010). FlexSC: flexible system call scheduling with exception-less system calls}
+\noindent\small\emph{Proc. OSDI 2010}. Key \texttt{soares2010}. Standing: measured.
+\par\noindent\small Source: \url{https://www.usenix.org/conference/osdi10/flexsc-flexible-system-call-scheduling-exception-less-system-calls}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} A direct mode-switch cost of about 150 cycles against a full footprint of about 12,300 cycles for a single pread.
+\field{How it was read} Same use as Li et al.: indirect cost dominates.
+\field{Where the reading could be wrong} Measured on a specific Nehalem-era machine; the ratio, not the absolute, is what the paper uses.
+
+\hypertarget{src:stidham1974}{}
+\subsection*{Stidham, S., Jr. (1974). A last word on L = lambda W}
+\noindent\small\emph{Operations Research 22(2):417-421}. Key \texttt{stidham1974}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1287/opre.22.2.417}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That the identity holds with 'as hypotheses only that the limiting averages, lambda and W, exist and are finite'.
+\field{How it was read} The quotation is verbatim. The paper uses Stidham to show how weak the theorem's hypotheses are, which is what makes the gap to the practice's assumptions visible.
+\field{Where the reading could be wrong} None.
+
+\hypertarget{src:stonebraker2005}{}
+\subsection*{Stonebraker, M., Cetintemel, U. (2005). 'One size fits all': an idea whose time has come and gone}
+\noindent\small\emph{Proc. ICDE 2005}. Key \texttt{stonebraker2005}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1109/ICDE.2005.1}
+\par\noindent\small Open copy: \url{https://cs.brown.edu/~ugur/fits_all.pdf}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} The 900 versus 160,000 messages per second comparison between a relational engine and a specialised stream engine.
+\field{How it was read} Used as the middle move of the normalise/denormalise cycle.
+\field{Where the reading could be wrong} The comparison is between different workloads and engines; the paper uses it for the direction of the argument.
+
+\hypertarget{src:sutter2005}{}
+\subsection*{Sutter, H. (2005). The free lunch is over: a fundamental turn toward concurrency in software}
+\noindent\small\emph{Dr. Dobb's Journal 30(3)}. Key \texttt{sutter2005}. Standing: agreed.
+\par\noindent\small Source: \url{http://www.gotw.ca/publications/concurrency-ddj.htm}
+\normalsize
+\field{Used in} Predictions.
+\field{Taken to support} A self-reported lag of one to two years between the crossover and the practice change.
+\field{How it was read} One data point for the lag in Prediction 1.
+\field{Where the reading could be wrong} Self-report.
+
+\hypertarget{src:turing1936}{}
+\subsection*{Turing, A. M. (1936). On computable numbers, with an application to the Entscheidungsproblem}
+\noindent\small\emph{Proceedings of the London Mathematical Society s2-42:230-265}. Key \texttt{turing1936}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1112/plms/s2-42.1.230}
+\par\noindent\small Open copy: \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\normalsize
+\field{Used in} The Machine; Walls.
+\field{Taken to support} That the machine was obtained by analysing what a human computer does (section 9 of the paper), that the five operations are the whole of it, and that the clerk's behaviour is fully determined by the observed symbol and the state of mind.
+\field{How it was read} Section 9 is read as an inventory: Turing names each thing the clerk does and then abstracts it. The paper takes the naming as the useful act, because a cost that was named before being set to zero can be put back. The clerk-decides-nothing reading takes Turing's phrase that behaviour is 'determined by' symbol and state literally.
+\field{Where the reading could be wrong} Turing's paper does not contain the halting problem by name or in its modern form; the paper avoids attributing it. Whether section 9 is best read as an empirical analysis of human computing or as a conceptual argument is debated in the philosophy of computing; the paper follows Gandy, Sieg and Soare, which is the majority view but not the only one.
+\field{The result, from scratch} A Turing machine is a strip of squares each holding one symbol, a head over one square, a finite state, and a table that for each state-and-symbol pair says what to write, which way to move, and which state to enter. The five operations are read, write, move, change state, halt.
+
+\hypertarget{src:turing1950}{}
+\subsection*{Turing, A. M. (1950). Computing machinery and intelligence}
+\noindent\small\emph{Mind 59(236):433-460}. Key \texttt{turing1950}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1093/mind/LIX.236.433}
+\par\noindent\small Open copy: \url{https://academic.oup.com/mind/article/LIX/236/433/986238}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That Turing later defined a digital computer as a machine intended to carry out any operations which could be done by a human computer (section 4).
+\field{How it was read} Cited to show that the consequence the paper draws from the 1936 description, that it says which part of a clerk's work a machine could do, is one Turing drew himself.
+\field{Where the reading could be wrong} The 1950 paper is about intelligence rather than clerical replacement; the paper uses only its definition of the digital computer.
+
+\hypertarget{src:vacanti2015}{}
+\subsection*{Vacanti, D. (2015). Actionable Agile Metrics for Predictability}
+\noindent\small\emph{ActionableAgile Press}. Key \texttt{vacanti2015}. Standing: agreed.
+\par\noindent\small Source: \url{https://actionableagile.com/books/aamfp/}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} Five operational assumptions under which the identity is used, with the statement that breaking any one breaks the equation.
+\field{How it was read} Same use as Anderson and Carmichael.
+\field{Where the reading could be wrong} Same.
+
+\hypertarget{src:valiant1990}{}
+\subsection*{Valiant, L. G. (1990). A bridging model for parallel computation}
+\noindent\small\emph{Communications of the ACM 33(8):103-111}. Key \texttt{valiant1990}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1145/79173.79181}
+\normalsize
+\field{Used in} The Machine.
+\field{Taken to support} That a model of computation can have the structural job of standing between the physical machine and the programmer's abstraction.
+\field{How it was read} Cited for the idea of a bridging model, not for BSP's specifics. The paper's audit is a different bridging exercise, from the physical layer up to practice rather than from the algorithm down to the machine.
+\field{Where the reading could be wrong} Valiant's model prices communication and synchronisation; it does not attempt to enumerate zeroed costs. Calling it a precursor is fair; calling it the same project is not, and the paper does not.
+
+\hypertarget{src:vanleeuwen2001}{}
+\subsection*{van Leeuwen, J., Wiedermann, J. (2001). The Turing machine paradigm in contemporary computing}
+\noindent\small\emph{Mathematics Unlimited: 2001 and Beyond, Springer}. Key \texttt{vanleeuwen2001}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1007/978-3-642-56478-9_59}
+\par\noindent\small Open copy: \url{https://webspace.science.uu.nl/~leeuw112/mathunl.pdf}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} That the classical paradigm should be relaxed from closed to open interaction, from a fixed program to an evolving one, and from terminating to perpetual computation.
+\field{How it was read} These three relaxations are the paper's idealisations 6, 7 and 8. The paper says plainly that these were the three that felt most original before this paper was found, and claims only the full enumeration and the sorting.
+\field{Where the reading could be wrong} Van Leeuwen and Wiedermann's interest is in computability beyond Turing machines, not in engineering practice; the mapping onto idealisations is the paper's.
+
+\hypertarget{src:vincenti1990}{}
+\subsection*{Vincenti, W. G. (1990). What Engineers Know and How They Know It}
+\noindent\small\emph{Johns Hopkins University Press}. Key \texttt{vincenti1990}. Standing: agreed.
+\par\noindent\small Source: \url{https://www.press.jhu.edu/books/title/1719/what-engineers-know-and-how-they-know-it}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That engineering knowledge is not applied science, that design generates knowledge of its own, and that one category of engineering knowledge is prescriptive: drawn from experience without grounding in theory.
+\field{How it was read} Read as the source of the claim that much of the field is prescription validated by uptake. The paper's addition is a physical layer against which to test which prescriptions have a correlate underneath.
+\field{Where the reading could be wrong} Vincenti's categories are richer than 'prescriptive versus grounded'; the paper uses one of his distinctions.
+
+\hypertarget{src:vonneumann1956}{}
+\subsection*{von Neumann, J. (1956). Probabilistic logics and the synthesis of reliable organisms from unreliable components}
+\noindent\small\emph{Automata Studies, Princeton University Press}. Key \texttt{vonneumann1956}. Standing: proved.
+\par\noindent\small Source: \url{https://doi.org/10.1515/9781400882618-003}
+\par\noindent\small Open copy: \url{https://static.ias.edu/pitp/archive/2012files/Probabilistic_Logics.pdf}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} That reliable computation is obtainable from unreliable components at finite redundancy overhead, provided component error probability is below a threshold.
+\field{How it was read} Read as the reason the tape-fails bill is survivable. The paper uses the qualitative shape (threshold, finite overhead), not von Neumann's specific constants, which are known to be loose.
+\field{Where the reading could be wrong} Von Neumann's threshold and overhead were improved substantially by later work (Pippenger, and others). The paper's use survives any of those refinements.
+\field{The result, from scratch} Take three copies of a component that fails with probability p and use whatever two agree on. The vote fails only when two fail together, with probability about 3p\textasciicircum{}2, which is much smaller than p when p is small. Repeat as needed.
+
+\hypertarget{src:wulf1995}{}
+\subsection*{Wulf, W. A., McKee, S. A. (1995). Hitting the memory wall: implications of the obvious}
+\noindent\small\emph{ACM SIGARCH Computer Architecture News 23(1):20-24}. Key \texttt{wulf1995}. Standing: agreed (an extrapolation).
+\par\noindent\small Source: \url{https://doi.org/10.1145/216585.216588}
+\normalsize
+\field{Used in} Eight Idealisations.
+\field{Taken to support} That the memory wall was foreseen in 1994 from trivial arithmetic on published growth rates.
+\field{How it was read} Cited for the subtitle as much as the content: the point is that a consequential fact was derivable from the obvious, and the paper's method is to keep deriving such facts.
+\field{Where the reading could be wrong} Wulf and McKee's specific projections were pessimistic; caches and prefetching softened the wall. The paper cites the direction, which was right.
+
+\hypertarget{src:yan2018}{}
+\subsection*{Yan, L. L. et al. (2018). Single-atom demonstration of the quantum Landauer principle}
+\noindent\small\emph{Physical Review Letters 120:210601}. Key \texttt{yan2018}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1103/PhysRevLett.120.210601}
+\par\noindent\small Open copy: \url{https://arxiv.org/abs/1803.10424}
+\normalsize
+\field{Used in} Four Bills.
+\field{Taken to support} A measurement in a single trapped ion.
+\field{How it was read} Same use as Berut.
+\field{Where the reading could be wrong} Same caveat as Berut.
+
+\hypertarget{src:zannier2007}{}
+\subsection*{Zannier, C., Chiasson, M., Maurer, F. (2007). A model of design decision making based on empirical results of interviews with software designers}
+\noindent\small\emph{Information and Software Technology 49(6):637-653}. Key \texttt{zannier2007}. Standing: measured.
+\par\noindent\small Source: \url{https://doi.org/10.1016/j.infsof.2007.02.010}
+\normalsize
+\field{Used in} How Conditions Are Lost.
+\field{Taken to support} That the more structured a design decision, the fewer options a designer considers.
+\field{How it was read} Cited as the software-specific counterpart of Klein.
+\field{Where the reading could be wrong} Interview study with a modest sample.
+
+\hypertarget{src:zavejackson1997}{}
+\subsection*{Zave, P., Jackson, M. (1997). Four dark corners of requirements engineering}
+\noindent\small\emph{ACM Transactions on Software Engineering and Methodology 6(1):1-30}. Key \texttt{zavejackson1997}. Standing: agreed.
+\par\noindent\small Source: \url{https://doi.org/10.1145/237432.237434}
+\par\noindent\small Open copy: \url{https://www.researchgate.net/publication/220403555_Four_Dark_Corners_of_Requirements_Engineering}
+\normalsize
+\field{Used in} The Interpreter.
+\field{Taken to support} That requirements are statements about the world, the specification is a statement at the interface between world and machine, and the two must be kept apart.
+\field{How it was read} Read as the closest prior statement of the line between the paper's first and second tiers. Jackson and Zave's specification sits where the software intention sits; the paper adds that the specification is shaped by what the machine cannot do and what it charges.
+\field{Where the reading could be wrong} Zave and Jackson's specification is a formal object with a proof obligation (world and specification entail the requirement). The software intention is not required to be formal. Treating the two as the same object overstates what the paper has.
+
+\hypertarget{src:zhang2025}{}
+\subsection*{Zhang, T. et al. (2025). Five-minute rule 40 years later}
+\noindent\small\emph{arXiv:2511.03944 (preprint)}. Key \texttt{zhang2025}. Standing: measured (preprint).
+\par\noindent\small Source: \url{https://arxiv.org/abs/2511.03944}
+\normalsize
+\field{Used in} The Test.
+\field{Taken to support} That a first-principles revisit charging for host processor and memory bandwidth reports the threshold collapsing to seconds.
+\field{How it was read} Cited as a preprint and flagged as such. Used only to extend the recomputation series by one step.
+\field{Where the reading could be wrong} Unreviewed at the time of writing.
+
+\end{document}
