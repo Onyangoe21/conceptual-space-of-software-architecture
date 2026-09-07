@@ -185,6 +185,7 @@ Run the mechanical checks yourself before pushing:
 
 ```bash
 python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex
+python3 .github/scripts/style_guard.py paper/what-computation-costs.tex
 ```
 
 CI rejects dashes, checks that every `\cite` key has a matching `\bibitem` and the reverse, and

@@ -78,13 +78,31 @@ machine could estimate it, and closes with six falsifiable predictions.
 
 ## Read it
 
-- **arXiv version (citable snapshot):** [ARXIV-LINK]
-- **Latest compiled PDF from this repository:** [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
-- **LaTeX source, single file:** [`paper/conceptual-space-arxiv.tex`](paper/conceptual-space-arxiv.tex)
-- **What has changed since arXiv v1:** [`paper/CHANGELOG.md`](paper/CHANGELOG.md)
+Two papers live here, and they are one project. The first asks what the variables are that an
+architectural decision moves along. The second steps back and asks what any engineering decision
+is answerable to, starting from the costs Turing set to zero.
 
-Every pull request that touches the paper builds a PDF as a CI artifact, so you can read the
-result of a proposed change without installing LaTeX.
+**The Conceptual Space of Software Architecture** (August 2026)
+
+- Compiled PDF: [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
+- LaTeX source, single file: [`paper/conceptual-space-arxiv.tex`](paper/conceptual-space-arxiv.tex)
+
+**What Computation Costs** (September 2026)
+
+- Compiled PDF: [`paper/what-computation-costs.pdf`](paper/what-computation-costs.pdf)
+- LaTeX source, single file: [`paper/what-computation-costs.tex`](paper/what-computation-costs.tex)
+- Companion, *How the Sources Were Read*: [`supplement/how-the-sources-were-read.pdf`](supplement/how-the-sources-were-read.pdf),
+  generated from [`supplement/sources.json`](supplement/sources.json). For every source the paper
+  cites: where it is used, what it was taken to support, how it was read, and where that reading
+  could be wrong. Also rendered, entry by entry and open to objection, at
+  [curiousedwin.com/publications/what-computation-costs](https://curiousedwin.com/publications/what-computation-costs).
+
+- **arXiv versions, the citable snapshots:** not posted yet. Until they are, the PDFs above are
+  the papers, and the commit hash you read them at is the only stable thing to cite.
+- **What has changed, version by version:** [`paper/CHANGELOG.md`](paper/CHANGELOG.md)
+
+Every pull request that touches a paper or the companion builds the PDFs as a CI artifact, so
+you can read the result of a proposed change without installing LaTeX.
 
 ## This paper is open
 
@@ -98,9 +116,10 @@ more migration that moved in the unfashionable direction, one more surveyed syst
 counterexample that the theory has to survive or bend to. Each of those is a small, bounded
 piece of work, and each of them changes what the paper is entitled to claim.
 
-So the model is this. The arXiv version is a snapshot, frozen and citable. This repository is
-where the paper grows. Contributions that are merged here ship in the next arXiv version, with
-credit. See [CONTRIBUTING.md](CONTRIBUTING.md) for the three ways in, [docs/STANDARDS.md](docs/STANDARDS.md)
+So the model is this. Each arXiv version is a snapshot, frozen and citable, and the first one is
+not posted yet. This repository is where the paper grows. Contributions merged here ship in the
+next arXiv version, with credit, and anything merged before v1 goes out with v1. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the three ways in, [docs/STANDARDS.md](docs/STANDARDS.md)
 for the bar, the file format, and the credit ladder in full, and [GOVERNANCE.md](GOVERNANCE.md)
 for who decides what and how release timing works.
 
@@ -130,7 +149,10 @@ one that matches what you already know.
 5. **You would rather write code.** Implement a basis variable as an estimator over a real
    repository. See [`estimators/README.md`](estimators/README.md).
 6. **You spotted an error.** Open an erratum issue. Wrong citation, wrong year, wrong
-   attribution of an idea, a claim the cited source does not actually support.
+   attribution of an idea, a claim the cited source does not actually support. For *What
+   Computation Costs*, the reading behind every citation is written out in
+   [`supplement/sources.json`](supplement/sources.json), so an objection can name the exact
+   sentence it disagrees with.
 7. **You think a section should be restructured or taken apart.** Open a
    [proposal issue](../../issues/new?template=proposal.yml). Put your suggested wording straight
    into the issue. No fork and no LaTeX required.
@@ -228,9 +250,10 @@ rhythm and the release cadence.
 
 ## Citing
 
-Use [CITATION.cff](CITATION.cff), or cite the arXiv version directly. If you are citing a claim
-that entered the paper through a contribution made here, cite the arXiv version that contains
-it, and the contributor is credited in that version's acknowledgments.
+Use [CITATION.cff](CITATION.cff). There is no arXiv identifier yet, so until v1 is posted, cite
+this repository and the commit you read. Once it is posted, cite the arXiv version that contains
+the claim you are relying on, since the paper is revised as evidence accumulates, and the
+contributor whose work carried that claim in is credited in that version's acknowledgments.
 
 ## License
 

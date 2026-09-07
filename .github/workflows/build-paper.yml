@@ -1,7 +1,7 @@
 name: Build paper
 
-# Compiles the paper on every pull request and every push to main that touches paper/, and
-# uploads the resulting PDF as an artifact so a reviewer can read the effect of a change without
+# Compiles every paper under paper/ and the companion under supplement/ on every pull request
+# and every push to main that touches them, and uploads the resulting PDFs as an artifact so a reviewer can read the effect of a change without
 # installing LaTeX.
 #
 # The change detection lives in a job condition rather than in a `paths:` filter on the trigger.
@@ -62,10 +62,10 @@ jobs:
           fi
 
           if git diff --name-only "$base" "$HEAD_SHA" \
-              | grep -Eq '^(paper/|\.github/workflows/build-paper\.yml)'; then
+              | grep -Eq '^(paper/|supplement/|\.github/workflows/build-paper\.yml)'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Nothing under paper/ changed, skipping the build."
+            echo "Nothing under paper/ or supplement/ changed, skipping the build."
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
@@ -83,31 +83,42 @@ jobs:
       # document carries a table of contents and a longtable, and a longtable settles its column
       # widths over an additional pass. Stopping at two would fail on a document that is
       # perfectly well formed.
-      - name: Compile until the cross references settle
-        working-directory: paper
+      # The companion document is generated from supplement/sources.json. Regenerate it first
+      # so that a pull request which edits the JSON but forgets to rerun the script still builds
+      # the document the JSON describes, and the diff check below catches the omission.
+      - name: Regenerate the companion document from its JSON
         run: |
           set -eu
-          pass=0
-          while [ "$pass" -lt 4 ]; do
-            pass=$((pass + 1))
-            echo "::group::pdflatex pass ${pass}"
-            pdflatex \
-              -interaction=nonstopmode \
-              -halt-on-error \
-              -file-line-error \
-              conceptual-space-arxiv.tex
-            echo "::endgroup::"
+          python3 supplement/build_supplement.py supplement/sources.json supplement/how-the-sources-were-read.tex
+          if ! git diff --quiet -- supplement/how-the-sources-were-read.tex; then
+            echo "::error::supplement/how-the-sources-were-read.tex is out of date. Run supplement/build_supplement.py and commit the result."
+            git --no-pager diff --stat -- supplement/how-the-sources-were-read.tex
+            exit 1
+          fi
 
-            if [ "$pass" -lt 2 ]; then
-              continue
-            fi
-
-            if grep -qE "Rerun to get|Label\(s\) may have changed" conceptual-space-arxiv.log; then
-              echo "Cross references still moving after pass ${pass}, running again."
-            else
-              echo "Cross references settled after pass ${pass}."
-              break
-            fi
+      # Two passes minimum, since cross references need a second one. Up to four, because these
+      # documents carry tables of contents and longtables, and a longtable settles its column
+      # widths over an additional pass. Stopping at two would fail on a document that is
+      # perfectly well formed.
+      - name: Compile every document until the cross references settle
+        run: |
+          set -eu
+          for doc in paper/conceptual-space-arxiv paper/what-computation-costs supplement/how-the-sources-were-read; do
+            dir=$(dirname "$doc"); base=$(basename "$doc")
+            pass=0
+            while [ "$pass" -lt 4 ]; do
+              pass=$((pass + 1))
+              echo "::group::pdflatex ${base} pass ${pass}"
+              (cd "$dir" && pdflatex -interaction=nonstopmode -halt-on-error -file-line-error "${base}.tex")
+              echo "::endgroup::"
+              if [ "$pass" -lt 2 ]; then continue; fi
+              if grep -qE "Rerun to get|Label\(s\) may have changed" "${doc}.log"; then
+                echo "Cross references still moving after pass ${pass}, running again."
+              else
+                echo "Cross references settled after pass ${pass}."
+                break
+              fi
+            done
           done
 
       # pdflatex exits zero on undefined references and citations, since they are warnings
@@ -115,46 +126,43 @@ jobs:
       # cross reference renders as a bare question mark in the PDF and nobody notices until it
       # is on arXiv.
       - name: Fail on undefined references or citations
-        working-directory: paper
         run: |
           set -u
-          log=conceptual-space-arxiv.log
           status=0
-
-          if grep -nE "LaTeX Warning: (Reference|Citation) .* undefined" "$log"; then
-            echo "::error::Undefined reference or citation. See the lines above."
-            status=1
-          fi
-
-          if grep -nE "There were undefined references" "$log"; then
-            echo "::error::LaTeX reported undefined references at the end of the run."
-            status=1
-          fi
-
-          if grep -nE "Rerun to get|Label\(s\) may have changed" "$log"; then
-            echo "::error::Cross references had still not settled after four passes, which points at a genuine problem rather than a slow convergence."
-            status=1
-          fi
-
-          if [ "$status" -eq 0 ]; then
-            echo "No undefined references or citations."
-          fi
+          for log in paper/conceptual-space-arxiv.log paper/what-computation-costs.log supplement/how-the-sources-were-read.log; do
+            if grep -nE "LaTeX Warning: (Reference|Citation) .* undefined" "$log"; then
+              echo "::error::Undefined reference or citation in ${log}. See the lines above."
+              status=1
+            fi
+            if grep -nE "There were undefined references" "$log"; then
+              echo "::error::${log}: LaTeX reported undefined references at the end of the run."
+              status=1
+            fi
+            if grep -nE "Rerun to get|Label\(s\) may have changed" "$log"; then
+              echo "::error::${log}: cross references had still not settled after four passes."
+              status=1
+            fi
+          done
+          if [ "$status" -eq 0 ]; then echo "No undefined references or citations."; fi
           exit "$status"
 
-      - name: Report the page count
+      - name: Report the page counts
         if: always()
-        working-directory: paper
         run: |
-          pages=$(grep -oE "Output written on .* \(([0-9]+) pages" \
-            conceptual-space-arxiv.log | grep -oE "[0-9]+ pages" || true)
-          echo "Compiled: ${pages:-unknown page count}"
+          for log in paper/conceptual-space-arxiv.log paper/what-computation-costs.log supplement/how-the-sources-were-read.log; do
+            pages=$(grep -oE "Output written on .* \(([0-9]+) pages" "$log" | grep -oE "[0-9]+ pages" || true)
+            echo "${log%.log}: ${pages:-unknown page count}"
+          done
 
       - name: Upload the PDF
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: conceptual-space-pdf
-          path: paper/conceptual-space-arxiv.pdf
+          name: compiled-pdfs
+          path: |
+            paper/conceptual-space-arxiv.pdf
+            paper/what-computation-costs.pdf
+            supplement/how-the-sources-were-read.pdf
           if-no-files-found: error
           retention-days: 30
 
@@ -162,7 +170,9 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: latex-log
-          path: paper/conceptual-space-arxiv.log
+          name: latex-logs
+          path: |
+            paper/*.log
+            supplement/*.log
           if-no-files-found: warn
           retention-days: 14

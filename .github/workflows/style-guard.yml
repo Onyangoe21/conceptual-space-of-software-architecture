@@ -62,16 +62,20 @@ jobs:
           fi
 
           if git diff --name-only "$base" "$HEAD_SHA" \
-              | grep -Eq '^(paper/|\.github/(scripts/style_guard\.py|workflows/style-guard\.yml))'; then
+              | grep -Eq '^(paper/|supplement/|\.github/(scripts/style_guard\.py|workflows/style-guard\.yml))'; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Nothing under paper/ changed, skipping the style guard."
+            echo "Nothing under paper/ or supplement/ changed, skipping the style guard."
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run the style guard
+      - name: Run the style guard on every document
         if: steps.check.outputs.changed == 'true'
-        run: python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex
+        run: |
+          set -eu
+          for doc in paper/conceptual-space-arxiv.tex paper/what-computation-costs.tex supplement/how-the-sources-were-read.tex; do
+            python3 .github/scripts/style_guard.py "$doc"
+          done
 
       - name: Self test the guard
         if: steps.check.outputs.changed == 'true'

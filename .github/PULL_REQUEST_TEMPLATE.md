@@ -61,7 +61,7 @@ repository, plus git history, plus runtime traces, or plus human intent?
       deliberately kept
 - [ ] Every technical concept introduced in plain words before its formal name
 - [ ] Section openings orient the reader before they argue
-- [ ] I ran `python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex` locally and
+- [ ] I ran `python3 .github/scripts/style_guard.py` on every `.tex` file I touched, and
       it passed
 - [ ] Any new `\cite` key has a matching `\bibitem`
 
