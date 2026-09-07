@@ -94,6 +94,7 @@ plain words before formal names. CI enforces the dashes. Run it yourself:
 
 ```bash
 python3 .github/scripts/style_guard.py paper/conceptual-space-arxiv.tex
+python3 .github/scripts/style_guard.py paper/what-computation-costs.tex
 ```
 
 Details in [docs/STANDARDS.md](docs/STANDARDS.md#voice-contract-for-paper-text). Evidence files and

@@ -78,14 +78,31 @@ machine could estimate it, and closes with six falsifiable predictions.
 
 ## Read it
 
-- **Compiled PDF, the current state of the paper:** [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
-- **LaTeX source, single file:** [`paper/conceptual-space-arxiv.tex`](paper/conceptual-space-arxiv.tex)
-- **arXiv version, the citable snapshot:** not posted yet. Until it is, the PDF above is the
-  paper, and the commit hash you read it at is the only stable thing to cite.
+Two papers live here, and they are one project. The first asks what the variables are that an
+architectural decision moves along. The second steps back and asks what any engineering decision
+is answerable to, starting from the costs Turing set to zero.
+
+**The Conceptual Space of Software Architecture** (August 2026)
+
+- Compiled PDF: [`paper/conceptual-space.pdf`](paper/conceptual-space.pdf)
+- LaTeX source, single file: [`paper/conceptual-space-arxiv.tex`](paper/conceptual-space-arxiv.tex)
+
+**What Computation Costs** (September 2026)
+
+- Compiled PDF: [`paper/what-computation-costs.pdf`](paper/what-computation-costs.pdf)
+- LaTeX source, single file: [`paper/what-computation-costs.tex`](paper/what-computation-costs.tex)
+- Companion, *How the Sources Were Read*: [`supplement/how-the-sources-were-read.pdf`](supplement/how-the-sources-were-read.pdf),
+  generated from [`supplement/sources.json`](supplement/sources.json). For every source the paper
+  cites: where it is used, what it was taken to support, how it was read, and where that reading
+  could be wrong. Also rendered, entry by entry and open to objection, at
+  [curiousedwin.com/publications/what-computation-costs](https://curiousedwin.com/publications/what-computation-costs).
+
+- **arXiv versions, the citable snapshots:** not posted yet. Until they are, the PDFs above are
+  the papers, and the commit hash you read them at is the only stable thing to cite.
 - **What has changed, version by version:** [`paper/CHANGELOG.md`](paper/CHANGELOG.md)
 
-Every pull request that touches the paper builds a PDF as a CI artifact, so you can read the
-result of a proposed change without installing LaTeX.
+Every pull request that touches a paper or the companion builds the PDFs as a CI artifact, so
+you can read the result of a proposed change without installing LaTeX.
 
 ## This paper is open
 
@@ -132,7 +149,10 @@ one that matches what you already know.
 5. **You would rather write code.** Implement a basis variable as an estimator over a real
    repository. See [`estimators/README.md`](estimators/README.md).
 6. **You spotted an error.** Open an erratum issue. Wrong citation, wrong year, wrong
-   attribution of an idea, a claim the cited source does not actually support.
+   attribution of an idea, a claim the cited source does not actually support. For *What
+   Computation Costs*, the reading behind every citation is written out in
+   [`supplement/sources.json`](supplement/sources.json), so an objection can name the exact
+   sentence it disagrees with.
 7. **You think a section should be restructured or taken apart.** Open a
    [proposal issue](../../issues/new?template=proposal.yml). Put your suggested wording straight
    into the issue. No fork and no LaTeX required.
